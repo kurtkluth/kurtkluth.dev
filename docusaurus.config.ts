@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Kurt M Kluth',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'The happiest place on the Internet',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
