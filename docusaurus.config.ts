@@ -40,14 +40,14 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/kurtkluth/kurtkluth.dev/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/kurtkluth/kurtkluth.dev/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/kurtkluth/kurtkluth.dev/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/kurtkluth/kurtkluth.dev/',
         },
         theme: {
           customCss: './src/css/custom.css',
