@@ -4,6 +4,82 @@ sidebar_position: 4
 
 # Markdown Features
 
+### Trouble shoot SPC User Login
+
+go run this query
+```
+DECLARE
+   @dumb       int          = 0
+  ,@login_name varchar(150) = 'Diana.Mottram@fundingshield.com'
+  ,@password   varchar(max) = 'P2j4HFVBMyyFCuP7paMS/A=='
+  --,@login_name varchar(150) = 'faith.cooper@fundingshield.com'
+  --,@password   varchar(max) = 'MYsdeiprZxHku5aW5y8oVva4zWUfrcbhHsz87jcG3bY='
+
+
+DECLARE
+   @sp_type varchar(10)
+
+SELECT TOP 1
+   @sp_type = [company_type]
+FROM
+  [dbo].[company_info] ci
+  INNER JOIN [dbo].[user_role_info] uri
+    ON ci.id = uri.user_bus_company_id
+WHERE uri.user_id = (SELECT TOP 1 u.id FROM [dbo].[user_info] u WHERE u.identifier = @login_name AND u.password = @password)
+
+DECLARE
+   @lender_type varchar(10)
+SELECT TOP 1
+   @lender_type = [type]
+FROM
+  [dbo].[lender] l
+  INNER JOIN [dbo].[user_role_info] uri
+    ON l.id = uri.user_bus_company_id
+WHERE uri.user_id = (SELECT TOP 1 id FROM [dbo].[user_info] u WHERE u.identifier = @login_name AND u.password = @password)
+
+SELECT * 
+-- update a SET user_bus_company_id='47CD9754-4966-41BD-8C3D-433996B1F477'
+FROM [dbo].[user_role_info] a WHERE user_id='9CDBC9D7-409E-4B29-B510-AF1B341A42CA' -- dian
+
+--SELECT * FROM [dbo].[company_info] ci
+
+DECLARE
+   @user_info_id uniqueidentifier
+
+SELECT TOP 1
+   u.id
+  ,uar.[order]             app_role
+  ,ubr.role                business_role
+  ,uri.user_bus_company_id company_id
+  ,@lender_type            lender_type
+  ,@sp_type                sp_type
+  ,u.identifier            login_name
+  ,u.email
+  ,uri.verification_status
+  ,u.first_name
+  ,u.last_name
+  ,u.is_active
+  ,ci.verification_status  AS sp_verification_status
+  ,l.is_active             AS lender_is_active
+FROM
+  user_info u
+  INNER JOIN [dbo].[user_role_info] uri
+    ON u.id = uri.user_id
+  INNER JOIN [dbo].[user_app_role] uar
+    ON uri.user_app_role_id = uar.id
+  INNER JOIN [dbo].[user_business_role] ubr
+    ON uri.user_bus_role_id = ubr.id
+  LEFT OUTER JOIN [dbo].[company_info] ci
+    ON ci.id = uri.user_bus_company_id
+  LEFT OUTER JOIN [dbo].[lender] l
+    ON l.id = uri.user_bus_company_id
+WHERE u.identifier = @login_name
+  AND u.password = @password
+
+
+
+```
+
 Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
 
 ## Front Matter
