@@ -26,6 +26,8 @@ First, you need to set up the initial dashboard with drilldown capabilities:
                         like(pluginName, "Google Chrome %"), "Browser - Chrome",
                         like(pluginName, "Microsoft %"), "Microsoft Products",
                         like(pluginName, "Apache %"), "Apache",
+                        like(pluginName, "Splunk %"), "Splunk",
+                        like(pluginName, "Oracle %"), "Oracle",
                         true(), "Other"
                     )
                     | stats count by category
@@ -35,7 +37,7 @@ First, you need to set up the initial dashboard with drilldown capabilities:
         <option name="charting.chart">pie</option>
         <option name="charting.drilldown">all</option>
         <drilldown>
-          <link target="_blank">/app/search/vulnerability_details?form.category=$click.value$</link>
+          <link target="_blank">/app/search/vera_vulnerability_details?form.category=$click.value$</link>
         </drilldown>
       </chart>
     </panel>
@@ -44,6 +46,9 @@ First, you need to set up the initial dashboard with drilldown capabilities:
 ```
 
 ### Step 2: Create the Target Dashboard
+
+![image](https://github.com/user-attachments/assets/5eb2f4d8-effe-48a9-8789-d363bb3259f4)
+
 
 Next, create a second dashboard that will receive the drilldown parameters:
 
@@ -70,6 +75,8 @@ Next, create a second dashboard that will receive the drilldown parameters:
                         like(pluginName, "Google Chrome %"), "Browser - Chrome",
                         like(pluginName, "Microsoft %"), "Microsoft Products",
                         like(pluginName, "Apache %"), "Apache",
+                        like(pluginName, "Splunk %"), "Splunk",
+                        like(pluginName, "Oracle %"), "Oracle",
                         true(), "Other"
                     )
                     | where category="$category$"
