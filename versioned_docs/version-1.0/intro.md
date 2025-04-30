@@ -35,6 +35,11 @@ The command also installs all necessary dependencies you need to run Docusaurus.
 
 Run the development server:
 
+```
+Hello Bonehead
+
+```
+
 ```bash
 cd my-website
 npm run start
