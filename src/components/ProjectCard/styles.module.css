@@ -1,0 +1,125 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.card:hover {
+  border-color: var(--project-accent);
+}
+
+.artworkLink {
+  display: block;
+  border-bottom: 1px solid var(--kk-border);
+  background: var(--kk-surface-2);
+}
+
+.artwork {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.category {
+  font-family: var(--kk-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--project-accent);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.title a {
+  color: var(--kk-text);
+}
+
+.title a:hover {
+  color: var(--project-accent);
+  text-decoration: none;
+}
+
+.summary {
+  margin: 0;
+  color: var(--kk-text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Spotlight: oversized, two-column on wide screens. */
+.spotlight {
+  flex-direction: row;
+}
+
+.spotlight .artworkLink {
+  flex: 1.2;
+  border-bottom: none;
+  border-right: 1px solid var(--kk-border);
+}
+
+.spotlight .artwork {
+  height: 100%;
+  aspect-ratio: auto;
+  min-height: 280px;
+}
+
+.spotlight .body {
+  flex: 1;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.spotlight .title {
+  font-size: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .spotlight {
+    flex-direction: column;
+  }
+
+  .spotlight .artworkLink {
+    border-right: none;
+    border-bottom: 1px solid var(--kk-border);
+  }
+
+  .spotlight .artwork {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+}

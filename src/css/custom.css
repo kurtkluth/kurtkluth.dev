@@ -1,30 +1,161 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * kurtkluth.dev design tokens.
+ *
+ * Dark-first, technical, restrained — the SQLCLR family look. Light mode is
+ * fully supported but dark is the signature experience.
  */
 
-/* You can override the default Infima variables here. */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/600.css';
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Brand */
+  --kk-accent: #0891b2;
+  --kk-accent-strong: #0e7490;
+  --kk-accent-soft: rgba(8, 145, 178, 0.12);
+  --kk-highlight: #7c3aed;
+
+  /* Surfaces (light) */
+  --kk-bg: #ffffff;
+  --kk-surface: #f6f8fa;
+  --kk-surface-2: #eef1f5;
+  --kk-border: #d7dde5;
+  --kk-border-strong: #b9c2cd;
+  --kk-text: #0d1420;
+  --kk-text-muted: #57657a;
+
+  /* Type */
+  --kk-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+  --kk-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  /* Infima mappings */
+  --ifm-color-primary: var(--kk-accent);
+  --ifm-color-primary-dark: #077e9c;
+  --ifm-color-primary-darker: #077793;
+  --ifm-color-primary-darkest: #066279;
+  --ifm-color-primary-light: #099ec8;
+  --ifm-color-primary-lighter: #09a5d1;
+  --ifm-color-primary-lightest: #0abaeb;
+  --ifm-font-family-base: var(--kk-font-sans);
+  --ifm-font-family-monospace: var(--kk-font-mono);
+  --ifm-background-color: var(--kk-bg);
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.85);
+  --ifm-footer-background-color: #0a0e14;
+  --ifm-code-font-size: 90%;
+  --ifm-heading-font-weight: 700;
+  --ifm-global-radius: 8px;
+  --ifm-toc-border-color: var(--kk-border);
+  --ifm-color-emphasis-300: var(--kk-border);
+  --docusaurus-highlighted-code-line-bg: rgba(8, 145, 178, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Brand */
+  --kk-accent: #22d3ee;
+  --kk-accent-strong: #67e8f9;
+  --kk-accent-soft: rgba(34, 211, 238, 0.1);
+  --kk-highlight: #a78bfa;
+
+  /* Surfaces (dark): near-black with a cool blue cast */
+  --kk-bg: #0a0e14;
+  --kk-surface: #0e131b;
+  --kk-surface-2: #131a24;
+  --kk-border: #1d2735;
+  --kk-border-strong: #2c3a4e;
+  --kk-text: #e6edf3;
+  --kk-text-muted: #8b98a9;
+
+  --ifm-color-primary: var(--kk-accent);
+  --ifm-color-primary-dark: #0ecbe9;
+  --ifm-color-primary-darker: #0dc0dc;
+  --ifm-color-primary-darkest: #0b9eb5;
+  --ifm-color-primary-light: #3cd8f0;
+  --ifm-color-primary-lighter: #49daf1;
+  --ifm-color-primary-lightest: #6fe2f4;
+  --ifm-background-color: var(--kk-bg);
+  --ifm-background-surface-color: var(--kk-surface);
+  --ifm-navbar-background-color: rgba(10, 14, 20, 0.8);
+  --ifm-footer-background-color: #070a0f;
+  --docusaurus-highlighted-code-line-bg: rgba(34, 211, 238, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'cv05', 'cv11';
+  color: var(--kk-text);
+}
+
+/* Crisp translucent navbar with a hairline border instead of a shadow. */
+.navbar {
+  backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--kk-border);
+  box-shadow: none;
+}
+
+.navbar__title {
+  font-family: var(--kk-font-mono);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.footer {
+  border-top: 1px solid var(--kk-border);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #070a0f;
+}
+
+/* Monospace eyebrow label used across marketing pages. */
+.kk-eyebrow {
+  font-family: var(--kk-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kk-accent);
+}
+
+/* Shared card baseline: crisp border, subtle lift, no heavy shadows. */
+.kk-card {
+  background: var(--kk-surface);
+  border: 1px solid var(--kk-border);
+  border-radius: 12px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.kk-card:hover {
+  border-color: var(--kk-border-strong);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keyboard focus should always be obvious. */
+:focus-visible {
+  outline: 2px solid var(--kk-accent);
+  outline-offset: 2px;
 }

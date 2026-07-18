@@ -1,0 +1,12 @@
+.tag {
+  display: inline-block;
+  font-family: var(--kk-font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid var(--kk-border);
+  color: var(--kk-text-muted);
+  background: var(--kk-surface-2);
+  white-space: nowrap;
+}
