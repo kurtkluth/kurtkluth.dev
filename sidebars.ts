@@ -1,13 +1,12 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
-const gameDocs = (slug: string) => [
-  `${slug}/how-to-play`,
-  `${slug}/features-and-controls`,
-  `${slug}/faq`,
-  `${slug}/troubleshooting`,
-  `${slug}/changelog`,
-];
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+/**
+ * One sidebar for the whole documentation hub: a landing page, a getting-started
+ * page, one collapsible group per project, and the cross-project guides.
+ * Adding a project means adding one category block here; nothing else moves.
+ */
 const sidebars: SidebarsConfig = {
   docs: [
     'index',
@@ -17,6 +16,7 @@ const sidebars: SidebarsConfig = {
       label: 'SQLCLR',
       link: {type: 'doc', id: 'sqlclr/overview'},
       items: [
+        'sqlclr/overview',
         'sqlclr/quick-start',
         'sqlclr/installation',
         'sqlclr/configuration',
@@ -33,33 +33,67 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Lisa Climber',
       link: {type: 'doc', id: 'lisa-climber/overview'},
-      items: gameDocs('lisa-climber'),
+      items: [
+        'lisa-climber/overview',
+        'lisa-climber/how-to-play',
+        'lisa-climber/gameplay',
+        'lisa-climber/tips',
+        'lisa-climber/faq',
+        'lisa-climber/changelog',
+      ],
     },
     {
       type: 'category',
       label: 'Lisetris',
       link: {type: 'doc', id: 'lisetris/overview'},
-      items: gameDocs('lisetris'),
+      items: [
+        'lisetris/overview',
+        'lisetris/how-to-play',
+        'lisetris/gameplay',
+        'lisetris/tips',
+        'lisetris/faq',
+        'lisetris/changelog',
+      ],
     },
     {
       type: 'category',
       label: 'Skyroute',
       link: {type: 'doc', id: 'skyroute/overview'},
-      items: gameDocs('skyroute'),
+      items: [
+        'skyroute/overview',
+        'skyroute/how-to-play',
+        'skyroute/aircraft-and-regions',
+        'skyroute/controls',
+        'skyroute/autopilot',
+        'skyroute/tips',
+        'skyroute/faq',
+        'skyroute/changelog',
+      ],
     },
     {
       type: 'category',
       label: 'Spindrift',
       link: {type: 'doc', id: 'spindrift/overview'},
-      items: gameDocs('spindrift'),
+      items: [
+        'spindrift/overview',
+        'spindrift/how-to-play',
+        'spindrift/gameplay',
+        'spindrift/tips',
+        'spindrift/faq',
+        'spindrift/changelog',
+      ],
     },
-  ],
-  guides: [
-    'guides/index',
-    'guides/how-to-play',
-    'guides/installation-and-setup',
-    'guides/developer-guide',
-    'guides/troubleshooting',
+    {
+      type: 'category',
+      label: 'Guides',
+      link: {type: 'doc', id: 'guides/index'},
+      items: [
+        'guides/how-to-play',
+        'guides/installation-setup',
+        'guides/developer-guide',
+        'guides/troubleshooting',
+      ],
+    },
   ],
 };
 

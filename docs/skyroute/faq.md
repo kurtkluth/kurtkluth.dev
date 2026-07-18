@@ -1,34 +1,55 @@
 ---
-sidebar_position: 4
 title: FAQ
-description: Frequently asked questions about Skyroute.
+description: Quick answers about SkyRoute Infinite covering cost, platforms, saving, Team Stealth, and how seriously to take the simulation.
 ---
 
-# FAQ
+## Is SkyRoute Infinite free?
 
-### Do I need to install anything?
+Yes. It runs in your browser at
+[skyroute.kluthstudios.com](https://skyroute.kluthstudios.com). No download, no
+install, no account, and true to the tagline, no DLC. Just wings.
 
-No. Skyroute runs entirely in the browser at
-[skyroute.kluthstudios.com](https://skyroute.kluthstudios.com). There is nothing to download and no
-account to create.
+## Does it work with a gamepad?
 
-### Does it cost anything?
+No. The keyboard is the supported input, and the whole control scheme is built
+around it: arrow keys for pitch and roll, `W` and `S` for throttle, and a row of
+system keys for flaps, gear, autopilot, and views. The full map is on the
+[Controls](./controls.md) page.
 
-No — Skyroute is free to play.
+## Can I play on a phone or tablet?
 
-### Does it work on mobile?
+It is playable on mobile, but a keyboard is strongly recommended. Flying takes
+several precise, simultaneous inputs, and that is exactly what a keyboard is good
+at. Treat mobile as a taxi around the airport; desktop is where you fly.
 
-Skyroute targets current versions of modern browsers on both desktop
-and mobile. If something looks wrong on your device, see
-[Troubleshooting](/docs/skyroute/troubleshooting).
+## Is my logbook saved?
 
-### Is my progress saved?
+Yes, in your browser. Completed flights persist between sessions on the same
+browser and device. There are no accounts, so the logbook does not follow you to
+other devices, and clearing site data clears it.
 
-Any saved state lives in your own browser (local storage). Clearing site data
-for skyroute.kluthstudios.com resets it, and progress does not follow you across
-devices or browsers.
+## Who is Team Stealth?
 
-### Who made this?
+The build banner SkyRoute ships under within Kluth Studios, the name on the hangar
+door, so to speak. Same developer, same studio as everything else on the
+[Skyroute project page](/projects/skyroute).
 
-Skyroute is a Kluth Studios project by Kurt Kluth. See the
-[About page](/about) for the rest of the collection.
+## Is this a study-level simulator?
+
+No, and happily so. SkyRoute Infinite is an arcade-to-realistic spectrum sim built
+for fun: Arcade mode is a toy in the best sense, Realistic mode makes you earn the
+runway, and Custom lets you mix your own. It borrows real concepts (rotation
+speed, density altitude, ILS-style approaches) without asking you to read a
+thousand-page manual first. This one is only seven pages.
+
+## What does "experimental" mean here?
+
+SkyRoute is an active experiment under the Kluth Studios banner: fully playable
+today, still evolving. Handling, scoring, and features may change between visits;
+the [changelog](./changelog.md) records the milestones.
+
+## Which aircraft should I start with?
+
+The SL-9 Skylark, no contest. It is the forgiving piston trainer; the SwiftJet 100
+is the reward for outgrowing it. The full case for each, plus which region to fly
+first, is on the [Aircraft and Regions](./aircraft-and-regions.md) page.

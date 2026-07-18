@@ -1,78 +1,134 @@
 ---
-sidebar_position: 5
 title: Core Concepts
-description: Assemblies, hosting, app domains, and the SQL/.NET type boundary.
+description: How the hosted CLR actually works inside SQL Server. App domains, memory, threading, assembly loading, and the contract your code signs.
 ---
 
-# Core Concepts
+You can use SQLCLR for years without knowing any of this. You cannot
+operate it well without knowing most of it. This page is the mental model I
+wish every team had before their first production deploy.
 
-## The hosted CLR
+## A guest under house rules
 
-SQL Server loads the .NET Framework CLR **in-process** and acts as its host:
-it controls memory allocation, thread scheduling, and escalation policy. That
-means CLR code competes with the buffer pool and query workspace for memory,
-and a misbehaving assembly can be throttled or its app domain unloaded by the
-engine rather than taking the server down.
+SQL Server does not simply spin up the CLR in its process and hope. The
+engine loads the runtime through the CLR hosting layer and takes over the
+resources a runtime normally gets from the operating system:
 
-```mermaid
-flowchart LR
-    subgraph SQL Server process
-        Q[Query processor] --> H[CLR host layer]
-        H --> AD1[App domain: db1/owner1]
-        H --> AD2[App domain: db2/owner2]
-        AD1 --> ASM1[Your assemblies]
-    end
-```
+- **Memory.** CLR allocations are served through SQL Server's memory
+  manager, are visible in the memory clerks
+  (`sys.dm_os_memory_clerks`), and since SQL Server 2012 are governed by
+  `max server memory` like everything else. A leaky cache in your assembly
+  is not "just .NET memory"; it is memory the buffer pool wanted.
+- **Threads and scheduling.** Managed code runs on SQLOS workers, on the
+  engine's schedulers, cooperating with every other task on the box. Code
+  that spins, blocks on external resources, or sleeps is holding a worker
+  hostage.
+- **Escalation.** The host decides what happens when things go wrong.
+  Resource pressure or a fatal condition can escalate from aborting your
+  thread to unloading your entire app domain. That is deliberate, to protect the
+  server.
 
-## Assemblies
+The practical reading: the engine is the landlord. Your code is a tenant
+with a good lease and no equity.
 
-An assembly is registered per database with `CREATE ASSEMBLY`, which copies
-the DLL bytes **into the database** — the file on disk is only read once.
-Backups therefore include your CLR code, and restores bring it along.
+## App domains
 
-Key catalog views:
+The unit of isolation (and of eviction) is the app domain. The engine
+creates one per database, per assembly owner, loads your assemblies into
+it, and unloads it when it sees fit: memory pressure, `ALTER ASSEMBLY` or
+`DROP ASSEMBLY`, security configuration changes.
 
-- `sys.assemblies` — what's registered
-- `sys.assembly_files` — the stored bytes
-- `sys.assembly_modules` — which SQL objects bind to which methods
+Two operational consequences:
 
-## The type boundary
+- **Cold starts.** The first CLR call after an unload pays for domain
+  creation and assembly loading. Intermittent slow first calls in the
+  morning usually mean unload messages in the error log overnight.
+- **Statics do not persist.** Anything cached in static state vanishes on
+  unload, silently. Design caches as conveniences, never as correctness.
 
-Parameters and return values cross between SQL and .NET types. Use the
-`System.Data.SqlTypes` structs (`SqlString`, `SqlInt32`, `SqlBoolean`, …)
-rather than raw CLR types: they carry NULL semantics correctly.
+`sys.dm_clr_appdomains` shows what is loaded right now, with state and
+cost.
 
-| SQL Server | SqlTypes | CLR |
-|---|---|---|
-| `NVARCHAR` | `SqlString` | `string` |
-| `INT` | `SqlInt32` | `int` |
-| `BIT` | `SqlBoolean` | `bool` |
-| `DATETIME2` | — | `DateTime` |
-| `VARBINARY` | `SqlBytes` | `byte[]` |
+## Assembly loading
 
-Always check `IsNull` before touching `.Value`.
+`CREATE ASSEMBLY` copies the binary *into the database*. The bits live in
+`sys.assemblies` and `sys.assembly_files`, not on disk. From then on the
+file you compiled is irrelevant: backups carry the code, restores and
+availability-group replicas rehydrate it, and there is no DLL to go missing
+on some node at 2 a.m. One of the feature's genuinely great design
+decisions.
 
-## The context connection
+Framework assemblies are the exception: those load from the server's .NET
+Framework installation, and only a documented, tested subset is supported
+(`System`, `System.Data`, `System.Xml`, and friends). Your own dependency
+assemblies must each be cataloged with `CREATE ASSEMBLY`, referenced-first,
+in dependency order.
 
-Inside CLR code you can query the hosting session directly:
+## The boundary contract
+
+What in-engine code owes the engine:
+
+- **Verifiable IL** for `SAFE` and `EXTERNAL_ACCESS`. No pointers, no
+  unverifiable constructs. The engine checks at `CREATE ASSEMBLY` time.
+- **No mutable static state** outside `UNSAFE`. Static `readonly` fields
+  are permitted and useful; anything else is a correctness bug waiting for
+  an app domain recycle or a concurrent caller.
+- **Data access through the context connection.** The caller's own
+  session and transaction, no new login, no distributed transaction:
 
 ```csharp
-using (var conn = new SqlConnection("context connection=true"))
+using (SqlConnection conn = new SqlConnection("context connection=true"))
 {
     conn.Open();
-    // Runs in the caller's transaction and security context.
+    // runs inside the caller's session and transaction
 }
 ```
 
-The context connection is fast (in-process, no protocol hop) but limited to
-one open instance and the current session's context.
+- **Honest flags.** `IsDeterministic` and `IsPrecise` gate whether a
+  function may feed persisted computed columns and indexed views. Lie and
+  you corrupt data politely.
+- **Exceptions surface as error 6522** to the T-SQL caller, inner detail
+  and stack included. Catch what you can genuinely handle; let real
+  failures fail loudly.
+- **Cooperation with cancellation.** A killed batch aborts your thread.
+  Long-running loops must not swallow thread aborts or wedge inside calls
+  the host cannot interrupt.
 
-## Function attributes that matter
+## SqlTypes and null handling
 
-- `IsDeterministic` — required for use in indexed computed columns
-- `IsPrecise` — no floating-point imprecision
-- `DataAccess = DataAccessKind.Read` — declare if the function reads data
-- `SystemDataAccess` — declare if it reads system catalogs
+Parameters and return values cross the boundary as `System.Data.SqlTypes`
+structs, types that carry database semantics, including null:
 
-Declaring these accurately is not optional politeness; the optimizer and
-indexability rules rely on them.
+| T-SQL type | SqlType | Notes |
+|---|---|---|
+| `int`, `bigint` | `SqlInt32`, `SqlInt64` | |
+| `nvarchar` | `SqlString` or `SqlChars` | `SqlChars` streams; prefer it for `MAX`-sized values |
+| `varbinary` | `SqlBytes` or `SqlBinary` | `SqlBytes` streams |
+| `bit` | `SqlBoolean` | |
+| `float` | `SqlDouble` | |
+| `decimal`, `numeric` | `SqlDecimal` | Engine precision rules, not .NET `decimal` |
+| `datetime` | `SqlDateTime` | `datetime2` maps to plain `DateTime` |
+| `uniqueidentifier` | `SqlGuid` | |
+| `xml` | `SqlXml` | |
+
+Every SqlType has `IsNull` and a `Null` singleton. Reading `.Value` on a
+null instance throws `SqlNullValueException`, the single most common cause
+of error 6522 I see in code review:
+
+```csharp
+[SqlFunction]
+public static SqlInt32 SafeLength(SqlString input)
+{
+    if (input.IsNull)
+    {
+        return SqlInt32.Null;
+    }
+    return input.Value.Length;
+}
+```
+
+When a function should simply return null for null input, say so in T-SQL
+with `WITH RETURNS NULL ON NULL INPUT`; the engine skips the call
+entirely. Faster, and one less branch to test.
+
+Next: the contract applied in [Examples](./examples.md), and what its
+violations look like in [Troubleshooting](./troubleshooting.md).

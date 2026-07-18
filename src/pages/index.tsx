@@ -1,107 +1,160 @@
-import type {ReactNode} from 'react';
-import Link from '@docusaurus/Link';
+import React from 'react';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
+import {
+  ALL_UPDATES,
+  FEATURED_PROJECTS,
+  PROJECTS,
+} from '@site/src/data/projects';
 import ProjectCard from '@site/src/components/ProjectCard';
-import SectionHeader from '@site/src/components/SectionHeader';
-import {latestUpdates, projects} from '@site/src/data/projects';
+import ProjectArt from '@site/src/components/ProjectArt';
+import SectionHeading from '@site/src/components/SectionHeading';
+import StatusBadge from '@site/src/components/StatusBadge';
 import styles from './index.module.css';
 
-function Hero(): ReactNode {
+function HeroTerminal() {
+  const rows = PROJECTS.map((p) => ({
+    slug: p.slug,
+    kind:
+      p.category === 'Developer Tool'
+        ? 'developer-tool'
+        : p.category === 'Game'
+          ? 'game'
+          : 'experience',
+    status: p.status.toLowerCase(),
+  }));
+  return (
+    <div className={styles.terminal} aria-hidden="true">
+      <div className={styles.terminalBar}>
+        <span />
+        <span />
+        <span />
+        <em>kurt@kluthstudios: ~</em>
+      </div>
+      <div className={styles.terminalBody}>
+        <div className={styles.terminalLine}>
+          <span className={styles.prompt}>$</span> kurt list --projects
+        </div>
+        {rows.map((r) => (
+          <div key={r.slug} className={styles.terminalRow}>
+            <span className={styles.tSlug}>{r.slug}</span>
+            <span className={styles.tKind}>{r.kind}</span>
+            <span
+              className={
+                r.status === 'active' ? styles.tActive : styles.tExperimental
+              }>
+              {r.status}
+            </span>
+          </div>
+        ))}
+        <div className={styles.terminalComment}>
+          # five projects · one home · docs included
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Hero() {
   return (
     <header className={styles.hero}>
-      <div className="container">
-        <span className="kk-eyebrow">kurtkluth.dev</span>
-        <Heading as="h1" className={styles.heroTitle}>
-          Software, games, and experiments
-          <br />
-          built by <span className={styles.heroAccent}>Kurt Kluth</span>.
-        </Heading>
-        <p className={styles.heroSubtitle}>
-          Developer tools, browser games, and web experiments — with the
-          documentation to launch, understand, and use every one of them.
-        </p>
-        <div className={styles.heroActions}>
-          <Link className="button button--primary button--lg" to="/projects">
-            Explore Projects
-          </Link>
-          <Link
-            className="button button--outline button--secondary button--lg"
-            to="/docs">
-            Read the Docs
-          </Link>
+      <div className={styles.heroInner}>
+        <div className={styles.heroContent}>
+          <span className="kk-overline">kurtkluth.dev</span>
+          <h1 className={styles.heroTitle}>
+            Software, games, and{' '}
+            <em className={styles.heroEm}>experiments</em> built by Kurt
+            Kluth.
+          </h1>
+          <p className={styles.heroLede}>
+            Developer tools, browser games, and web experiments, with the
+            documentation to launch, understand, and use every one of them.
+          </p>
+          <div className={styles.heroActions}>
+            <Link className="kk-btn kk-btn--primary" to="/projects">
+              Explore Projects
+            </Link>
+            <Link className="kk-btn kk-btn--ghost" to="/docs">
+              Read the Docs
+            </Link>
+          </div>
+          <p className={styles.heroMeta}>
+            <Link to="https://github.com/kurtkluth" rel="noopener">
+              github.com/kurtkluth
+            </Link>
+            {' · '}
+            <Link to="https://sqlclr.com" rel="noopener">
+              sqlclr.com
+            </Link>
+          </p>
         </div>
+        <HeroTerminal />
       </div>
     </header>
   );
 }
 
-function FeaturedProjects(): ReactNode {
-  const featured = projects.filter((p) => p.featured);
-  const spotlight = featured.find((p) => p.spotlight);
-  const rest = featured.filter((p) => !p.spotlight);
+function Featured() {
+  const [first, ...rest] = FEATURED_PROJECTS;
   return (
-    <section className={styles.section} aria-label="Featured projects">
-      <div className="container">
-        <SectionHeader
-          eyebrow="Projects"
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        <SectionHeading
+          overline="Projects"
           title="Featured work"
-          subtitle="Every project ships with a live site and its own documentation."
+          lede="Every project ships with a live site and its own documentation."
         />
-        {spotlight && (
-          <div className={styles.spotlightWrap}>
-            <ProjectCard project={spotlight} spotlight />
+        <div className={styles.featuredGrid}>
+          <ProjectCard project={first} featured />
+          <div className={styles.featuredPair}>
+            {rest.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
           </div>
-        )}
-        <div className={styles.cardGrid}>
-          {rest.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
+        </div>
+        <div className={styles.sectionFoot}>
+          <Link className="kk-btn kk-btn--ghost" to="/projects">
+            View all projects
+          </Link>
         </div>
       </div>
     </section>
   );
 }
 
-const buildAreas = [
+const FOCUS = [
   {
     title: 'Developer Tools',
-    text: 'Practical tooling and deep documentation for working engineers — starting with SQL Server CLR integration.',
-    link: '/projects/sqlclr',
-    linkText: 'See SQLCLR',
+    body: 'Practical tooling and deep documentation for working engineers, starting with SQL Server CLR integration.',
+    to: '/projects/sqlclr',
+    cta: 'See SQLCLR',
   },
   {
     title: 'Games',
-    text: 'Browser games from Kluth Studios: quick to load, easy to learn, and built to chase high scores.',
-    link: '/projects/lisa-climber',
-    linkText: 'Play the games',
+    body: 'Browser games from Kluth Studios: quick to load, easy to learn, and built to chase high scores.',
+    to: '/projects',
+    cta: 'Play the games',
   },
   {
     title: 'Web Experiments',
-    text: 'Interactive experiences that explore what the browser can do — evolving in public.',
-    link: '/projects/skyroute',
-    linkText: 'Try an experiment',
+    body: 'Interactive experiences that explore what the browser can do, evolving in public.',
+    to: '/projects/skyroute',
+    cta: 'Try an experiment',
   },
 ];
 
-function WhatIBuild(): ReactNode {
+function Focus() {
   return (
-    <section
-      className={`${styles.section} ${styles.altSection}`}
-      aria-label="What I build">
-      <div className="container">
-        <SectionHeader eyebrow="Focus" title="What I build" />
-        <div className={styles.areaGrid}>
-          {buildAreas.map((area) => (
-            <div key={area.title} className={`kk-card ${styles.areaCard}`}>
-              <Heading as="h3" className={styles.areaTitle}>
-                {area.title}
-              </Heading>
-              <p className={styles.areaText}>{area.text}</p>
-              <Link to={area.link} className={styles.areaLink}>
-                {area.linkText} →
-              </Link>
-            </div>
+    <section className={`${styles.section} ${styles.sectionRaised}`}>
+      <div className={styles.inner}>
+        <SectionHeading overline="Focus" title="What I build" />
+        <div className={styles.focusGrid}>
+          {FOCUS.map((f) => (
+            <Link key={f.title} to={f.to} className={styles.focusCard}>
+              <h3>{f.title}</h3>
+              <p>{f.body}</p>
+              <span className={styles.focusCta}>{f.cta} →</span>
+            </Link>
           ))}
         </div>
       </div>
@@ -109,55 +162,85 @@ function WhatIBuild(): ReactNode {
   );
 }
 
-function Updates(): ReactNode {
-  const updates = latestUpdates(5);
+function Studio() {
+  const games = PROJECTS.filter((p) => p.studio === 'Kluth Studios');
   return (
-    <section className={styles.section} aria-label="Latest updates">
-      <div className="container">
-        <div className={styles.updatesGrid}>
-          <div>
-            <SectionHeader
-              eyebrow="Changelog"
-              title="Latest updates"
-              subtitle="Recent changes across projects and documentation."
-            />
-            <ul className={styles.updateList}>
-              {updates.map((update) => (
-                <li key={`${update.project.slug}-${update.date}`}>
-                  <time className={styles.updateDate} dateTime={update.date}>
-                    {update.date}
-                  </time>
-                  <span>
-                    <Link to={`/projects/${update.project.slug}`}>
-                      {update.project.name}
-                    </Link>{' '}
-                    — {update.text}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={`kk-card ${styles.introCard}`}>
-            <span className="kk-eyebrow">About</span>
-            <Heading as="h3" className={styles.areaTitle}>
-              Hi, I’m Kurt.
-            </Heading>
-            <p className={styles.areaText}>
-              I build software for the fun of it — developer tooling by day,
-              browser games and experiments under the Kluth Studios banner. This
-              site is the home for all of it: launch any project, then read how
-              it works.
-            </p>
-            <div className={styles.introActions}>
-              <Link className="button button--outline button--secondary button--sm" to="/about">
-                More about me
-              </Link>
-              <Link
-                className="button button--outline button--secondary button--sm"
-                href="https://github.com/kurtkluth">
-                GitHub
-              </Link>
-            </div>
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        <SectionHeading
+          overline="Kluth Studios"
+          title="The game collection"
+          lede="Free in your browser. No installs, no accounts."
+        />
+        <div className={styles.studioGrid}>
+          {games.map((p) => (
+            <Link
+              key={p.slug}
+              to={`/projects/${p.slug}`}
+              className={styles.studioCard}>
+              <ProjectArt slug={p.slug} />
+              <div className={styles.studioBody}>
+                <strong>{p.name}</strong>
+                <StatusBadge status={p.status} />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Updates() {
+  return (
+    <section className={`${styles.section} ${styles.sectionRaised}`}>
+      <div className={styles.inner}>
+        <SectionHeading
+          overline="Changelog"
+          title="Latest updates"
+          lede="Recent changes across projects and documentation."
+        />
+        <ul className={styles.updates}>
+          {ALL_UPDATES.slice(0, 6).map((u) => (
+            <li key={u.project.slug + u.date}>
+              <span className={styles.updateDate}>{u.date}</span>
+              <span className={styles.updateText}>
+                <Link to={`/projects/${u.project.slug}`}>
+                  {u.project.name}
+                </Link>{' '}
+                {u.text}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section className={styles.section}>
+      <div className={`${styles.inner} ${styles.about}`}>
+        <div>
+          <span className="kk-overline">About</span>
+          <h2 className={styles.aboutTitle}>Hi, I&rsquo;m Kurt.</h2>
+          <p className={styles.aboutBody}>
+            I build software for the fun of it. Developer tooling by day,
+            browser games and experiments under the Kluth Studios banner the
+            rest of the time. This site is the home for all of it. Launch any
+            project, then read how it works.
+          </p>
+          <div className={styles.heroActions}>
+            <Link className="kk-btn kk-btn--ghost" to="/about">
+              More about me
+            </Link>
+            <Link
+              className="kk-btn kk-btn--ghost"
+              to="https://github.com/kurtkluth"
+              rel="noopener">
+              GitHub
+            </Link>
           </div>
         </div>
       </div>
@@ -165,16 +248,18 @@ function Updates(): ReactNode {
   );
 }
 
-export default function Home(): ReactNode {
+export default function Home(): React.ReactNode {
   return (
     <Layout
       title="Portfolio & Documentation"
       description="Portfolio and documentation hub for software, games, and experiments built by Kurt Kluth and Kluth Studios.">
-      <Hero />
-      <main>
-        <FeaturedProjects />
-        <WhatIBuild />
+      <main className={styles.main}>
+        <Hero />
+        <Featured />
+        <Focus />
+        <Studio />
         <Updates />
+        <About />
       </main>
     </Layout>
   );

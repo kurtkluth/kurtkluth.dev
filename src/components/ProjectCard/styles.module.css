@@ -1,125 +1,149 @@
 .card {
   display: flex;
   flex-direction: column;
+  background: var(--kk-bg-card);
+  border: 1px solid var(--kk-line);
+  border-radius: var(--kk-radius-card);
   overflow: hidden;
-  height: 100%;
+  transition: transform var(--ifm-transition-slow) ease,
+    border-color var(--ifm-transition-slow) ease,
+    box-shadow var(--ifm-transition-slow) ease;
 }
 
 .card:hover {
-  border-color: var(--project-accent);
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--pc-accent) 45%, var(--kk-line-strong));
+  box-shadow: 0 18px 44px -24px color-mix(in srgb, var(--pc-accent) 32%, transparent);
 }
 
-.artworkLink {
+.art {
   display: block;
-  border-bottom: 1px solid var(--kk-border);
-  background: var(--kk-surface-2);
-}
-
-.artwork {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  border-bottom: 1px solid var(--kk-line);
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.25rem;
   flex: 1;
+  padding: 1.4rem 1.5rem 1.5rem;
+  gap: 0.75rem;
 }
 
 .meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .category {
   font-family: var(--kk-font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  font-weight: 560;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--project-accent);
+  color: color-mix(in srgb, var(--pc-accent) 72%, var(--kk-text-dim));
 }
 
-.title {
+.name {
+  font-size: 1.42rem;
+  font-weight: 640;
+  letter-spacing: -0.02em;
   margin: 0;
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
 }
 
-.title a {
+.name a {
   color: var(--kk-text);
 }
 
-.title a:hover {
-  color: var(--project-accent);
+.name a:hover {
+  color: var(--kk-accent);
   text-decoration: none;
 }
 
 .summary {
+  color: var(--kk-text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
   margin: 0;
-  color: var(--kk-text-muted);
-  line-height: 1.55;
   flex: 1;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag {
+  font-family: var(--kk-font-mono);
+  font-size: 0.7rem;
+  color: var(--kk-text-dim);
+  border: 1px solid var(--kk-line);
+  border-radius: 6px;
+  padding: 0.18rem 0.55rem;
+  background: rgba(148, 163, 184, 0.05);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
 }
 
-/* Spotlight: oversized, two-column on wide screens. */
-.spotlight {
-  flex-direction: row;
+/* Oversized featured layout: art beside content on wide screens */
+.featured {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
 
-.spotlight .artworkLink {
-  flex: 1.2;
+.featured .art {
   border-bottom: none;
-  border-right: 1px solid var(--kk-border);
+  border-right: 1px solid var(--kk-line);
+  height: 100%;
 }
 
-.spotlight .artwork {
+.featured .art > div {
   height: 100%;
   aspect-ratio: auto;
   min-height: 280px;
 }
 
-.spotlight .body {
-  flex: 1;
-  padding: 2rem;
+.featured .body {
+  padding: 2.1rem 2.2rem;
   justify-content: center;
 }
 
-.spotlight .title {
-  font-size: 1.75rem;
+.featured .name {
+  font-size: 1.9rem;
 }
 
-@media (max-width: 768px) {
-  .spotlight {
+.featured .summary {
+  flex: 0 0 auto;
+  font-size: 1.02rem;
+}
+
+@media (max-width: 830px) {
+  .featured {
+    display: flex;
     flex-direction: column;
   }
 
-  .spotlight .artworkLink {
+  .featured .art {
     border-right: none;
-    border-bottom: 1px solid var(--kk-border);
+    border-bottom: 1px solid var(--kk-line);
   }
 
-  .spotlight .artwork {
+  .featured .art > div {
     aspect-ratio: 16 / 9;
     min-height: 0;
+  }
+
+  .featured .body {
+    padding: 1.4rem 1.5rem 1.5rem;
   }
 }

@@ -1,37 +1,67 @@
 ---
-sidebar_position: 2
 title: How to Play
-description: Get climbing in Lisa Climber in under a minute.
+description: How to launch Summit Smash, read the HUD, and climb from the bottom layer to the top.
 ---
 
-# How to Play
+Everything you need for a first climb. How to start the game, what the
+numbers on screen mean, and the basic rhythm of a run.
 
-## Start a run
+## Launching the game
 
-1. Open [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com)
-   in a modern browser.
-2. The game presents its controls on screen — desktop plays with the
-   keyboard, mobile with touch.
-3. Start climbing.
+Open [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com)
+in any current browser. You land on the demo attract screen: Summit Smash
+cheerfully playing itself while the title waits for you.
 
-## The loop
+- On a keyboard, **press any key**.
+- On a phone or tablet, **tap to play**.
 
-- **Climb upward** from hold to hold. Height is score.
-- **Don't fall.** A fall ends the run, and the run is everything.
-- **Retry instantly.** Runs are short by design; improvement comes from
-  repetition.
+That is the whole ceremony. You are on the mountain.
 
-## Tips for getting higher
+## The objective
 
-- Slow is smooth, smooth is fast — early mistakes usually come from rushing
-  moves you had time to think about.
-- Learn the rhythm of the game's movement before chasing height.
-- Watch your next two holds, not just the next one.
+Climb every layer of every stage without running out of hearts. Stages are
+eight layers tall, there are six of them, and the first is Frostpeak.
+Clear a stage's top layer and the climb continues; lose your last heart
+and the run is over.
+
+## Reading the HUD
+
+| On screen | What it means |
+|---|---|
+| Stage progress ("Frostpeak 1/6") | The stage you are climbing, and where it sits in the six-stage set. |
+| Layer counter ("Layer 0/8") | How many of the stage's eight layers you have cleared so far. |
+| Hearts | Your lives. Lose them all and the run ends. |
+| Score and multiplier ("×2") | Your points, and the multiplier currently boosting everything you collect. |
+
+The multiplier is the fun one: pickups feed it, so a steady collector
+scores far more than a cautious sprinter. More on that in
+[Gameplay](./gameplay.md).
+
+## The basic flow
+
+1. **Climb.** Hop from platform to platform, clearing layer after layer.
+   Brick, ice, water-topped, and grass platforms each handle a little
+   differently; ice, in particular, deserves your respect.
+2. **Avoid the hazards.** Icicles drop from above, and critters patrol
+   their platforms on their own schedule. Both cost you hearts, and
+   hearts are the run.
+3. **Grab the pickups.** Gems and money bags raise your score and keep
+   your multiplier fed.
+4. **Stay off the bottom.** The red kill floor down there is exactly what
+   it sounds like.
+5. **Top out.** Finish all eight layers, then take on the next stage. Six
+   stages stand between you and the summit.
 
 :::tip
-The on-screen instructions in the game itself are always the authoritative
-controls reference — the game evolves, and it tells you how to play it.
+
+Not sure how something behaves? Let the attract screen run for a minute;
+the demo plays the game in front of you, and it is a surprisingly good
+teacher.
+
 :::
 
-For every control and feature in one place, see
-[Features & Controls](/docs/lisa-climber/features-and-controls).
+## Keep reading
+
+- [Gameplay](./gameplay.md) shows every platform, hazard, and pickup in detail.
+- [Tips](./tips.md) offers practical advice before you spend your first hearts.
+- [FAQ](./faq.md) has quick answers about saving scores, devices, and more.

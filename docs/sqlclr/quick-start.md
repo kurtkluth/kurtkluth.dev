@@ -1,83 +1,119 @@
 ---
-sidebar_position: 2
 title: Quick Start
-description: Deploy your first CLR function to SQL Server in about ten minutes.
+description: From an empty database to your first C# function running inside SQL Server, in five copy-pasteable steps.
 ---
 
-# Quick Start
+This is the fastest honest path to a working SQLCLR function on SQL Server
+2017 or later. Honest means no `TRUSTWORTHY ON` and no disabling
+`clr strict security`. We trust one specific binary, catalog it, bind it,
+and call it.
 
-This walkthrough takes you from nothing to a working CLR scalar function.
+You need an instance where you are `sysadmin` (a dev box or container) and
+a Windows machine to compile on; the .NET Framework compiler ships with
+the operating system.
 
 ## 1. Enable CLR integration
 
 ```sql
-EXEC sp_configure 'show advanced options', 1;
-RECONFIGURE;
 EXEC sp_configure 'clr enabled', 1;
 RECONFIGURE;
 ```
 
-## 2. Write a function
+Takes effect immediately, no restart. Leave `clr strict security` alone;
+it defaults to on, and every step below works with it on, which is exactly
+how production should run.
 
-Create a class library targeting .NET Framework (SQL Server hosts the
-.NET Framework CLR, not .NET Core/.NET 5+):
+## 2. Write the function
+
+Save this as `TitleCase.cs`. Note the `Sql*` types and the null check: the
+engine speaks in nullable database types, and your code must too (see
+[Core Concepts](./core-concepts.md)).
 
 ```csharp
-using Microsoft.SqlServer.Server;
 using System.Data.SqlTypes;
-using System.Text.RegularExpressions;
+using System.Globalization;
+using Microsoft.SqlServer.Server;
 
 public static class StringFunctions
 {
     [SqlFunction(IsDeterministic = true, IsPrecise = true)]
-    public static SqlBoolean RegexIsMatch(SqlString input, SqlString pattern)
+    public static SqlString TitleCase(SqlString input)
     {
-        if (input.IsNull || pattern.IsNull)
+        if (input.IsNull)
         {
-            return SqlBoolean.Null;
+            return SqlString.Null;
         }
-        return Regex.IsMatch(input.Value, pattern.Value);
+
+        TextInfo text = CultureInfo.InvariantCulture.TextInfo;
+        return new SqlString(text.ToTitleCase(input.Value.ToLowerInvariant()));
     }
 }
 ```
 
-Build it to produce `StringFunctions.dll`.
+## 3. Compile it
 
-## 3. Deploy the assembly
+SQLCLR hosts the .NET Framework CLR (not .NET 6, 8, or 9), so use the
+Framework compiler. Every Windows machine already has one:
+
+```bash
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:library /out:C:\clr\SqlClrDemo.dll TitleCase.cs
+```
+
+## 4. Trust it, catalog it, bind it
+
+Under strict security the engine refuses assemblies it has no reason to
+trust. The quick answer is the trusted-assembly allowlist: hash the exact
+bits, register the hash, then create the assembly and the T-SQL function
+that binds to it. The path below is read by the SQL Server service, not
+your workstation; on a local dev instance they are the same machine.
 
 ```sql
-CREATE ASSEMBLY StringFunctions
-FROM 'C:\clr\StringFunctions.dll'
+USE master;
+
+DECLARE @bits VARBINARY(MAX) =
+    (SELECT BulkColumn
+     FROM OPENROWSET(BULK N'C:\clr\SqlClrDemo.dll', SINGLE_BLOB) AS a);
+
+EXEC sys.sp_add_trusted_assembly
+    @hash = HASHBYTES('SHA2_512', @bits),
+    @description = N'SqlClrDemo quick start';
+GO
+
+USE YourDatabase;
+GO
+
+CREATE ASSEMBLY SqlClrDemo
+FROM N'C:\clr\SqlClrDemo.dll'
 WITH PERMISSION_SET = SAFE;
 GO
 
-CREATE FUNCTION dbo.RegexIsMatch(@input NVARCHAR(MAX), @pattern NVARCHAR(4000))
-RETURNS BIT
-AS EXTERNAL NAME StringFunctions.StringFunctions.RegexIsMatch;
-GO
+CREATE FUNCTION dbo.TitleCase (@input NVARCHAR(4000))
+RETURNS NVARCHAR(4000)
+AS EXTERNAL NAME SqlClrDemo.StringFunctions.TitleCase;
 ```
 
-:::warning
-On SQL Server 2017 and later, **CLR strict security** treats even `SAFE`
-assemblies as `UNSAFE`, so plain `CREATE ASSEMBLY` will fail unless the
-assembly is signed or trusted. See [Security](/docs/sqlclr/security) for the
-right way to handle this in production, or use `sp_add_trusted_assembly` for
-development.
-:::
+`EXTERNAL NAME` is `assembly.class.method`; the assembly name is the one
+you gave `CREATE ASSEMBLY`, not the file name.
 
-## 4. Use it
+## 5. Call it
 
 ```sql
-SELECT dbo.RegexIsMatch(N'kurt@kluthstudios.com',
-                        N'^[^@\s]+@[^@\s]+\.[^@\s]+$') AS IsEmail;
--- Returns 1
+SELECT dbo.TitleCase(N'the engine will run my c# now');
+-- The Engine Will Run My C# Now
 ```
 
-That's the whole loop: write C#, build, `CREATE ASSEMBLY`, bind with
-`CREATE FUNCTION ... AS EXTERNAL NAME`, and call it like any other function.
+That is the whole loop: compile, trust, catalog, bind, call.
 
-## Next steps
+:::warning
 
-- [Installation](/docs/sqlclr/installation) for environment details
-- [Examples](/docs/sqlclr/examples) for procedures, aggregates, and TVFs
-- [Security](/docs/sqlclr/security) before you ship anything
+The allowlist trusts these exact bits. Rebuild the DLL and the hash
+changes, so you register the new hash before redeploying. For production,
+signing scales better across rebuilds; see [Security](./security.md).
+
+:::
+
+## Where next
+
+- [Installation](./installation.md) covers requirements, platforms, and what `clr strict security` actually checks.
+- [Examples](./examples.md) has regex functions, a streaming TVF, and a median aggregate.
+- [Deployment](./deployment.md) turns the same steps into repeatable scripts with embedded binaries.

@@ -1,63 +1,33 @@
 .main {
-  padding: 4rem 0 5rem;
+  background: var(--kk-bg);
+}
+
+.inner {
+  max-width: var(--kk-container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .header {
-  margin-bottom: 2rem;
-  max-width: 44rem;
+  padding: clamp(3rem, 6vw, 5rem) 0 0.5rem;
 }
 
-.title {
-  font-size: 2.5rem;
-  letter-spacing: -0.03em;
-  margin: 0.5rem 0;
+.section {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
 }
 
-.subtitle {
-  color: var(--kk-text-muted);
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.filterButton {
-  font-family: var(--kk-font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--kk-border);
-  background: var(--kk-surface);
-  color: var(--kk-text-muted);
-  cursor: pointer;
-  transition: border-color 150ms ease, color 150ms ease;
-}
-
-.filterButton:hover {
-  border-color: var(--kk-border-strong);
-  color: var(--kk-text);
-}
-
-.filterActive {
-  border-color: var(--kk-accent);
-  color: var(--kk-accent);
-  background: var(--kk-accent-soft);
+.sectionRaised {
+  background: var(--kk-bg-raised);
+  border-top: 1px solid var(--kk-line);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.gridWide {
+  display: grid;
+  gap: 1.25rem;
 }
