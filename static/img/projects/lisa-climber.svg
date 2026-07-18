@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Lisa Climber artwork">
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#1d2735" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#0a0e14"/>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  <ellipse cx="400" cy="130" rx="420" ry="230" fill="url(#glow)"/>
+  <!-- mountain wall -->
+  <path d="M180 330L400 90l220 240" fill="none" stroke="#34d399" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M330 330L470 175l130 155" fill="none" stroke="#34d399" stroke-width="4" opacity="0.5"/>
+  <!-- climbing holds -->
+  <g fill="#6ee7b7">
+    <circle cx="380" cy="280" r="9"/>
+    <circle cx="420" cy="230" r="9"/>
+    <circle cx="390" cy="180" r="9"/>
+    <circle cx="415" cy="130" r="9"/>
+  </g>
+  <path d="M380 280l40-50-30-50 25-50" fill="none" stroke="#6ee7b7" stroke-width="3" stroke-dasharray="6 8" opacity="0.7"/>
+  <!-- flag at summit -->
+  <path d="M400 90V56l26 9-26 9" fill="#34d399" stroke="#34d399" stroke-width="3" stroke-linejoin="round"/>
+  <text x="400" y="392" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="40" font-weight="600" fill="#e6edf3" letter-spacing="5">LISA CLIMBER</text>
+  <text x="400" y="424" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" fill="#8b98a9" letter-spacing="3">KLUTH STUDIOS</text>
+</svg>
