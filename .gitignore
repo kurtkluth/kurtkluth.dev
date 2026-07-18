@@ -8,6 +8,10 @@
 .docusaurus
 .cache-loader
 
+# Local tooling and working notes (not for the public repo)
+/.claude
+/CONTENT-INVENTORY.md
+
 # Misc
 .DS_Store
 .env.local

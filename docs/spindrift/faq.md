@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Quick answers about SPINDRIFT: cost, saving, touch support, the glow toggle, and its Asteroids ancestry.
+description: Quick answers about SPINDRIFT, covering cost, saving, touch support, the glow toggle, and its Asteroids ancestry.
 ---
 
 ## Is SPINDRIFT free? Do I have to install anything?

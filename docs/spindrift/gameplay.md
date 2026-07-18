@@ -1,6 +1,6 @@
 ---
 title: Gameplay
-description: SPINDRIFT mechanics in depth: drift physics, rock splitting, saucers, the scoring table, and hyperspace.
+description: SPINDRIFT mechanics in depth, covering drift physics, rock splitting, saucers, the scoring table, and hyperspace.
 ---
 
 Spindrift has maybe five rules, and every one of them compounds. This page is the
