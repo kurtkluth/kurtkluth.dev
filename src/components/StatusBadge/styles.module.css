@@ -1,51 +1,37 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.42rem;
+  padding: 0.22rem 0.7rem;
+  border-radius: var(--kk-radius-pill);
+  border: 1px solid var(--kk-line-strong);
+  background: rgba(148, 163, 184, 0.05);
   font-family: var(--kk-font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-weight: 560;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid var(--kk-border-strong);
-  color: var(--kk-text-muted);
-  background: var(--kk-surface-2);
+  color: var(--kk-text-dim);
   white-space: nowrap;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: currentColor;
+  flex-shrink: 0;
 }
 
-.active {
-  color: #059669;
-  border-color: rgba(5, 150, 105, 0.4);
-  background: rgba(5, 150, 105, 0.08);
+.badgeActive .dot {
+  background: #3fb950;
+  box-shadow: 0 0 6px rgba(63, 185, 80, 0.7);
 }
 
-[data-theme='dark'] .active {
-  color: #34d399;
-  border-color: rgba(52, 211, 153, 0.35);
-  background: rgba(52, 211, 153, 0.08);
+.badgeExperimental .dot {
+  background: var(--kk-ember);
+  box-shadow: 0 0 6px var(--kk-glow-ember);
 }
 
-.experimental {
-  color: #b45309;
-  border-color: rgba(180, 83, 9, 0.4);
-  background: rgba(180, 83, 9, 0.08);
-}
-
-[data-theme='dark'] .experimental {
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.35);
-  background: rgba(251, 191, 36, 0.08);
-}
-
-.archived {
-  color: var(--kk-text-muted);
+.badgeArchived .dot {
+  background: var(--kk-text-faint);
 }

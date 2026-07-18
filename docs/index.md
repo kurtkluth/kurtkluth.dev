@@ -1,30 +1,51 @@
 ---
-sidebar_position: 1
-slug: /
 title: Documentation
-description: Documentation hub for every Kurt Kluth and Kluth Studios project.
+description: One documentation hub for every Kurt Kluth and Kluth Studios project, covering developer tools, browser games, and web experiments.
+slug: /
 ---
 
-# Documentation
+Welcome. This is the documentation hub for everything I build, both the
+developer tooling published under my own name and the browser games and
+experiments published under the Kluth Studios banner. Every project ships with a live site
+and its own documentation, and this is where the documentation half of that
+promise lives.
 
-Welcome to the documentation hub for everything on **kurtkluth.dev**. Every
-project has its own section covering what it is, how to use it, and how to fix
-things when they go sideways.
+## The projects
 
-## Projects
+Five projects, one hub. Each name links to that project's overview doc, and
+each live link opens the real thing.
 
-| Project | What it is | Start here |
+| Project | One-liner | Live site |
 |---|---|---|
-| [SQLCLR](/docs/sqlclr/overview) | SQL Server CLR integration — .NET inside the database engine | [Quick Start](/docs/sqlclr/quick-start) |
-| [Lisa Climber](/docs/lisa-climber/overview) | Browser climbing game | [How to Play](/docs/lisa-climber/how-to-play) |
-| [Lisetris](/docs/lisetris/overview) | Falling-block puzzle game | [How to Play](/docs/lisetris/how-to-play) |
-| [Skyroute](/docs/skyroute/overview) | Flight-themed interactive experience | [How to Play](/docs/skyroute/how-to-play) |
-| [Spindrift](/docs/spindrift/overview) | Atmospheric interactive experience | [How to Play](/docs/spindrift/how-to-play) |
+| [SQLCLR](./sqlclr/overview.md) | Running .NET inside SQL Server. Governed, hardened extensibility at the engine boundary. | [sqlclr.com](https://sqlclr.com) |
+| [Lisa Climber](./lisa-climber/overview.md) | Summit Smash, a pixel-art arcade climbing platformer. Six stages, three hearts, one long way up. | [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com) |
+| [Lisetris](./lisetris/overview.md) | A romantic neon falling-block puzzle game, made for Lisa. | [lisetris.kluthstudios.com](https://lisetris.kluthstudios.com) |
+| [Skyroute](./skyroute/overview.md) | SkyRoute Infinite, an open-world flight simulator that runs straight from your browser. | [skyroute.kluthstudios.com](https://skyroute.kluthstudios.com) |
+| [Spindrift](./spindrift/overview.md) | A vector-style arcade space shooter with a persistent high score to chase. | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) |
 
-## New here?
+SQLCLR is the serious developer tool. The other four are Kluth Studios games
+and interactive experiences. All of them are free, all in the browser, with
+no install and no account required.
 
-- Read [Getting Started](/docs/getting-started) for the lay of the land.
-- Browse the [Guides](/docs/guides) for cross-project help — playing the
-  games, setting things up, and troubleshooting.
-- Or head back to the [project portfolio](/projects) to see everything at a
-  glance.
+## How the docs are organized
+
+- **Per-project docs.** Every project has its own sidebar section, with an
+  overview as the front door and then the pages that fit it. Expect a quick
+  start or how-to-play, deeper concepts, tips, an FAQ, and a changelog.
+- **[Guides](./guides/index.md).** Practical instructions that cut across
+  projects. They cover how the games play, what you need installed (usually
+  nothing), how this site is built, and what to check when something
+  misbehaves.
+
+## Where to start
+
+- **New here?** [Getting Started](./getting-started.md) sorts you onto the
+  right path in about a minute.
+- **Want the portfolio view instead?** [Projects](/projects) has the cards,
+  summaries, and launch links.
+- **Know exactly what you're after?** The sidebar lists every page. Jump
+  straight in.
+
+Questions, bug reports, or ideas are always welcome. Reach me at
+[github.com/kurtkluth](https://github.com/kurtkluth) or
+[kurtkluth@icloud.com](mailto:kurtkluth@icloud.com).

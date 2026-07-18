@@ -1,20 +1,30 @@
 ---
-sidebar_position: 1
 title: Guides
-slug: /guides
-description: Practical cross-project guides — playing, setup, development, and troubleshooting.
+description: Practical instructions that cut across every project on kurtkluth.dev. Playing, setup, development, and troubleshooting.
 ---
 
-# Guides
+The per-project documentation explains each project in depth. It covers what it is,
+how it works, and how to get the most out of it. These guides are different.
+They collect the practical instructions that cut across projects, so the
+questions every project shares get one good answer instead of five scattered
+ones.
 
-Where the per-project documentation explains each project in depth, these
-guides collect the **practical instructions that cut across projects**.
+## The guides
 
-- **[How to Play](/docs/guides/how-to-play)** — what the Kluth Studios games
-  have in common, and how to jump into any of them.
-- **[Installation & Setup](/docs/guides/installation-and-setup)** — what (if
-  anything) you need before using each project.
-- **[Developer Guide](/docs/guides/developer-guide)** — how this site is
-  built and how to add a project to it.
-- **[Troubleshooting](/docs/guides/troubleshooting)** — the cross-project
-  checklist when something won't load or behaves badly.
+- [How to Play](./how-to-play.md) covers what the Kluth Studios games have in
+  common, from instant browser play to near-universal keys, plus a quick
+  launcher for all four.
+- [Installation & Setup](./installation-setup.md) lists what you need for each
+  project. For the games, that is nothing.
+- [Developer Guide](./developer-guide.md) explains how this site is built, and how
+  a new project gets added to it.
+- [Troubleshooting](./troubleshooting.md) is the checklist to run when
+  something won't load or behaves badly, in any project.
+
+## When to use which
+
+- Unsure of the controls? [How to Play](./how-to-play.md).
+- Wondering what to install? [Installation & Setup](./installation-setup.md).
+- Something misbehaving right now? [Troubleshooting](./troubleshooting.md).
+- Curious how the site works under the hood?
+  [Developer Guide](./developer-guide.md).

@@ -1,25 +1,51 @@
 ---
-sidebar_position: 1
-title: Overview
-description: Spindrift — an atmospheric interactive experience from Kluth Studios.
+title: SPINDRIFT Overview
+description: A vector-style arcade space shooter with glowing white outlines on pure black, played free in your browser.
 ---
 
-# Spindrift
+**SPINDRIFT** is a vector-style arcade space shooter: a pure black screen, one
+ship, rocks, saucers, and nothing else. Every object is drawn in glowing white
+vector outlines, every number set in monospace type. It is a loving homage to the
+Asteroids era of arcade machines, built as an original game for the browser.
 
-**Spindrift** is an atmospheric interactive experience from Kluth Studios —
-named for the spray blown from cresting waves. It sits on the experimental
-side of the collection.
+Play it now at [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com).
+The project story lives on the [Spindrift project page](/projects/spindrift).
 
-**Try it now:** [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com)
+:::note
 
-## What it is
+Spindrift is **experimental**: fully playable, still evolving under the Kluth
+Studios banner.
 
-Spindrift is about atmosphere and exploration rather than scores and fail
-states. Like Skyroute, it's an **Experimental** project: it evolves in
-public, and discovering its current shape is part of the experience.
+:::
 
-## Documentation
+## The aesthetic
 
-- [How to Play](/docs/spindrift/how-to-play) — diving in
-- [Features & Controls](/docs/spindrift/features-and-controls) — reference
-- [FAQ](/docs/spindrift/faq) · [Troubleshooting](/docs/spindrift/troubleshooting) · [Changelog](/docs/spindrift/changelog)
+Everything on screen is white lines on black, the way vector monitors drew games
+before pixels took over: no textures, no sprites, just geometry with a glow around
+it. The glow is optional. `G` toggles it, which is also a handy performance lever
+on slower machines. The look is the game's entire personality, and it costs almost
+nothing to render.
+
+## The loop
+
+Pure arcade, one sentence long: shoot the rocks, dodge the pieces, kill the
+saucers, survive, beat your high score. Rocks split when shot, saucers shoot back,
+and your best run is remembered as the HI score at the top of the screen. There is
+no ending, only a longer run than last time. The full mechanics, including the
+scoring table, are on the [Gameplay](./gameplay.md) page.
+
+## Where it runs
+
+- **In the browser, free.** No download, no install, no account.
+- **Desktop.** Keyboard controls, all listed in [How to Play](./how-to-play.md).
+- **Mobile.** Touch is supported, so the whole game works on a phone too.
+
+Any current browser (Chrome, Edge, Firefox, Safari) runs it comfortably. It is a
+handful of white lines on a black screen, and it is proud of that.
+
+## Read next
+
+- [How to Play](./how-to-play.md): starting a game, the objective, every control.
+- [Gameplay](./gameplay.md): drift physics, rock splitting, and what pays best.
+- [Tips](./tips.md): how to survive past the first minute.
+- [FAQ](./faq.md) and [Changelog](./changelog.md): quick answers and the history.

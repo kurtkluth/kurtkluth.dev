@@ -1,64 +1,59 @@
-import {useState, type ReactNode} from 'react';
-import clsx from 'clsx';
+import React from 'react';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
+import {PROJECTS} from '@site/src/data/projects';
 import ProjectCard from '@site/src/components/ProjectCard';
-import {projects, type ProjectCategory} from '@site/src/data/projects';
+import SectionHeading from '@site/src/components/SectionHeading';
 import styles from './styles.module.css';
 
-type Filter = 'All' | ProjectCategory;
+export default function ProjectsIndex(): React.ReactNode {
+  const tools = PROJECTS.filter((p) => p.category === 'Developer Tool');
+  const studio = PROJECTS.filter((p) => p.category !== 'Developer Tool');
 
-const filters: Filter[] = [
-  'All',
-  'Developer Tool',
-  'Game',
-  'Interactive Experience',
-];
-
-export default function ProjectsIndex(): ReactNode {
-  const [filter, setFilter] = useState<Filter>('All');
-  const visible =
-    filter === 'All' ? projects : projects.filter((p) => p.category === filter);
   return (
     <Layout
       title="Projects"
-      description="All projects by Kurt Kluth and Kluth Studios: developer tools, browser games, and interactive experiments.">
+      description="Every project by Kurt Kluth and Kluth Studios, with live sites, documentation, and status in one place.">
       <main className={styles.main}>
-        <div className="container">
-          <header className={styles.header}>
-            <span className="kk-eyebrow">Portfolio</span>
-            <Heading as="h1" className={styles.title}>
-              All Projects
-            </Heading>
-            <p className={styles.subtitle}>
-              Everything currently live — each with its own site and
-              documentation.
-            </p>
-          </header>
-          <div
-            className={styles.filters}
-            role="group"
-            aria-label="Filter projects by category">
-            {filters.map((f) => (
-              <button
-                key={f}
-                type="button"
-                className={clsx(
-                  styles.filterButton,
-                  filter === f && styles.filterActive,
-                )}
-                aria-pressed={filter === f}
-                onClick={() => setFilter(f)}>
-                {f}
-              </button>
-            ))}
+        <header className={styles.header}>
+          <div className={styles.inner}>
+            <SectionHeading
+              as="h1"
+              overline="Projects"
+              title="Everything, in one place"
+              lede="Five projects, each with a live site and its own documentation. Launch anything; read how it works."
+            />
           </div>
-          <div className={styles.grid}>
-            {visible.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
+        </header>
+
+        <section className={styles.section} id="developer-tools">
+          <div className={styles.inner}>
+            <SectionHeading
+              overline="Developer tools"
+              title="The serious work"
+              lede="Tooling and deep documentation for working engineers."
+            />
+            <div className={styles.gridWide}>
+              {tools.map((p) => (
+                <ProjectCard key={p.slug} project={p} featured />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section className={`${styles.section} ${styles.sectionRaised}`} id="games">
+          <div className={styles.inner}>
+            <SectionHeading
+              overline="Kluth Studios"
+              title="Games and experiments"
+              lede="Browser games and interactive experiences. Quick to load, easy to learn, free to play. No installs, no accounts."
+            />
+            <div className={styles.grid}>
+              {studio.map((p) => (
+                <ProjectCard key={p.slug} project={p} />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );

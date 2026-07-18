@@ -1,21 +1,17 @@
-import type {ReactNode} from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import type {ProjectStatus} from '@site/src/data/projects';
 import styles from './styles.module.css';
-
-const statusClass: Record<ProjectStatus, string> = {
-  Active: styles.active,
-  Experimental: styles.experimental,
-  Archived: styles.archived,
-};
 
 export default function StatusBadge({
   status,
 }: {
   status: ProjectStatus;
-}): ReactNode {
+}): React.ReactNode {
   return (
-    <span className={clsx(styles.badge, statusClass[status])}>
+    <span
+      className={clsx(styles.badge, styles[`badge${status}`])}
+      title={`Project status: ${status}`}>
       <span className={styles.dot} aria-hidden="true" />
       {status}
     </span>

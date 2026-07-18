@@ -1,69 +1,101 @@
 ---
-sidebar_position: 3
 title: Installation
-description: Requirements and setup for SQL Server CLR integration development.
+description: Requirements, enabling CLR integration, and choosing a trust approach before the first assembly loads.
 ---
 
-# Installation
+There is nothing to download. CLR integration has shipped inside the
+engine since SQL Server 2005. "Installation" here means switching it on,
+understanding what a modern instance demands before it will load your code,
+and picking the trust approach that fits the environment.
 
 ## Requirements
 
-- **SQL Server** 2012 or later (2017+ recommended; note the
-  [CLR strict security](/docs/sqlclr/security) changes it introduced).
-  CLR integration is included in every edition, including Express.
-- **.NET Framework SDK / Visual Studio** with the *SQL Server Data Tools*
-  (SSDT) workload, or the `Microsoft.SqlServer.Server` reference for plain
-  class libraries.
-- Permission to run `sp_configure` and `CREATE ASSEMBLY` on the target
-  instance (`ALTER SETTINGS` and `CREATE ASSEMBLY` permissions, typically
-  sysadmin in development).
+| Requirement | Detail |
+|---|---|
+| SQL Server | 2005 onward. I recommend 2017 or later; `clr strict security` defines the modern trust model |
+| Platform | Windows, Linux, containers. Linux and containers support `SAFE` assemblies only |
+| Azure | Managed Instance: yes (`SAFE` only, deployed from binary literals). Azure SQL Database single databases and elastic pools: no |
+| .NET | Target the .NET Framework (CLR 4). .NET Core and .NET 5+ binaries will not load |
+| Scheduling | `lightweight pooling` must be 0; the hosted CLR does not run in fiber mode |
 
-## Enable CLR on the instance
+Since SQL Server 2012 the hosted runtime is CLR 4; SQL Server 2005 through
+2008 R2 hosted CLR 2.0. Compile against .NET Framework 4.x; 4.7.2 is a
+comfortable target. The compiler and language version matter less than the
+IL they emit and the base libraries they reference.
+
+## Enable CLR integration
+
+`clr enabled` is the master switch: instance-wide, immediate, no restart.
 
 ```sql
-EXEC sp_configure 'show advanced options', 1;
-RECONFIGURE;
 EXEC sp_configure 'clr enabled', 1;
 RECONFIGURE;
 ```
 
-Verify:
+Verify both switches while you are there (`clr strict security` is an
+advanced option, hence the first two lines):
 
 ```sql
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+
 SELECT name, value_in_use
 FROM sys.configurations
-WHERE name IN ('clr enabled', 'clr strict security');
+WHERE name IN (N'clr enabled', N'clr strict security', N'lightweight pooling');
 ```
 
-## Project setup
+## Understand `clr strict security`
 
-### Option A — SSDT database project (recommended)
+SQL Server 2017 changed the ground rules. Code Access Security, the .NET
+mechanism that once made `SAFE` a meaningful sandbox, is no longer
+supported as a security boundary, so the engine stopped pretending
+otherwise. With `clr strict security` enabled (the default), every assembly
+is authorized as if it were `UNSAFE`, whatever its declared permission set.
+To load anything at all, one of two things must be true:
 
-1. Create a **SQL Server Database Project** in Visual Studio.
-2. Add a *SQLCLR* item (function, stored procedure, aggregate, or type).
-3. Set the target platform to match your SQL Server version.
-4. Publish — SSDT generates the `CREATE ASSEMBLY` and wrapper DDL for you.
+1. The assembly is signed with a certificate or asymmetric key whose
+   corresponding server login holds the `UNSAFE ASSEMBLY` permission, or
+2. The assembly's SHA-512 hash is registered in the instance's
+   trusted-assembly allowlist.
 
-### Option B — plain class library
+The declared `PERMISSION_SET` still matters at runtime (a `SAFE` assembly
+attempting file I/O still fails), but it is no longer what convinces the
+engine to load you. [Security](./security.md) covers the full model.
 
-1. Create a .NET Framework class library (match the CLR version your
-   SQL Server hosts — CLR 4 for SQL Server 2012+).
-2. Reference `System.Data` and use the `Microsoft.SqlServer.Server`
-   namespace attributes.
-3. Deploy by hand with `CREATE ASSEMBLY` as shown in the
-   [Quick Start](/docs/sqlclr/quick-start).
+:::warning
 
-:::note
-SQL Server hosts the **.NET Framework** runtime. Assemblies targeting
-.NET Core / .NET 5+ cannot be loaded by CLR integration.
+You can set `clr strict security` to 0 and get 2005-era behavior back. On a
+disposable dev instance, fine. On anything that matters, leave it on. The
+option exists because the old boundary was found wanting, not because
+Microsoft enjoys breaking deployments.
+
 :::
 
-## Verify the install
+## Dev versus production trust
 
-```sql
-SELECT * FROM sys.assemblies WHERE is_user_defined = 1;
-SELECT * FROM sys.assembly_modules;
-```
+| Environment | Approach |
+|---|---|
+| Local dev, throwaway containers | Trusted-assembly allowlist (`sys.sp_add_trusted_assembly`); fast, per-binary, no PKI required |
+| CI/CD pipelines | Register the built hash as a pipeline step; the hash doubles as an integrity check |
+| Production | Sign assemblies with a certificate or asymmetric key; grant `UNSAFE ASSEMBLY` to the signing identity once |
 
-If your assembly and its modules appear, you're ready for the
-[Examples](/docs/sqlclr/examples).
+Both roads are honest. Signing survives rebuilds without re-registration;
+the allowlist pins the exact bits you reviewed. What is not on the menu is
+`TRUSTWORTHY ON`. [Security](./security.md) explains why at length.
+
+## Platform notes
+
+- **Linux and containers.** Supported since SQL Server 2017, `SAFE` only,
+  with no `EXTERNAL_ACCESS` and no `UNSAFE`. Deploy assemblies from binary literals
+  rather than file paths so one script runs everywhere
+  ([Deployment](./deployment.md)).
+- **Azure SQL Managed Instance.** `SAFE` only, binary literals only; there
+  is no filesystem to load from.
+- **Availability groups.** Assemblies live inside the database and travel
+  with it automatically. Trust registrations do not: trusted-assembly
+  hashes and signing logins are server-scoped and must exist on every
+  replica.
+
+Next: [Configuration](./configuration.md) for the full option and
+permission-set reference, or the [Quick Start](./quick-start.md) to get a
+function running right now.

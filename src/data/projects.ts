@@ -1,10 +1,9 @@
 /**
- * Single source of truth for every project shown on kurtkluth.dev.
+ * Single source of truth for every project on kurtkluth.dev.
  *
- * Project cards, project detail pages, homepage sections, and navigation
- * all read from this registry. Adding a new project is a content task:
- * add an entry here, drop artwork in static/img/projects/, and create a
- * docs folder — no component changes required.
+ * The homepage grid, the projects index, each project detail page, and the
+ * cross-links into the docs are all rendered from this file. Adding a project
+ * here (plus its docs folder and sidebar group) is the entire integration.
  */
 
 export type ProjectStatus = 'Active' | 'Experimental' | 'Archived';
@@ -14,113 +13,164 @@ export type ProjectCategory =
   | 'Game'
   | 'Interactive Experience';
 
+export interface ProjectHighlight {
+  title: string;
+  body: string;
+}
+
+export interface ProjectStep {
+  title: string;
+  body: string;
+}
+
 export interface ProjectUpdate {
-  date: string; // ISO date, e.g. '2026-07-01'
+  date: string;
   text: string;
 }
 
 export interface Project {
-  /** Display name. */
   name: string;
-  /** URL-safe identifier; drives /projects/<slug> and docs paths. */
+  /** Title the app presents in-page when it differs from the project name. */
+  inGameTitle?: string;
   slug: string;
-  /** One-line summary for cards and meta descriptions. */
+  /** One-liner for cards. */
   summary: string;
-  /** Longer description for the project detail page. */
-  description: string;
+  /** Lede paragraph for the detail page hero. */
+  lede: string;
   category: ProjectCategory;
   status: ProjectStatus;
   liveUrl: string;
+  /** Label for the primary launch action. */
+  launchLabel: string;
+  docsPath: string;
   repositoryUrl?: string;
-  /** Route of the project's documentation entry point. */
-  documentationPath: string;
   technologies: string[];
-  /** Featured projects appear in the homepage grid. */
   featured: boolean;
-  /** The single oversized card on the homepage. */
-  spotlight?: boolean;
-  /** Paths under /img/projects/ (artwork first, then screenshots). */
-  screenshots: string[];
-  /** Per-project accent color (used on cards and detail pages). */
+  /** Per-project accent, used as a subtle tint on cards and heroes. */
   accentColor: string;
-  features: string[];
-  /** Short "get started" steps rendered on the detail page. */
-  gettingStarted: string[];
+  studio: 'Kurt Kluth' | 'Kluth Studios';
+  highlights: ProjectHighlight[];
+  gettingStarted: ProjectStep[];
   updates: ProjectUpdate[];
 }
 
-export const projects: Project[] = [
+export const PROJECTS: Project[] = [
   {
     name: 'SQLCLR',
     slug: 'sqlclr',
     summary:
       'Tooling and guidance for running .NET code inside SQL Server with the CLR integration.',
-    description:
-      'SQLCLR is a developer resource focused on SQL Server CLR integration — ' +
-      'writing, deploying, and operating .NET assemblies that run inside the ' +
-      'database engine. It covers the full lifecycle: building CLR functions, ' +
-      'stored procedures, aggregates, and types; deploying them safely; and ' +
-      'understanding the security and performance trade-offs involved.',
+    lede:
+      'A developer resource for SQL Server CLR integration. It covers writing, deploying, and operating .NET assemblies that run inside the database engine. Governed, verifiable, and built to survive security reviews and engine upgrades.',
     category: 'Developer Tool',
     status: 'Active',
     liveUrl: 'https://sqlclr.com',
-    documentationPath: '/docs/sqlclr/overview',
+    launchLabel: 'Open sqlclr.com',
+    docsPath: '/docs/sqlclr/overview',
     technologies: ['SQL Server', '.NET', 'C#', 'T-SQL'],
     featured: true,
-    spotlight: true,
-    screenshots: ['sqlclr.svg'],
-    accentColor: '#22d3ee',
-    features: [
-      'CLR functions, stored procedures, aggregates, and user-defined types',
-      'Deployment workflows for development and production environments',
-      'Security guidance: permission sets, signing, and TRUSTWORTHY alternatives',
-      'Performance notes on when CLR beats T-SQL — and when it does not',
-      'Copy-ready examples for common CLR integration tasks',
+    accentColor: '#58a6ff',
+    studio: 'Kurt Kluth',
+    highlights: [
+      {
+        title: 'Governed extensibility',
+        body: 'CLR assemblies with explicit permission sets, signing, and catalog-level trust. This is extensibility your DBAs approve of and your auditors can trace.',
+      },
+      {
+        title: 'Every object type',
+        body: 'Scalar functions, streaming table-valued functions, stored procedures, user-defined aggregates, and user-defined types, all as compiled .NET.',
+      },
+      {
+        title: 'Security-first',
+        body: 'CLR strict security from day one: signed assemblies, trusted-assembly allowlisting, and no TRUSTWORTHY shortcuts.',
+      },
+      {
+        title: 'Cross-platform',
+        body: 'One codebase for SQL Server on Windows, Linux, and Kubernetes. The same assembly deploys identically wherever the engine runs.',
+      },
+      {
+        title: 'Worked examples',
+        body: 'Complete C# and T-SQL for regex functions, streaming TVFs, and custom aggregates, with performance notes measured inside the engine.',
+      },
+      {
+        title: 'Troubleshooting from the trenches',
+        body: 'The real errors (6263, 10314, 6522) with causes and fixes, learned across twenty-five years at the engine boundary.',
+      },
     ],
     gettingStarted: [
-      'Open sqlclr.com and skim the overview to see what CLR integration offers.',
-      'Follow the Quick Start in the docs to enable CLR and deploy a first function.',
-      'Work through the examples to build functions, procedures, and aggregates.',
+      {
+        title: 'Visit sqlclr.com',
+        body: 'The companion site covers the practice: who this is for and the story of the engine boundary.',
+      },
+      {
+        title: 'Read the Quick Start',
+        body: 'Enable CLR, build a minimal C# function, and call it from T-SQL in about ten minutes.',
+      },
+      {
+        title: 'Deploy something real',
+        body: 'Work through the examples (a regex scalar function, a streaming TVF, a custom aggregate), then read Security before production.',
+      },
     ],
     updates: [
       {
         date: '2026-07-18',
-        text: 'SQLCLR documentation hub launched on kurtkluth.dev.',
+        text: 'launched its documentation hub on kurtkluth.dev.',
       },
     ],
   },
   {
     name: 'Lisa Climber',
+    inGameTitle: 'Summit Smash',
     slug: 'lisa-climber',
     summary:
-      'A browser climbing game — guide Lisa up an ever-taller wall without falling.',
-    description:
-      'Lisa Climber is a browser game from Kluth Studios. Climb as high as you ' +
-      'can, plan each move, and don’t look down. It runs directly in the ' +
-      'browser with no installation required.',
+      'A browser climbing game. Guide Lisa up an ever-taller wall without falling.',
+    lede:
+      'An original browser-based arcade climbing platformer. Six pixel-art stages with eight layers each. Climb past icicles, critters, and crumbling footing, keep your hearts, and keep the score multiplier alive.',
     category: 'Game',
     status: 'Active',
     liveUrl: 'https://lisaclimber.kluthstudios.com',
-    documentationPath: '/docs/lisa-climber/overview',
+    launchLabel: 'Play Summit Smash',
+    docsPath: '/docs/lisa-climber/overview',
     technologies: ['TypeScript', 'HTML5 Canvas', 'Web'],
     featured: true,
-    screenshots: ['lisa-climber.svg'],
-    accentColor: '#34d399',
-    features: [
-      'Instant play in the browser — no installation or account',
-      'Simple controls that are easy to learn and hard to master',
-      'Score chasing: every run is a new attempt at a personal best',
-      'Works on desktop and mobile browsers',
+    accentColor: '#8ecbff',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Six stages, eight layers each',
+        body: 'From Frostpeak upward, every stage is a tower of platform layers with its own hazards and look.',
+      },
+      {
+        title: 'Classic arcade rules',
+        body: 'Three hearts, a score multiplier that rewards steady collecting, and a kill floor that keeps you honest.',
+      },
+      {
+        title: 'Pixel-art platforming',
+        body: 'Brick, ice, water, and grass platforms; dropping icicles; patrolling critters; gems and money bags to grab on the way up.',
+      },
+      {
+        title: 'Instant play',
+        body: 'Loads in seconds, starts on any key or tap, and runs on desktop and mobile browsers alike.',
+      },
     ],
     gettingStarted: [
-      'Open lisaclimber.kluthstudios.com in a modern browser.',
-      'Read the on-screen controls, then start climbing.',
-      'Check the How to Play guide for tips on getting higher.',
+      {
+        title: 'Open the game',
+        body: 'Summit Smash runs entirely in your browser. There is nothing to install and no account to make.',
+      },
+      {
+        title: 'Press any key or tap',
+        body: 'The demo attract screen hands over control the moment you do.',
+      },
+      {
+        title: 'Climb',
+        body: 'Read the how-to-play doc for the HUD, hazards, and scoring. Then chase the summit.',
+      },
     ],
     updates: [
       {
         date: '2026-07-18',
-        text: 'Lisa Climber joined the Kluth Studios collection on kurtkluth.dev.',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
       },
     ],
   },
@@ -128,126 +178,189 @@ export const projects: Project[] = [
     name: 'Lisetris',
     slug: 'lisetris',
     summary:
-      'A falling-block puzzle game in the browser — clear lines, chase the high score.',
-    description:
-      'Lisetris is Kluth Studios’ take on the classic falling-block puzzle. ' +
-      'Rotate and place pieces to clear lines as the pace picks up. Playable ' +
-      'instantly in the browser.',
+      'A falling-block puzzle game in the browser. Clear lines, chase the high score.',
+    lede:
+      'A romantic neon falling-block puzzle game, made for Lisa. Classic mode speeds up as you clear rows; Relaxed mode lets you breathe. Piece by piece, everything falls into place.',
     category: 'Game',
     status: 'Active',
     liveUrl: 'https://lisetris.kluthstudios.com',
-    documentationPath: '/docs/lisetris/overview',
+    launchLabel: 'Play Lisetris',
+    docsPath: '/docs/lisetris/overview',
     technologies: ['TypeScript', 'HTML5 Canvas', 'Web'],
     featured: true,
-    screenshots: ['lisetris.svg'],
-    accentColor: '#a78bfa',
-    features: [
-      'Classic falling-block puzzle gameplay',
-      'Increasing speed and difficulty as you clear lines',
-      'Keyboard controls on desktop, touch on mobile',
-      'Instant play — no installation or account',
+    accentColor: '#ff5fa8',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Two ways to play',
+        body: 'Classic raises the speed as you clear rows and runs until the well tops out. Relaxed is for when you just want the glow.',
+      },
+      {
+        title: 'Modern block-game controls',
+        body: 'Soft drop, hard drop, both rotation directions, and a hold slot. The full contemporary control set.',
+      },
+      {
+        title: 'A love letter',
+        body: 'Built for Lisa, with a dedication, a Love Story mode, and a heart made of glowing blocks on the title screen.',
+      },
+      {
+        title: 'Statistics',
+        body: 'The game keeps your numbers (lines, scores, sessions) stored right in your browser.',
+      },
     ],
     gettingStarted: [
-      'Open lisetris.kluthstudios.com in a modern browser.',
-      'Use the arrow keys (or on-screen controls) to move and rotate pieces.',
-      'Clear lines to score; the game speeds up as you go.',
+      {
+        title: 'Open the game',
+        body: 'Lisetris runs in your browser. Free, no install, no account.',
+      },
+      {
+        title: 'Pick Classic or Relaxed',
+        body: 'Classic for the real test, Relaxed to unwind.',
+      },
+      {
+        title: 'Learn the controls',
+        body: 'Arrows or WASD, Space to hard drop, C to hold. The how-to-play doc has the full table.',
+      },
     ],
     updates: [
       {
         date: '2026-07-18',
-        text: 'Lisetris joined the Kluth Studios collection on kurtkluth.dev.',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
       },
     ],
   },
   {
     name: 'Skyroute',
+    inGameTitle: 'SkyRoute Infinite',
     slug: 'skyroute',
     summary:
-      'An interactive flying experience — plot your route and take to the sky.',
+      'An open-world browser flight simulator. Pick a route, set the weather, and fly.',
+    lede:
+      'SkyRoute Infinite is an original open-world browser flight simulator. Two aircraft, four regions with paired airports, eight kinds of weather, day through night, and a realism dial from arcade to realistic, straight from your browser. No downloads, no DLC, just wings.',
     category: 'Interactive Experience',
     status: 'Experimental',
-    description:
-      'Skyroute is an interactive experience from Kluth Studios built around ' +
-      'flight and navigation. It runs in the browser and is under active ' +
-      'experimentation, so expect it to evolve.',
     liveUrl: 'https://skyroute.kluthstudios.com',
-    documentationPath: '/docs/skyroute/overview',
-    technologies: ['TypeScript', 'Web'],
-    featured: true,
-    screenshots: ['skyroute.svg'],
-    accentColor: '#60a5fa',
-    features: [
-      'Flight-and-navigation themed interactive experience',
-      'Runs entirely in the browser',
-      'Evolving design — new ideas land frequently',
+    launchLabel: 'Fly SkyRoute Infinite',
+    docsPath: '/docs/skyroute/overview',
+    technologies: ['TypeScript', 'WebGL', 'Web'],
+    featured: false,
+    accentColor: '#5ab1ff',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Two aircraft',
+        body: 'The forgiving SL-9 Skylark piston trainer (cruise 110 kt) and the fast, slippery SwiftJet 100 regional jet (cruise 250 kt).',
+      },
+      {
+        title: 'Four regions, eight airports',
+        body: 'Verdant Coast, Amber Mesa, Granite Range, and Azure Atoll. Each region has a paired route and its own flying challenges, from density altitude to short island strips.',
+      },
+      {
+        title: 'Weather and time',
+        body: 'Clear to stormy, crosswinds included, at day, sunset, or night. Pick the sky you want to fight.',
+      },
+      {
+        title: 'A real autopilot',
+        body: 'Speed, heading, altitude, and vertical-speed targets, a heading bug, NAV route following, and an ILS-style approach mode.',
+      },
+      {
+        title: 'Realism dial',
+        body: 'Arcade, Assisted, Realistic, or Custom. Learn gently, then earn your landings.',
+      },
+      {
+        title: 'Logbook',
+        body: 'Every flight is logged in your browser. Land gently on the numbers for the high score.',
+      },
     ],
     gettingStarted: [
-      'Open skyroute.kluthstudios.com in a modern browser.',
-      'Explore — the experience is designed to be discovered.',
+      {
+        title: 'Open the simulator',
+        body: 'SkyRoute Infinite runs in your browser; a keyboard is strongly recommended.',
+      },
+      {
+        title: 'Set up a flight',
+        body: 'Pick aircraft, region, route, weather, time, and realism. Then press Start Flight.',
+      },
+      {
+        title: 'Take off',
+        body: 'Brakes off, full throttle, rotate at about 65 knots. The how-to-play doc walks the whole first flight.',
+      },
     ],
     updates: [
       {
         date: '2026-07-18',
-        text: 'Skyroute joined the Kluth Studios collection on kurtkluth.dev.',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
       },
     ],
   },
   {
     name: 'Spindrift',
+    inGameTitle: 'SPINDRIFT',
     slug: 'spindrift',
     summary:
-      'An atmospheric interactive experience from Kluth Studios, played in the browser.',
+      'A vector-style arcade space shooter. Glowing outlines, drifting rocks, one ship.',
+    lede:
+      'SPINDRIFT is a vector-style arcade space shooter: white outlines on black, momentum that never stops, rocks that split when you shoot them, and saucers that shoot back. A loving homage to the vector arcade era, built new for the browser.',
     category: 'Interactive Experience',
     status: 'Experimental',
-    description:
-      'Spindrift is an atmospheric interactive experience from Kluth Studios. ' +
-      'Like the rest of the collection it runs directly in the browser, and ' +
-      'it is still evolving.',
     liveUrl: 'https://spindrift.kluthstudios.com',
-    documentationPath: '/docs/spindrift/overview',
-    technologies: ['TypeScript', 'Web'],
-    featured: true,
-    screenshots: ['spindrift.svg'],
-    accentColor: '#f59e0b',
-    features: [
-      'Atmospheric, exploratory gameplay',
-      'Runs entirely in the browser',
-      'Part of the experimental side of Kluth Studios',
+    launchLabel: 'Play SPINDRIFT',
+    docsPath: '/docs/spindrift/overview',
+    technologies: ['TypeScript', 'HTML5 Canvas', 'Web'],
+    featured: false,
+    accentColor: '#e8f1f8',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Vector aesthetic',
+        body: 'Glowing white outlines on pure black, monospace type, and a glow toggle for slower machines.',
+      },
+      {
+        title: 'Momentum is the enemy',
+        body: 'Thrust and rotation only, no brakes. The ship drifts until you fly it back under control.',
+      },
+      {
+        title: 'Arcade scoring',
+        body: 'Rocks score 20, 50, or 100 by size; saucers 200 or 1,000; bonus ship at 10,000. Your high score persists.',
+      },
+      {
+        title: 'Hyperspace',
+        body: 'One panic button that teleports you somewhere else, possibly somewhere worse.',
+      },
     ],
     gettingStarted: [
-      'Open spindrift.kluthstudios.com in a modern browser.',
-      'Explore — the experience is designed to be discovered.',
+      {
+        title: 'Open the game',
+        body: 'SPINDRIFT runs in your browser, desktop or touch.',
+      },
+      {
+        title: 'Press Enter',
+        body: 'Rotate with the arrows, thrust with Up, fire with Space.',
+      },
+      {
+        title: 'Survive',
+        body: 'Clear the rocks, mind the saucers, and read the tips before you trust hyperspace.',
+      },
     ],
     updates: [
       {
         date: '2026-07-18',
-        text: 'Spindrift joined the Kluth Studios collection on kurtkluth.dev.',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
       },
     ],
   },
 ];
 
 export function getProject(slug: string): Project {
-  const project = projects.find((p) => p.slug === slug);
+  const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) {
     throw new Error(`Unknown project slug: ${slug}`);
   }
   return project;
 }
 
-export function relatedProjects(project: Project, limit = 3): Project[] {
-  const others = projects.filter((p) => p.slug !== project.slug);
-  const sameCategory = others.filter((p) => p.category === project.category);
-  const rest = others.filter((p) => p.category !== project.category);
-  return [...sameCategory, ...rest].slice(0, limit);
-}
+export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
 
-/** Newest updates across all projects, for the homepage. */
-export function latestUpdates(
-  limit = 5,
-): Array<ProjectUpdate & {project: Project}> {
-  return projects
-    .flatMap((p) => p.updates.map((u) => ({...u, project: p})))
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, limit);
-}
+export const ALL_UPDATES = PROJECTS.flatMap((p) =>
+  p.updates.map((u) => ({...u, project: p})),
+).sort((a, b) => (a.date < b.date ? 1 : -1));

@@ -1,67 +1,154 @@
 ---
-sidebar_position: 7
 title: Security
-description: Permission sets, CLR strict security, signing, and why to avoid TRUSTWORTHY.
+description: CLR strict security in depth. Why TRUSTWORTHY is the wrong shortcut, how to sign assemblies properly, and how to audit what is deployed.
 ---
 
-# Security
+Security is where SQLCLR reputations are made and lost. The feature is not
+dangerous; undisciplined trust decisions are. This page is the discipline.
 
-CLR code runs inside your database engine. Treat every assembly like a
-privileged deployment, because it is one.
+## CLR strict security, in depth
 
-## Permission sets
+Before SQL Server 2017, `SAFE` meant something: Code Access Security
+constrained what the IL could do, and the engine treated the permission set
+as a boundary. Then the .NET team stopped supporting CAS as a security
+boundary (determined attackers could break out of it), and SQL Server did
+the honest thing. `clr strict security` (on by default since 2017) makes
+the engine authorize **every** assembly, whatever its declared set, as if
+it were `UNSAFE`.
 
-| Set | Can do | Use for |
-|---|---|---|
-| `SAFE` | Computation, context connection | Almost everything |
-| `EXTERNAL_ACCESS` | Files, network, registry | Integrations that truly need it |
-| `UNSAFE` | Anything, incl. unmanaged code | Rare, heavily reviewed cases |
+Loading `UNSAFE` code has always had strict requirements, and now they
+apply to everything. One of these must be true:
 
-Default to `SAFE`. Escalate only with a specific, documented reason.
+1. An identity vouches for the code: a login derived from the assembly's
+   signing certificate or asymmetric key, holding the `UNSAFE ASSEMBLY`
+   permission.
+2. The instance explicitly allowlists the binary by its SHA-512 hash.
 
-## CLR strict security (SQL Server 2017+)
+There is a third, historical path (database `TRUSTWORTHY ON` combined with
+the owner's permissions), and it is the subject of the next section.
 
-With `clr strict security = 1` (the default), SQL Server ignores the
-`SAFE`/`EXTERNAL_ACCESS` distinction at load time and requires **every**
-assembly to be trusted as if it were `UNSAFE`. You have three options:
+The declared permission set still gates runtime behavior: `SAFE` code
+attempting file I/O still throws. Treat that as a guardrail, not a
+boundary. The boundary is your review of what you sign.
 
-### 1. Certificate / asymmetric key signing (production answer)
+## Why `TRUSTWORTHY ON` is the wrong shortcut
+
+:::danger
+
+`ALTER DATABASE ... SET TRUSTWORTHY ON` makes CLR trust errors go away,
+which is why every old forum thread suggests it. Do not.
+
+:::
+
+- **It is database-wide.** You wanted to trust one reviewed assembly; you
+  elevated everything the database's principals can produce, now and in the
+  future.
+- **It composes with ownership into escalation.** A `TRUSTWORTHY` database
+  owned by `sa` (the default when a sysadmin restores one) lets any
+  `db_owner` manufacture a path to sysadmin.
+- **It does not even persist honestly.** The flag resets to `OFF` on every
+  restore and attach, so teams script it back on automatically, and a
+  one-time shortcut quietly becomes standing policy that nobody remembers
+  approving.
+- **It audits terribly.** A reviewer sees a database-wide waiver where a
+  signed artifact should be.
+
+Signing costs perhaps an hour the first time. `TRUSTWORTHY` costs an
+architecture review the day someone competent finds it.
+
+## Signing with a certificate
+
+Sign the DLL itself (Authenticode), then teach the instance to recognize
+the signature. One-time setup per signing key, per instance:
+
+```bash
+# 1. Sign the built DLL with your code-signing certificate
+signtool sign /f ClrSigning.pfx /p <password> /fd SHA256 SqlClrExamples.dll
+```
 
 ```sql
--- In master:
-CREATE ASYMMETRIC KEY ClrSigningKey
-FROM EXECUTABLE FILE = 'C:\clr\StringFunctions.dll';
+-- 2. Import the certificate's public half into master, straight from the DLL
+USE master;
 
-CREATE LOGIN ClrSigningLogin FROM ASYMMETRIC KEY ClrSigningKey;
+CREATE CERTIFICATE ClrSigningCert
+FROM EXECUTABLE FILE = N'C:\clr\SqlClrExamples.dll';
+
+-- 3. Create a login to hold the grant (it cannot be used to connect)
+CREATE LOGIN ClrSigningLogin FROM CERTIFICATE ClrSigningCert;
 GRANT UNSAFE ASSEMBLY TO ClrSigningLogin;
 ```
 
-Sign the DLL with a strong-name key at build time, register the key from the
-binary, and grant `UNSAFE ASSEMBLY` to the key's login. The database itself
-needs no weakening.
+From here, `CREATE ASSEMBLY` succeeds in any database on the instance for
+anything signed with that certificate, rebuilds included. Yes, the grant
+says `UNSAFE ASSEMBLY` even for `SAFE` assemblies: under strict security,
+that is the level at which all trust is expressed.
 
-### 2. sp_add_trusted_assembly (acceptable for dev)
+## Signing with an asymmetric key
 
-```sql
-DECLARE @hash VARBINARY(64) =
-    (SELECT HASHBYTES('SHA2_512', BulkColumn)
-     FROM OPENROWSET(BULK 'C:\clr\StringFunctions.dll', SINGLE_BLOB) AS f);
-EXEC sys.sp_add_trusted_assembly @hash, N'StringFunctions';
+The strong-name variant needs no Authenticode tooling, just the .NET SDK:
+
+```bash
+sn -k SqlClrKey.snk
+csc /target:library /keyfile:SqlClrKey.snk /out:SqlClrExamples.dll *.cs
 ```
 
-Hash-based trust; must be repeated on every rebuild.
+```sql
+USE master;
 
-### 3. TRUSTWORTHY ON (avoid)
+CREATE ASYMMETRIC KEY SqlClrKey
+FROM EXECUTABLE FILE = N'C:\clr\SqlClrExamples.dll';
 
-Turning `TRUSTWORTHY` on lets a db_owner escalate toward sysadmin in some
-configurations. Don't ship it; don't get used to it in dev either.
+CREATE LOGIN SqlClrKeyLogin FROM ASYMMETRIC KEY SqlClrKey;
+GRANT UNSAFE ASSEMBLY TO SqlClrKeyLogin;
+```
 
-## Operational rules
+Same shape, same result. I default to certificates in shops that run a PKI
+and asymmetric keys everywhere else.
 
-- Review every use of `EXTERNAL_ACCESS`/`UNSAFE` like you'd review a service
-  running as the SQL Server service account — because that's what it is.
-- Keep CLR source in version control and build deployment DLLs from CI, so
-  the bytes in `sys.assembly_files` are traceable to reviewed source.
-- Grant `EXECUTE` on the wrapper objects, not `UNSAFE ASSEMBLY`, to callers.
-- Audit with `sys.assemblies` (`permission_set_desc`) and
-  `sys.trusted_assemblies`.
+## Allowlisting with trusted assemblies
+
+`sys.sp_add_trusted_assembly` registers the SHA-512 of an exact binary in
+`master`. No keys, no signatures; the instance trusts those bits and only
+those bits:
+
+```sql
+EXEC sys.sp_add_trusted_assembly
+    @hash = 0x8CA0A6F521EF4D3A9BD0C22E7F0A11BC0F334D5E,
+    @description = N'SqlClrExamples 2.1.0, reviewed KK 2026-07-15';
+```
+
+Every rebuild changes the hash, so registration belongs in the deploy
+pipeline. In regulated environments I treat that as a feature: the
+allowlist *is* the record of exactly which bits were approved and when.
+Remember it is server-scoped; every availability-group replica needs the
+same entries, or your first failover is a CLR outage.
+
+## Audit what is deployed
+
+Trust decisions decay unless inspected. Three queries I run on every
+engagement:
+
+```sql
+-- What CLR code exists, and at what permission level?
+SELECT name, permission_set_desc, clr_name, create_date, modify_date
+FROM sys.assemblies
+WHERE is_user_defined = 1;
+
+-- What T-SQL objects bind into it?
+SELECT OBJECT_SCHEMA_NAME(am.object_id) AS schema_name,
+       OBJECT_NAME(am.object_id)        AS module_name,
+       a.name                           AS assembly_name,
+       am.assembly_class, am.assembly_method
+FROM sys.assembly_modules AS am
+JOIN sys.assemblies       AS a ON a.assembly_id = am.assembly_id
+WHERE a.is_user_defined = 1;
+
+-- What has the instance been told to trust?
+SELECT hash, description, create_date
+FROM sys.trusted_assemblies;
+```
+
+Cross-check deployed bits against build artifacts with
+`HASHBYTES('SHA2_512', content)` over `sys.assembly_files`; the query
+lives in [Deployment](./deployment.md), along with keeping all of this
+repeatable instead of archaeological.

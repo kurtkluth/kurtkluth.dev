@@ -1,34 +1,58 @@
 ---
-sidebar_position: 4
 title: FAQ
-description: Frequently asked questions about Lisetris.
+description: Quick answers about playing Lisetris. Cost, devices, saved statistics, music, and Lisa herself.
 ---
 
-# FAQ
+Quick answers to the questions players actually ask. For the longer
+stories, start with the [Overview](./overview.md).
 
-### Do I need to install anything?
+## Is it free?
 
-No. Lisetris runs entirely in the browser at
-[lisetris.kluthstudios.com](https://lisetris.kluthstudios.com). There is nothing to download and no
-account to create.
+Yes. Lisetris is free to play, with no account, no sign-up, and nothing
+to buy. It is the same deal as every Kluth Studios game.
 
-### Does it cost anything?
+## Do I need to install anything?
 
-No — Lisetris is free to play.
+No. It runs entirely in your browser at
+[lisetris.kluthstudios.com](https://lisetris.kluthstudios.com). Any
+current Chrome, Edge, Firefox, or Safari will do.
 
-### Does it work on mobile?
+## Does it work on my phone?
 
-Lisetris targets current versions of modern browsers on both desktop
-and mobile. If something looks wrong on your device, see
-[Troubleshooting](/docs/lisetris/troubleshooting).
+Yes. Lisetris supports touch as well as keyboard, so it plays on desktop
+or mobile. If you are settling in for a serious Classic run, a keyboard's
+dedicated keys for hold and hard drop are a comfort, but the couch works.
 
-### Is my progress saved?
+## Are my statistics saved?
 
-Any saved state lives in your own browser (local storage). Clearing site data
-for lisetris.kluthstudios.com resets it, and progress does not follow you across
-devices or browsers.
+Yes. Your play history is stored in your browser, so the Statistics page
+remembers you between sessions on the same device and browser. It will
+not follow you to a different device, and clearing your browser's site
+data resets it. There is no account or cloud sync.
 
-### Who made this?
+## Who is Lisa?
 
-Lisetris is a Kluth Studios project by Kurt Kluth. See the
-[About page](/about) for the rest of the collection.
+Lisa is the person the game is for. Lisetris is Kurt's love letter to
+her: the name, the dedication ("Lisa, every piece of my life fits better
+because of you. I made this game with every piece of my heart."), and the
+Love Story page are all sincere. The puzzle is real, and so is the reason
+for it.
+
+## Can I turn the music off?
+
+Yes. Press `M` to mute at any time. There is also a Settings page on the
+main menu for tuning the experience.
+
+## Should I start with Classic or Relaxed?
+
+Relaxed, honestly. It is the same well without the mounting speed, which
+makes it the perfect place to learn the controls and build stacking
+habits. Move to Classic when you want the score chase; see
+[Tips](./tips.md) before you do.
+
+## What is the Love Story menu item?
+
+Exactly what it says: part of the game's heart, alongside the Dedication
+page. Lisetris treats its story as first-class content, so give those
+menu items a visit; the game is meant to be read as well as played.
+[Gameplay](./gameplay.md) says more about why.
