@@ -54,5 +54,5 @@ how much mountain is left.
 ## I found a bug, or I just want to say hi
 
 Wonderful, either way. Reach Kurt at
-[kurtkluth@icloud.com](mailto:kurtkluth@icloud.com) or find him on
+[kurt@kurtkluth.dev](mailto:kurt@kurtkluth.dev) or find him on
 [GitHub](https://github.com/kurtkluth).

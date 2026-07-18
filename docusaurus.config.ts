@@ -145,7 +145,15 @@ const config: Config = {
             {label: 'GitHub', href: 'https://github.com/kurtkluth'},
             {label: 'sqlclr.com', href: 'https://sqlclr.com'},
             {label: 'Kluth Studios games', to: '/projects'},
-            {label: 'Email', href: 'mailto:kurtkluth@icloud.com'},
+            {label: 'Email', href: 'mailto:kurt@kurtkluth.dev'},
+          ],
+        },
+        {
+          title: 'Legal',
+          items: [
+            {label: 'Terms of Service', to: '/terms'},
+            {label: 'Privacy Policy', to: '/privacy'},
+            {label: 'Disclaimer', to: '/disclaimer'},
           ],
         },
       ],

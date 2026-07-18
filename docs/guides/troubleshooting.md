@@ -65,7 +65,7 @@ strict security surprises) have their own dedicated page:
 Found a genuine bug, or something this page doesn't fix? I'd like to know.
 
 - GitHub: [github.com/kurtkluth](https://github.com/kurtkluth)
-- Email: [kurtkluth@icloud.com](mailto:kurtkluth@icloud.com)
+- Email: [kurt@kurtkluth.dev](mailto:kurt@kurtkluth.dev)
 
 Include which project, which browser and device, and what happened right
 before things went wrong. That's usually enough for me to reproduce it.

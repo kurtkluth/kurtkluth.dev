@@ -22,14 +22,17 @@ export default function About(): React.ReactNode {
               I build software for the fun of building it.
             </p>
             <p className={styles.lede}>
-              By day I&rsquo;m a SQL Server architect with twenty-five years
-              at the engine boundary; the last stretch of it is documented at{' '}
+              By day I&rsquo;m a SQL Server architect with thirty years at the
+              engine boundary. The last stretch of it is documented at{' '}
               <Link to="https://sqlclr.com" rel="noopener">
                 sqlclr.com
               </Link>
-              . The rest of the time I make browser games and web experiments
-              under the <strong>Kluth Studios</strong> banner. This site is
-              the home for all of it: launch any project, then read how it
+              . But what I care about most now is the next generation. Under
+              the <strong>Kluth Studios</strong> banner, I work with some of the
+              brightest young minds I&rsquo;ve met, and the things they&rsquo;re
+              building are genuinely earth-moving. The games you&rsquo;ll find
+              here are my own: chunky little experiments I make on the side,
+              hosted under the same banner. Launch any project, then read how it
               works.
             </p>
           </div>
@@ -92,8 +95,8 @@ export default function About(): React.ReactNode {
               </li>
               <li>
                 <span className={styles.contactLabel}>email</span>
-                <Link to="mailto:kurtkluth@icloud.com">
-                  kurtkluth@icloud.com
+                <Link to="mailto:kurt@kurtkluth.dev">
+                  kurt@kurtkluth.dev
                 </Link>
               </li>
               <li>

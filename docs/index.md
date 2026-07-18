@@ -48,4 +48,4 @@ no install and no account required.
 
 Questions, bug reports, or ideas are always welcome. Reach me at
 [github.com/kurtkluth](https://github.com/kurtkluth) or
-[kurtkluth@icloud.com](mailto:kurtkluth@icloud.com).
+[kurt@kurtkluth.dev](mailto:kurt@kurtkluth.dev).
