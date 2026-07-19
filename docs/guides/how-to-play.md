@@ -1,6 +1,6 @@
 ---
 title: How to Play
-description: What every Kluth Studios game has in common, a quick launcher for all five, and where to learn each one in depth.
+description: What every Kluth Studios game has in common, a quick launcher for all six, and where to learn each one in depth.
 ---
 
 Every Kluth Studios game follows the same philosophy. Click the link, play
@@ -13,8 +13,9 @@ game's own how-to-play page for the specifics.
   account, no payment, ever.
 - **Keyboard-first, with touch where it fits.** Every game plays great on a
   keyboard. Lisa Climber, Lisetris, and Spindrift also support touch, and
-  Lisa's Tapistry is built for touch first, so phones and tablets work
-  well. Skyroute has enough controls that it strongly prefers a keyboard.
+  Lisa's Tapistry and Lisa's Hexscape are built for touch first, so phones
+  and tablets work well. Skyroute has enough controls that it strongly
+  prefers a keyboard.
 - **Scores and progress live in your browser.** High scores, stats, and
   settings are stored locally on the device you play on; nothing is sent
   to a server.
@@ -38,6 +39,7 @@ cloud sync. Guard the browser that holds your high scores.
 | Lisa Climber | Summit Smash, a pixel-art arcade climbing platformer | [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com) | [Overview](../lisa-climber/overview.md) |
 | Lisetris | A romantic neon falling-block puzzle game, made for Lisa | [lisetris.kluthstudios.com](https://lisetris.kluthstudios.com) | [Overview](../lisetris/overview.md) |
 | Lisa's Tapistry | A cozy tap-away mosaic puzzle, made for Lisa | [tapistry.kluthstudios.com](https://tapistry.kluthstudios.com) | [Overview](../lisas-tapistry/overview.md) |
+| Lisa's Hexscape | A strategic hexagon puzzle in a twilight garden, made for Lisa | [hexscape.kluthstudios.com](https://hexscape.kluthstudios.com) | [Overview](../lisas-hexscape/overview.md) |
 | Skyroute | SkyRoute Infinite, an open-world browser flight simulator | [skyroute.kluthstudios.com](https://skyroute.kluthstudios.com) | [Overview](../skyroute/overview.md) |
 | Spindrift | A vector-style arcade space shooter in the Asteroids tradition | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) | [Overview](../spindrift/overview.md) |
 
@@ -70,6 +72,16 @@ order, to finish the mosaic. It plays with a tap (or arrow keys and `Enter`),
 teaches itself in a short tutorial, and offers three boosters when you are
 stuck. Full details:
 [Lisa's Tapistry How to Play](../lisas-tapistry/how-to-play.md).
+
+### Lisa's Hexscape
+
+A strategic hexagon puzzle in an enchanted twilight garden. Every hex tile
+points at one of its six neighbors; tap it when its path off the board is
+clear and it slides away. Later gardens add colored gates that only accept
+matching tiles, plus frost, switches, and turning hexes. Thirty levels,
+a deterministic daily puzzle, and full keyboard play (arrow keys walk the
+grid, `Enter` clears). It teaches itself in a one-minute tutorial. Full
+details: [Lisa's Hexscape How to Play](../lisas-hexscape/how-to-play.md).
 
 ### Skyroute
 

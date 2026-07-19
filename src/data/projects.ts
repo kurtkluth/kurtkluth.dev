@@ -285,6 +285,69 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    name: "Lisa's Hexscape",
+    slug: 'lisas-hexscape',
+    summary:
+      'A hexagonal tap-away puzzle in a twilight garden. Follow the arrows, find your way out.',
+    lede:
+      'A strategic hexagon puzzle set in an enchanted twilight garden. Every tile points to one of six neighbors; tap it when its path is clear and it slides away. Plan the order, match tiles to colored garden gates, thaw frost, spin turning hexes, and clear all 30 hand-made levels, plus a fresh deterministic daily puzzle. Follow the arrows. Find your way out.',
+    category: 'Game',
+    status: 'Active',
+    liveUrl: 'https://hexscape.kluthstudios.com',
+    launchLabel: "Play Lisa's Hexscape",
+    docsPath: '/docs/lisas-hexscape/overview',
+    technologies: ['TypeScript', 'Next.js', 'PWA', 'Web'],
+    featured: true,
+    accentColor: '#b79ce8',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Six directions, one rule',
+        body: 'Every hex points at one of its six neighbors and leaves only when its path is clear. The whole game is reading the board and choosing the right order.',
+      },
+      {
+        title: 'Gates, frost, switches, and stones',
+        body: 'Colored garden gates only accept matching tiles. Frosted hexes need thawing, turning hexes spin their neighbors, flower switches open and close gates, and stones never move. Each obstacle introduces itself before it counts.',
+      },
+      {
+        title: 'Thirty solver-proven levels',
+        body: "Three chapters (Twilight Trail, Moonlit Garden, Starlight Summit) climb from gentle to genuinely strategic. Every level is machine-verified solvable at par, without boosters, before it ships.",
+      },
+      {
+        title: 'A daily bloom',
+        body: 'One fresh puzzle a day, generated deterministically from the date and guaranteed solvable by construction. Same day, same puzzle, everywhere.',
+      },
+      {
+        title: 'Relaxed or challenge',
+        body: 'Relaxed levels have no move limit and allow undo. Challenge levels count every move, and four boosters (Lantern, Petal Turn, Starburst, Extra Moves) help when you are truly stuck.',
+      },
+      {
+        title: 'Cozy, accessible, installable',
+        body: 'Full keyboard play on a hex grid, color assistance badges, high contrast and reduced motion modes, and PWA installation with offline play.',
+      },
+    ],
+    gettingStarted: [
+      {
+        title: 'Open the game',
+        body: "Lisa's Hexscape runs in your browser, free, with nothing to install and no account. It plays beautifully on a phone or a desktop.",
+      },
+      {
+        title: 'Play the tutorial',
+        body: 'Three short guided boards teach arrows, blocked paths, gates, move limits, and boosters in about a minute. Replay it any time from Settings.',
+      },
+      {
+        title: 'Find your way out',
+        body: 'Clear the three chapters, chase three stars on every level, and come back each day for the Daily Bloom.',
+      },
+    ],
+    updates: [
+      {
+        date: '2026-07-19',
+        text: 'went live at hexscape.kluthstudios.com and joined the Kluth Studios collection.',
+      },
+    ],
+  },
+  {
     name: 'Skyroute',
     inGameTitle: 'SkyRoute Infinite',
     slug: 'skyroute',
