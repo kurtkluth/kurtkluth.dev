@@ -22,27 +22,31 @@ Live at **https://kurtkluth.dev** (custom domain).
 
 ## Deploying
 
-Deployment is automatic: **every push to `main`** runs
-`.github/workflows/deploy.yml` (build Docusaurus, publish to GitHub Pages).
-`test-deploy.yml` build-checks pull requests. A deploy takes ~1 minute.
+Deployment is automatic: **merging to `main`** runs
+`.github/workflows/deploy.yml` (build Docusaurus, publish to GitHub Pages). A
+deploy takes about 1 minute.
+
+`main` is **branch-protected**; a direct `git push origin main` is rejected.
+Ship every change through a pull request:
+
+1. Commit on a branch and push it. If the commit is already on local `main`, push
+   it to a branch without moving `main`:
+   `git push origin main:refs/heads/<branch>`.
+2. Open a PR against `main`. `test-deploy.yml` runs the required **"Test
+   deployment"** build check on the PR; wait for it to pass.
+3. Merge the PR. Merging is what triggers the deploy.
+
+Stage only the files for your change; leave any unrelated working-tree edits
+(e.g. a local dependency tweak) unstaged.
 
 Hosting is **GitHub Pages**; the custom domain is set via `CNAME` +
 `static/CNAME` (`kurtkluth.dev`). DNS is proxied through **Cloudflare**, which
 serves a valid TLS cert, so HTTPS works while proxied. `.dev` is HSTS-preloaded,
 so HTTPS is mandatory. Do not delete the workflows, `CNAME`, or `LICENSE`.
 
-**History quirk:** the local `master` branch has an *unrelated history* to
-`origin/main` (the deploy branch) for legacy reasons. A plain `git push` of
-`master` will not fast-forward `main`. To ship local commits, put their tree on
-top of `origin/main` and push that:
-
-```sh
-git fetch origin main
-C=$(git commit-tree "$(git rev-parse master^{tree})" -p origin/main -m "message")
-git push origin "$C:refs/heads/main"
-```
-
-Prefer to keep changes to a clean, reviewable diff against `origin/main`.
+Local `main` tracks `origin/main` cleanly. (Earlier revisions of this file
+described a local `master` branch with unrelated history and a `commit-tree`
+push workaround; that no longer applies.)
 
 ## Editing the site
 
