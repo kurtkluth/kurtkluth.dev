@@ -26,7 +26,7 @@ deployment, and troubleshooting in depth.
 
 ### You're here to play
 
-Kluth Studios ships four browser games and interactive experiences. All of
+Kluth Studios ships five browser games and interactive experiences. All of
 them run instantly in the browser. No install, no account, and free. Pick
 one and go:
 
@@ -34,6 +34,8 @@ one and go:
   arcade climbing platformer.
 - [Lisetris](./lisetris/overview.md) is a romantic neon falling-block puzzle
   game, made for Lisa.
+- [Lisa's Tapistry](./lisas-tapistry/overview.md) is a cozy tap-away mosaic
+  puzzle game, made for Lisa.
 - [Skyroute](./skyroute/overview.md) is SkyRoute Infinite, an open-world
   browser flight simulator.
 - [Spindrift](./spindrift/overview.md) is a vector-style arcade space

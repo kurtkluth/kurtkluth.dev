@@ -5,7 +5,7 @@ description: How kurtkluth.dev is built, and how a new project gets added as a c
 
 This site is a portfolio and a documentation hub in one codebase. Here's how
 it's put together, and what it takes to add a project, which is deliberately
-a content task, not a redesign.
+a small, contained task, mostly content and metadata, not a redesign.
 
 ## The stack
 
@@ -24,19 +24,38 @@ a content task, not a redesign.
 
 ## How a project gets added
 
-Four steps, all content and metadata:
+Six steps. Most of it is content and metadata; two small code files give the
+project its page and its artwork.
 
-1. **Add one entry to `src/data/projects.ts`** with `name`, `slug`, `summary`,
-   `category`, `status`, `liveUrl`, `technologies`, and `accent`. This
-   single record drives everything the portfolio side shows.
-2. **Create `docs/<slug>/` with the minimum page set.** An overview (the
-   entry point), a how-to-play or quick-start, a gameplay or concepts page,
-   tips, an FAQ, and a changelog.
-3. **Register the sidebar group in `sidebars.ts`** so the new section
+1. **Add one entry to `src/data/projects.ts`.** One record with the
+   project's `name`, `slug`, `summary`, `lede`, `category`, `status`,
+   `liveUrl`, `launchLabel`, `docsPath`, `technologies`, `featured`,
+   `accentColor`, `studio`, `highlights`, `gettingStarted`, and `updates`
+   (with `inGameTitle` and `repositoryUrl` optional). This single record
+   drives the homepage grid, the projects index, the About page, and the
+   content of the project detail page.
+2. **Add the detail-page route at `src/pages/projects/<slug>.tsx`.** A short
+   file that renders `<ProjectPage slug="<slug>" />`. The `ProjectPage`
+   component is generic and reads everything from the metadata; this file
+   just gives the project its URL.
+3. **Add a `ProjectArt` scene in `src/components/ProjectArt/index.tsx`.** A
+   self-contained SVG keyed by the slug, used on the card and the hero.
+   Without one, the art frame renders empty.
+4. **Create `docs/<slug>/` with the page set.** An overview (the entry
+   point), a how-to-play or quick-start, a gameplay or concepts page, tips,
+   an FAQ, and a changelog.
+5. **Register the sidebar group in `sidebars.ts`** so the new section
    appears in the docs navigation.
-4. **Done.** The homepage grid, the projects index, and the project detail
-   page all pick the new project up from the metadata automatically. No
-   component edits, no hand-built routes.
+6. **Update the spots that count the projects by hand.** A few places
+   hardcode the total: the homepage terminal comment
+   (`src/pages/index.tsx`), the projects-index lede
+   (`src/pages/projects/index.tsx`), and the docs landing and
+   getting-started pages (`docs/index.md`, `docs/getting-started.md`). The
+   cross-project [How to Play](./how-to-play.md) guide also lists the games.
+   Grep for the current count word and bump it.
+
+After that, the homepage grid, the projects index, and the About page pick
+the new project up from the metadata automatically.
 
 ## How content flows
 
@@ -44,14 +63,19 @@ Four steps, all content and metadata:
 flowchart LR
   P["src/data/projects.ts"] --> HG["Homepage grid"]
   P --> PI["Projects index"]
-  P --> PD["Project detail pages"]
-  D["docs/ content"] --> SB["sidebars.ts"]
+  P --> AB["About page"]
+  P --> PD["Project detail page"]
+  RT["Per-project route file"] --> PD
+  ART["Per-project ProjectArt scene"] --> PD
+  D["Per-project docs folder"] --> SB["sidebars.ts"]
   SB --> NAV["Docs sidebar"]
   D --> SRCH["Local search index"]
 ```
 
-One metadata file feeds the portfolio; the docs folder feeds the sidebar and
-the search index. A project isn't finished until both sides know about it.
+One metadata file feeds most of the portfolio, with a small route file and an
+SVG scene giving each project its own page and artwork; the docs folder feeds
+the sidebar and the search index. A project isn't finished until both sides
+know about it.
 
 ## Conventions worth keeping
 
