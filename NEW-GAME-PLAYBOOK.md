@@ -22,8 +22,19 @@ it overridable via `NEXT_PUBLIC_SITE_URL`.
 - [ ] Green gates: `typecheck`, `lint`, unit tests, e2e tests, and a
       **production build**.
 - [ ] PWA assets present: `manifest`, service worker (registers off-localhost
-      only, versioned cache), icons, and `og.png` (raster; unfurlers ignore
-      SVG). Reuse the shared `tools/og-image.ps1` + `tools/icons.ps1`.
+      only, versioned cache), icons (`tools/icons.ps1`), and `og.png` (raster;
+      unfurlers ignore SVG).
+- [ ] **Prefer a bespoke, crop-safe `og.png`** over the generic
+      `tools/og-image.ps1`. Write a `tools/og.ps1` that draws the game's own
+      hero motif (the icon/home art) centered, and keep the hero, title, and
+      tagline inside the centered safe square (x 285..915 of the 1200x630
+      card) — measure the title/tagline and shrink to fit. Reason: link
+      unfurlers like Microsoft Teams center-crop the card to a square, and a
+      full-width wordmark gets clipped (see Lisa's Hexscape / Lisa's Tapistry
+      `tools/og.ps1` for the pattern: shrink-to-fit text + a hero from the
+      icon). Verify by simulating the center-square crop before shipping.
+      Point `npm run og` at `tools/og.ps1`; keep `og-image.ps1` as a fallback.
+      Note: unfurlers cache og images hard, so a live preview lags a redeploy.
 - [ ] `CLAUDE.md` and `README.md` accurate (commands, architecture, deploy,
       and the "main is protected" note).
 
