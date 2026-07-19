@@ -70,6 +70,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: "Lisa's Hexscape",
+      link: {type: 'doc', id: 'lisas-hexscape/overview'},
+      items: [
+        'lisas-hexscape/overview',
+        'lisas-hexscape/how-to-play',
+        'lisas-hexscape/gameplay',
+        'lisas-hexscape/tips',
+        'lisas-hexscape/faq',
+        'lisas-hexscape/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Skyroute',
       link: {type: 'doc', id: 'skyroute/overview'},
       items: [

@@ -242,6 +242,89 @@ function LisasTapistryArt() {
   );
 }
 
+function LisasHexscapeArt() {
+  // Pointy-top hexagon points around a center.
+  function hexPoints(cx: number, cy: number, r: number): string {
+    const pts: string[] = [];
+    for (let i = 0; i < 6; i++) {
+      const a = (Math.PI / 180) * (60 * i - 90);
+      pts.push(`${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`);
+    }
+    return pts.join(' ');
+  }
+
+  // Bold arrow glyph rotated toward a hex direction (degrees from up).
+  function Arrow({ cx, cy, rotate }: { cx: number; cy: number; rotate: number }) {
+    const s = 0.62;
+    return (
+      <g transform={`translate(${cx} ${cy}) rotate(${rotate}) scale(${s})`}>
+        <path
+          d="M0 -26 L22 4 H9 V26 H-9 V4 H-22 Z"
+          fill="rgba(23,14,34,0.85)"
+          stroke="#f3ecfa"
+          strokeWidth="4"
+          strokeLinejoin="round"
+        />
+      </g>
+    );
+  }
+
+  const tiles: Array<{ x: number; y: number; r: number; fill: string; rotate?: number }> = [
+    { x: 160, y: 78, r: 42, fill: '#f2755f', rotate: 270 },
+    { x: 233, y: 78, r: 42, fill: '#35b5ab', rotate: 90 },
+    { x: 123, y: 141, r: 42, fill: '#e8b73c', rotate: 150 },
+    { x: 196, y: 141, r: 42, fill: '#d1567f', rotate: 30 },
+    { x: 269, y: 141, r: 42, fill: '#7fd8a4', rotate: 210 },
+  ];
+
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="hx-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#3a2454" />
+          <stop offset="1" stopColor="#170e22" />
+        </linearGradient>
+        <radialGradient id="hx-glow" cx="0.5" cy="0.45" r="0.55">
+          <stop offset="0" stopColor="#b79ce8" stopOpacity="0.22" />
+          <stop offset="1" stopColor="#b79ce8" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="400" height="225" fill="url(#hx-bg)" />
+      <ellipse cx="200" cy="110" rx="160" ry="100" fill="url(#hx-glow)" />
+      {/* hillside silhouette */}
+      <path d="M0 225V196c40-14 78-30 128-24 56 7 96 24 150 18 46-5 90-16 122-10v45z" fill="#120a1c" opacity="0.8" />
+      {/* faint empty cells */}
+      <polygon points={hexPoints(87, 78, 42)} fill="rgba(183,156,232,0.08)" stroke="#514066" strokeWidth="1.5" />
+      <polygon points={hexPoints(306, 78, 42)} fill="rgba(183,156,232,0.08)" stroke="#514066" strokeWidth="1.5" />
+      {/* arrow tiles */}
+      {tiles.map((t, i) => (
+        <g key={i}>
+          <polygon points={hexPoints(t.x, t.y, t.r)} fill={t.fill} stroke="#514066" strokeWidth="3" />
+          {t.rotate !== undefined ? <Arrow cx={t.x} cy={t.y} rotate={t.rotate} /> : null}
+        </g>
+      ))}
+      {/* fireflies */}
+      <g fill="#e8b73c">
+        <circle cx="48" cy="42" r="2.6" />
+        <circle cx="352" cy="36" r="2.2" opacity="0.8" />
+        <circle cx="330" cy="180" r="2.2" opacity="0.7" />
+        <circle cx="66" cy="176" r="2" opacity="0.6" fill="#7fd8a4" />
+      </g>
+      <text
+        x="200"
+        y="212"
+        textAnchor="middle"
+        fontFamily="JetBrains Mono Variable, monospace"
+        fontSize="10"
+        letterSpacing="4"
+        fill="rgba(184,169,204,0.75)"
+      >
+        FOLLOW THE ARROWS
+      </text>
+    </svg>
+  );
+}
+
 function SkyrouteArt() {
   return (
     <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -345,6 +428,7 @@ const ART: Record<string, () => React.ReactNode> = {
   'lisa-climber': LisaClimberArt,
   lisetris: LisetrisArt,
   'lisas-tapistry': LisasTapistryArt,
+  'lisas-hexscape': LisasHexscapeArt,
   skyroute: SkyrouteArt,
   spindrift: SpindriftArt,
 };

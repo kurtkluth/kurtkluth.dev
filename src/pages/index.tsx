@@ -48,7 +48,7 @@ function HeroTerminal() {
           </div>
         ))}
         <div className={styles.terminalComment}>
-          # six projects · one home · docs included
+          # seven projects · one home · docs included
         </div>
       </div>
     </div>

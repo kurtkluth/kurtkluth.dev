@@ -12,7 +12,7 @@ promise lives.
 
 ## The projects
 
-Six projects, one hub. Each name links to that project's overview doc, and
+Seven projects, one hub. Each name links to that project's overview doc, and
 each live link opens the real thing.
 
 | Project | One-liner | Live site |
@@ -21,10 +21,11 @@ each live link opens the real thing.
 | [Lisa Climber](./lisa-climber/overview.md) | Summit Smash, a pixel-art arcade climbing platformer. Six stages, three hearts, one long way up. | [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com) |
 | [Lisetris](./lisetris/overview.md) | A romantic neon falling-block puzzle game, made for Lisa. | [lisetris.kluthstudios.com](https://lisetris.kluthstudios.com) |
 | [Lisa's Tapistry](./lisas-tapistry/overview.md) | A cozy tap-away mosaic puzzle. Clear the tiles, reveal the picture. | [tapistry.kluthstudios.com](https://tapistry.kluthstudios.com) |
+| [Lisa's Hexscape](./lisas-hexscape/overview.md) | A strategic hexagon puzzle in a twilight garden. Follow the arrows, find your way out. | [hexscape.kluthstudios.com](https://hexscape.kluthstudios.com) |
 | [Skyroute](./skyroute/overview.md) | SkyRoute Infinite, an open-world flight simulator that runs straight from your browser. | [skyroute.kluthstudios.com](https://skyroute.kluthstudios.com) |
 | [Spindrift](./spindrift/overview.md) | A vector-style arcade space shooter with a persistent high score to chase. | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) |
 
-SQLCLR is the serious developer tool. The other five are Kluth Studios games
+SQLCLR is the serious developer tool. The other six are Kluth Studios games
 and interactive experiences. All of them are free, all in the browser, with
 no install and no account required.
 
