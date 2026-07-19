@@ -6,6 +6,15 @@ description: Release notes and status history for Lisa's Tapistry on kurtkluth.d
 This page records the notable moments in Lisa's Tapistry's life on this
 site, newest first. It is a short page today, with room to grow.
 
+## 2026-07-19: Went live
+
+**Status: Active**
+
+Lisa's Tapistry went live at
+[tapistry.kluthstudios.com](https://tapistry.kluthstudios.com). The game is
+now playable in the browser, mobile-first and installable as an app, and the
+Play and live-site links across kurtkluth.dev resolve to the real thing.
+
 ## 2026-07-19: Joined the collection
 
 **Status: Active**
