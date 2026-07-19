@@ -156,6 +156,92 @@ function LisetrisArt() {
   );
 }
 
+function LisasTapistryArt() {
+  // The garden-1 tulip mosaic, as [col, row, kind] beads.
+  const cell = 15;
+  const bead = 12;
+  const cols = 8;
+  const P = 'p';
+  const S = 's';
+  const G = 'g';
+  const beads: Array<[number, number, string]> = [
+    [1, 0, P], [3, 0, P], [4, 0, P], [6, 0, P],
+    [1, 1, P], [2, 1, P], [3, 1, P], [4, 1, P], [5, 1, P], [6, 1, P],
+    [2, 2, P], [3, 2, P], [4, 2, P], [5, 2, P],
+    [3, 3, S], [4, 3, S],
+    [0, 4, G], [3, 4, S], [4, 4, S], [7, 4, G],
+    [1, 5, G], [2, 5, G], [3, 5, S], [4, 5, S], [5, 5, G], [6, 5, G],
+    [3, 6, S], [4, 6, S],
+    [3, 7, S], [4, 7, S],
+  ];
+  const fills: Record<string, string> = {p: '#c2477b', s: '#4e8c4e', g: '#5fa05e'};
+  const originX = (400 - (cols * cell - (cell - bead))) / 2;
+  const originY = 50;
+
+  // A cream arrow tile: rounded square plus a bold directional arrow.
+  function Tile({x, y, rotate, color}: {x: number; y: number; rotate: number; color: string}) {
+    return (
+      <g transform={`translate(${x} ${y})`}>
+        <rect width="42" height="42" rx="10" fill="#fbf1de" stroke="#e5d3b8" strokeWidth="2" />
+        <g transform={`rotate(${rotate} 21 21)`}>
+          <path
+            d="M21 9 L33 24 H26.5 V34 H15.5 V24 H9 Z"
+            fill={color}
+            stroke="#4a3b40"
+            strokeWidth="1.6"
+            strokeLinejoin="round"
+          />
+        </g>
+      </g>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tap-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#4a1a33" />
+          <stop offset="1" stopColor="#240b1a" />
+        </linearGradient>
+        <radialGradient id="tap-glow" cx="0.5" cy="0.45" r="0.55">
+          <stop offset="0" stopColor="#e8a93c" stopOpacity="0.3" />
+          <stop offset="1" stopColor="#e8a93c" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="400" height="225" fill="url(#tap-bg)" />
+      <ellipse cx="200" cy="108" rx="150" ry="96" fill="url(#tap-glow)" />
+      {/* stitched border */}
+      <rect
+        x="14"
+        y="14"
+        width="372"
+        height="197"
+        rx="16"
+        fill="none"
+        stroke="rgba(242,117,95,0.5)"
+        strokeWidth="2"
+        strokeDasharray="7 6"
+      />
+      {/* mosaic tulip */}
+      {beads.map(([c, r, kind], i) => (
+        <rect
+          key={i}
+          x={originX + c * cell}
+          y={originY + r * cell}
+          width={bead}
+          height={bead}
+          rx="3.5"
+          fill={fills[kind]}
+        />
+      ))}
+      {/* floating arrow tiles */}
+      <Tile x={36} y={64} rotate={0} color="#2f8f83" />
+      <Tile x={318} y={48} rotate={270} color="#9b7fc7" />
+      <Tile x={322} y={140} rotate={90} color="#f2755f" />
+    </svg>
+  );
+}
+
 function SkyrouteArt() {
   return (
     <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -258,6 +344,7 @@ const ART: Record<string, () => React.ReactNode> = {
   sqlclr: SqlclrArt,
   'lisa-climber': LisaClimberArt,
   lisetris: LisetrisArt,
+  'lisas-tapistry': LisasTapistryArt,
   skyroute: SkyrouteArt,
   spindrift: SpindriftArt,
 };

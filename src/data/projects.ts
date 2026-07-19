@@ -230,6 +230,61 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    name: "Lisa's Tapistry",
+    slug: 'lisas-tapistry',
+    summary:
+      'A cozy tap-away mosaic puzzle in the browser. Clear the tiles, reveal the picture.',
+    lede:
+      'A cozy, mobile-first tap-away puzzle game. Every level hides a little stitched mosaic under a grid of arrow tiles. Tap a tile when the path ahead of its arrow is clear and it slides away, uncovering the picture beneath. Twelve hand-made levels, three boosters, and a warm craft-table look. Tap the path clear, reveal something wonderful.',
+    category: 'Game',
+    status: 'Active',
+    liveUrl: 'https://tapistry.kluthstudios.com',
+    launchLabel: "Play Lisa's Tapistry",
+    docsPath: '/docs/lisas-tapistry/overview',
+    technologies: ['TypeScript', 'Next.js', 'PWA', 'Web'],
+    featured: true,
+    accentColor: '#f2755f',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'Twelve levels, three collections',
+        body: "Lisa's Little Garden eases you in, Cozy Corner turns up the thinking, and Wonder Cabinet brings the big, tricky mosaics. Every level is hand-made and guaranteed solvable.",
+      },
+      {
+        title: 'One satisfying mechanic',
+        body: 'Tap a tile and it flies off the board when its arrow has a clear path, revealing a piece of the hidden mosaic. Blocked tiles just wiggle and wait. The whole game is reading the board and clearing in the right order.',
+      },
+      {
+        title: 'Boosters and hearts',
+        body: 'Three boosters help when you are stuck: Thread Hint, Spool Sweep, and Needle Turn. Hearts only ever matter in the Wonder Cabinet challenges, and the rule is explained before it counts.',
+      },
+      {
+        title: 'Cozy, accessible, installable',
+        body: 'A warm craft-table look with beads, thread, and stitched edges. Full keyboard play, reduced-motion and high-contrast options, and it installs as an app and works offline.',
+      },
+    ],
+    gettingStarted: [
+      {
+        title: 'Open the game',
+        body: "Lisa's Tapistry runs in your browser, free, with nothing to install and no account. It is happiest on a phone but plays anywhere.",
+      },
+      {
+        title: 'Play the tutorial',
+        body: 'A short guided puzzle teaches the one rule in under a minute. You can replay it any time from Settings.',
+      },
+      {
+        title: 'Clear the path',
+        body: 'Work through the collections, earn stars and coins, and uncover every mosaic. The how-to-play doc has the details.',
+      },
+    ],
+    updates: [
+      {
+        date: '2026-07-19',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
+      },
+    ],
+  },
+  {
     name: 'Skyroute',
     inGameTitle: 'SkyRoute Infinite',
     slug: 'skyroute',

@@ -57,6 +57,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: "Lisa's Tapistry",
+      link: {type: 'doc', id: 'lisas-tapistry/overview'},
+      items: [
+        'lisas-tapistry/overview',
+        'lisas-tapistry/how-to-play',
+        'lisas-tapistry/gameplay',
+        'lisas-tapistry/tips',
+        'lisas-tapistry/faq',
+        'lisas-tapistry/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Skyroute',
       link: {type: 'doc', id: 'skyroute/overview'},
       items: [
