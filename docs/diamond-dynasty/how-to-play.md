@@ -3,8 +3,11 @@ title: How to Play
 description: Your first Quick Match, the offense and defense decisions, the bullpen, and how the coins flow.
 ---
 
-Diamond Dynasty asks for one decision per at-bat and nothing more. Here is
-everything those decisions mean, plus the tour of the screens around them.
+Diamond Dynasty teaches itself: an interactive How to Play primer opens
+before your first match, with hands-on batting and pitching demos where
+you make the call and the game explains the outcome. You can reopen it
+any time from the main menu or the pregame screen. Here is the same
+lesson in writing.
 
 ## Start a match
 
