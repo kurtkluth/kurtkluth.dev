@@ -91,7 +91,9 @@ Power, or Patient; pitching, choose one of six pitches and a location
 (Attack, Corner, or Waste). Choices interact rock-paper-scissors style on
 top of player ratings, pitchers tire as they work, and each side gets one
 bullpen call per game. Between matches, open Scout Packs, train players,
-and raise the team rating. Everything is a tap or a click. Full details:
+and raise the team rating. Everything is a tap or a click, and an
+interactive tutorial with hands-on demos teaches it all before your
+first match. Full details:
 [Diamond Dynasty How to Play](../diamond-dynasty/how-to-play.md).
 
 ### Skyroute

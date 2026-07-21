@@ -4,7 +4,18 @@ description: Release notes and status history for Diamond Dynasty on kurtkluth.d
 ---
 
 This page records the notable moments in Diamond Dynasty's life on this
-site, newest first. It arrived all at once, so today there are two.
+site, newest first.
+
+## 2026-07-20: In-game tutorial and one-tap mute
+
+**Status: Active**
+
+The game now teaches itself. An interactive How to Play primer opens
+before your first match, with hands-on batting and pitching demos where
+you make the call and the game explains why it worked (or did not). It
+stays available from the main menu and the pregame screen. A master mute
+button also landed on every screen, including mid-match; one tap
+silences everything and the choice persists.
 
 ## 2026-07-20: Went live
 

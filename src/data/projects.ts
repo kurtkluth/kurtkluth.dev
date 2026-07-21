@@ -396,8 +396,8 @@ export const PROJECTS: Project[] = [
         body: 'Diamond Dynasty runs in your browser, free, with nothing to install and no account. It is mobile-first and desktop-ready.',
       },
       {
-        title: 'Play a Quick Match',
-        body: 'Three innings, one decision per at-bat. Win or lose, you earn coins for the franchise.',
+        title: 'Play the tutorial',
+        body: 'An interactive How to Play primer opens before your first match, with hands-on batting and pitching demos. Then it is three innings, one decision per at-bat, and coins either way.',
       },
       {
         title: 'Build the dynasty',
@@ -405,6 +405,10 @@ export const PROJECTS: Project[] = [
       },
     ],
     updates: [
+      {
+        date: '2026-07-20',
+        text: 'gained an in-game interactive tutorial and a one-tap master mute on every screen.',
+      },
       {
         date: '2026-07-20',
         text: 'went live at diamonddynasty.kluthstudios.com and joined the Kluth Studios collection.',

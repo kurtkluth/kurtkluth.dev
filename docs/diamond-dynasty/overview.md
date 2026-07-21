@@ -54,6 +54,10 @@ localStorage; there is no server, no account, and nothing to sign up for.
 
 ## Where to go next
 
+The game itself opens with an interactive How to Play primer (including
+try-it batting and pitching demos) before your first match, and these
+docs go deeper:
+
 - [How to Play](./how-to-play.md) walks the controls and your first match.
 - [Gameplay](./gameplay.md) covers rarities, training, packs, and fatigue
   in depth.

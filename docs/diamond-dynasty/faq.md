@@ -48,6 +48,21 @@ You make one decision per at-bat. Batting, you choose an approach
 location. The sim resolves the at-bat from those choices and the players'
 ratings. [How to Play](./how-to-play.md) covers what each option does.
 
+## How do I learn the game?
+
+It teaches you. An interactive How to Play primer opens automatically
+before your first match, with hands-on batting and pitching demos that
+explain every outcome. Reopen it any time from the main menu or the
+pregame screen, or read [How to Play](./how-to-play.md) here.
+
+## How do I turn the sound off?
+
+Tap the speaker button; it is on every screen (the menu, your team,
+packs, settings, and right in the middle of a live match). One tap
+silences everything, another brings it back, and the choice sticks
+between sessions. Finer controls (separate music and effects toggles,
+master volume) live in Settings.
+
 ## Why did my pitcher fall apart?
 
 Check the PIT number and the TIRED tag; pitchers fatigue as they face
