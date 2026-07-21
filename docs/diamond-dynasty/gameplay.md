@@ -41,16 +41,18 @@ in the second inning.
 
 ## The match engine
 
-Matches are simulated stat by stat, at-bat by at-bat. Each outcome weighs:
+Matches play out pitch by pitch. When you bat, a swing outcome weighs:
 
-- the batter's ratings against the pitcher's,
-- your approach or pitch-and-location call,
-- the rock-paper-scissors interaction between those choices,
+- how close your swing timing was to the ball crossing the plate,
+- whether you swung at a strike or chased a ball outside the zone,
+- the batter's rating against the pitcher's,
 - and the pitcher's current fatigue.
 
-Three innings keeps a full game under ten minutes, and every half-inning
-is played, not skipped; you make the calls for both your lineup and your
-pitching staff.
+When you pitch, the outcome weighs your pitch and location call against
+the batter's rating and your pitcher's rating and fatigue. Both halves
+animate on the field: your swings against a live pitch, your calls flying
+to the plate. Three innings keeps a full game under ten minutes, and every
+half-inning is played, not skipped.
 
 ## Fatigue and the bullpen
 

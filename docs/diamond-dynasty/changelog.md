@@ -6,6 +6,19 @@ description: Release notes and status history for Diamond Dynasty on kurtkluth.d
 This page records the notable moments in Diamond Dynasty's life on this
 site, newest first.
 
+## 2026-07-20: Timing-based batting, live pitches, and music tracks
+
+**Status: Active**
+
+The match became an action game. Batting is now a timing challenge: the
+pitch flies in and you swing as a gold ring lands on the ball, so your
+reflexes matter as much as your roster, and chasing pitches outside the
+zone gets punished. The pitching half animates too, with your called
+pitch flying to its location and the batter reacting. The How to Play
+tutorial gained a live batting practice cage, and Settings gained a
+choice of three music beds (Ballpark Organ, Night Game, and Walk-Up Jam)
+plus a rally horn and crowd groan on the big moments.
+
 ## 2026-07-20: In-game tutorial and one-tap mute
 
 **Status: Active**

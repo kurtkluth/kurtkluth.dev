@@ -354,7 +354,7 @@ export const PROJECTS: Project[] = [
     summary:
       'A baseball franchise sim in the browser. Build the roster, call the pitches, become a legend.',
     lede:
-      'An original baseball franchise simulator. Play stat-driven three-inning matches where every at-bat is one decision (an approach at the plate, a pitch and location on the mound), earn coins, open scout packs, train your players, and raise your team rating. Build the franchise. Create the dynasty. Become a legend.',
+      'An original baseball franchise simulator. Play action three-inning matches where you time your swings at the plate and call your pitches on the mound, earn coins, open scout packs, train your players, and raise your team rating. Build the franchise. Create the dynasty. Become a legend.',
     category: 'Game',
     status: 'Active',
     liveUrl: 'https://diamonddynasty.kluthstudios.com',
@@ -366,8 +366,8 @@ export const PROJECTS: Project[] = [
     studio: 'Kluth Studios',
     highlights: [
       {
-        title: 'One decision per at-bat',
-        body: 'On offense pick an approach (Contact, Power, or Patient); on defense pick one of six pitch types and a location (Attack, Corner, or Waste). Approaches and pitches interact rock-paper-scissors style on top of real player ratings, so every choice matters and none of them takes longer than a breath.',
+        title: 'Time your swings, call your pitches',
+        body: 'Batting is a timing game: the pitch flies in and you swing (tap or press Space) as a gold ring lands on the ball, so perfect timing turns singles into home runs while chasing pitches outside the zone gets you out. On the mound you pick one of six pitch types and a location (Attack, Corner, or Waste) and watch it fly to the plate. Player ratings and pitcher fatigue shade every result.',
       },
       {
         title: 'A bullpen with consequences',
@@ -397,7 +397,7 @@ export const PROJECTS: Project[] = [
       },
       {
         title: 'Play the tutorial',
-        body: 'An interactive How to Play primer opens before your first match, with hands-on batting and pitching demos. Then it is three innings, one decision per at-bat, and coins either way.',
+        body: 'An interactive How to Play primer opens before your first match, including a live batting practice cage. Then it is three innings of timing your swings and calling your pitches, and coins either way.',
       },
       {
         title: 'Build the dynasty',
@@ -405,6 +405,10 @@ export const PROJECTS: Project[] = [
       },
     ],
     updates: [
+      {
+        date: '2026-07-20',
+        text: 'became an action game: time your swings at the plate, watch your called pitches fly, with three selectable music beds.',
+      },
       {
         date: '2026-07-20',
         text: 'gained an in-game interactive tutorial and a one-tap master mute on every screen.',
