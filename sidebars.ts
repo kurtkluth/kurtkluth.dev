@@ -83,6 +83,19 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Diamond Dynasty',
+      link: {type: 'doc', id: 'diamond-dynasty/overview'},
+      items: [
+        'diamond-dynasty/overview',
+        'diamond-dynasty/how-to-play',
+        'diamond-dynasty/gameplay',
+        'diamond-dynasty/tips',
+        'diamond-dynasty/faq',
+        'diamond-dynasty/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Skyroute',
       link: {type: 'doc', id: 'skyroute/overview'},
       items: [

@@ -348,6 +348,70 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    name: 'Diamond Dynasty',
+    inGameTitle: 'Diamond Dynasty: Legends Rising',
+    slug: 'diamond-dynasty',
+    summary:
+      'A baseball franchise sim in the browser. Build the roster, call the pitches, become a legend.',
+    lede:
+      'An original baseball franchise simulator. Play stat-driven three-inning matches where every at-bat is one decision (an approach at the plate, a pitch and location on the mound), earn coins, open scout packs, train your players, and raise your team rating. Build the franchise. Create the dynasty. Become a legend.',
+    category: 'Game',
+    status: 'Active',
+    liveUrl: 'https://diamonddynasty.kluthstudios.com',
+    launchLabel: 'Play Diamond Dynasty',
+    docsPath: '/docs/diamond-dynasty/overview',
+    technologies: ['TypeScript', 'Next.js', 'PWA', 'Web'],
+    featured: true,
+    accentColor: '#e8c25a',
+    studio: 'Kluth Studios',
+    highlights: [
+      {
+        title: 'One decision per at-bat',
+        body: 'On offense pick an approach (Contact, Power, or Patient); on defense pick one of six pitch types and a location (Attack, Corner, or Waste). Approaches and pitches interact rock-paper-scissors style on top of real player ratings, so every choice matters and none of them takes longer than a breath.',
+      },
+      {
+        title: 'A bullpen with consequences',
+        body: 'Pitchers tire as they face batters; watch the PIT number drop and the TIRED tag appear. Each side gets exactly one call to the bullpen per game, and the AI manager knows when to pull a fading starter too.',
+      },
+      {
+        title: 'Cards, packs, and training',
+        body: 'A roster of procedurally generated player cards across six rarities. Scout Packs cost 200 coins for three players with published pull odds, and coin-based training grows players toward their potential.',
+      },
+      {
+        title: 'The franchise loop',
+        body: 'Play a Quick Match, earn coins, open packs or train players, and watch the team rating climb. Then do it again, because the dynasty does not build itself.',
+      },
+      {
+        title: 'Original by design',
+        body: 'Every card, crest, stadium, and pack is procedural SVG and CSS; every sound (bat crack, crowd, organ loop) is synthesized from scratch. All names, clubs, and designs are fictional and original.',
+      },
+      {
+        title: 'Installable and offline',
+        body: 'A full PWA. Add it to your home screen and, after the first visit, it plays entirely offline. Saves live in your browser; no account, no server, no sign-up.',
+      },
+    ],
+    gettingStarted: [
+      {
+        title: 'Open the game',
+        body: 'Diamond Dynasty runs in your browser, free, with nothing to install and no account. It is mobile-first and desktop-ready.',
+      },
+      {
+        title: 'Play a Quick Match',
+        body: 'Three innings, one decision per at-bat. Win or lose, you earn coins for the franchise.',
+      },
+      {
+        title: 'Build the dynasty',
+        body: 'Spend coins on Scout Packs and training, set your lineup, and raise the team rating. The how-to-play doc covers every screen.',
+      },
+    ],
+    updates: [
+      {
+        date: '2026-07-20',
+        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
+      },
+    ],
+  },
+  {
     name: 'Skyroute',
     inGameTitle: 'SkyRoute Infinite',
     slug: 'skyroute',

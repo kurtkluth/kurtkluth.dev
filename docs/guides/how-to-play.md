@@ -1,6 +1,6 @@
 ---
 title: How to Play
-description: What every Kluth Studios game has in common, a quick launcher for all six, and where to learn each one in depth.
+description: What every Kluth Studios game has in common, a quick launcher for all seven, and where to learn each one in depth.
 ---
 
 Every Kluth Studios game follows the same philosophy. Click the link, play
@@ -13,9 +13,9 @@ game's own how-to-play page for the specifics.
   account, no payment, ever.
 - **Keyboard-first, with touch where it fits.** Every game plays great on a
   keyboard. Lisa Climber, Lisetris, and Spindrift also support touch, and
-  Lisa's Tapistry and Lisa's Hexscape are built for touch first, so phones
-  and tablets work well. Skyroute has enough controls that it strongly
-  prefers a keyboard.
+  Lisa's Tapistry, Lisa's Hexscape, and Diamond Dynasty are built for touch
+  first, so phones and tablets work well. Skyroute has enough controls that
+  it strongly prefers a keyboard.
 - **Scores and progress live in your browser.** High scores, stats, and
   settings are stored locally on the device you play on; nothing is sent
   to a server.
@@ -40,6 +40,7 @@ cloud sync. Guard the browser that holds your high scores.
 | Lisetris | A romantic neon falling-block puzzle game, made for Lisa | [lisetris.kluthstudios.com](https://lisetris.kluthstudios.com) | [Overview](../lisetris/overview.md) |
 | Lisa's Tapistry | A cozy tap-away mosaic puzzle, made for Lisa | [tapistry.kluthstudios.com](https://tapistry.kluthstudios.com) | [Overview](../lisas-tapistry/overview.md) |
 | Lisa's Hexscape | A strategic hexagon puzzle in a twilight garden, made for Lisa | [hexscape.kluthstudios.com](https://hexscape.kluthstudios.com) | [Overview](../lisas-hexscape/overview.md) |
+| Diamond Dynasty | An original baseball franchise sim in the browser | [diamonddynasty.kluthstudios.com](https://diamonddynasty.kluthstudios.com) | [Overview](../diamond-dynasty/overview.md) |
 | Skyroute | SkyRoute Infinite, an open-world browser flight simulator | [skyroute.kluthstudios.com](https://skyroute.kluthstudios.com) | [Overview](../skyroute/overview.md) |
 | Spindrift | A vector-style arcade space shooter in the Asteroids tradition | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) | [Overview](../spindrift/overview.md) |
 
@@ -82,6 +83,16 @@ matching tiles, plus frost, switches, and turning hexes. Thirty levels,
 a deterministic daily puzzle, and full keyboard play (arrow keys walk the
 grid, `Enter` clears). It teaches itself in a one-minute tutorial. Full
 details: [Lisa's Hexscape How to Play](../lisas-hexscape/how-to-play.md).
+
+### Diamond Dynasty
+
+A baseball franchise sim, one decision per at-bat. Batting, choose Contact,
+Power, or Patient; pitching, choose one of six pitches and a location
+(Attack, Corner, or Waste). Choices interact rock-paper-scissors style on
+top of player ratings, pitchers tire as they work, and each side gets one
+bullpen call per game. Between matches, open Scout Packs, train players,
+and raise the team rating. Everything is a tap or a click. Full details:
+[Diamond Dynasty How to Play](../diamond-dynasty/how-to-play.md).
 
 ### Skyroute
 

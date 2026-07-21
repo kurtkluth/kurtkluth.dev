@@ -26,7 +26,7 @@ deployment, and troubleshooting in depth.
 
 ### You're here to play
 
-Kluth Studios ships six browser games and interactive experiences. All of
+Kluth Studios ships seven browser games and interactive experiences. All of
 them run instantly in the browser. No install, no account, and free. Pick
 one and go:
 
@@ -38,6 +38,8 @@ one and go:
   puzzle game, made for Lisa.
 - [Lisa's Hexscape](./lisas-hexscape/overview.md) is a strategic hexagon
   puzzle in a twilight garden, made for Lisa.
+- [Diamond Dynasty](./diamond-dynasty/overview.md) is an original baseball
+  franchise sim. Build the roster, call the pitches, become a legend.
 - [Skyroute](./skyroute/overview.md) is SkyRoute Infinite, an open-world
   browser flight simulator.
 - [Spindrift](./spindrift/overview.md) is a vector-style arcade space

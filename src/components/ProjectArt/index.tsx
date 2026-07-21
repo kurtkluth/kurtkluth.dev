@@ -325,6 +325,68 @@ function LisasHexscapeArt() {
   );
 }
 
+function DiamondDynastyArt() {
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="dd-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#101f3d" />
+          <stop offset="1" stopColor="#050b18" />
+        </linearGradient>
+        <linearGradient id="dd-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#f8e7b3" />
+          <stop offset="0.55" stopColor="#e8c25a" />
+          <stop offset="1" stopColor="#b08a2e" />
+        </linearGradient>
+        <radialGradient id="dd-lights" cx="0.5" cy="0.25" r="0.75">
+          <stop offset="0" stopColor="#22396a" stopOpacity="0.9" />
+          <stop offset="1" stopColor="#050b18" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="400" height="225" fill="url(#dd-sky)" />
+      <rect width="400" height="225" fill="url(#dd-lights)" />
+      {/* floodlight towers */}
+      <g stroke="#39537a" strokeWidth="2.5" fill="none">
+        <path d="M52 118V52M40 52h24M40 44h24" />
+        <path d="M348 118V52M336 52h24M336 44h24" />
+      </g>
+      <g fill="#f4e9c8">
+        <circle cx="44" cy="48" r="2.6" />
+        <circle cx="52" cy="48" r="2.6" />
+        <circle cx="60" cy="48" r="2.6" />
+        <circle cx="340" cy="48" r="2.6" />
+        <circle cx="348" cy="48" r="2.6" />
+        <circle cx="356" cy="48" r="2.6" />
+      </g>
+      {/* outfield wall + infield diamond */}
+      <path d="M30 168q170-64 340 0" fill="none" stroke="#22396a" strokeWidth="3" />
+      <g fill="none" stroke="url(#dd-gold)" strokeWidth="2.5">
+        <path d="M200 196 L268 152 L200 108 L132 152 Z" />
+        <path d="M200 196 Q166 176 163 152 Q166 128 200 108 Q234 128 237 152 Q234 176 200 196" opacity="0.35" />
+      </g>
+      <g fill="#e8c25a">
+        <rect x="196" y="192" width="8" height="8" transform="rotate(45 200 196)" />
+        <rect x="264" y="148" width="8" height="8" transform="rotate(45 268 152)" />
+        <rect x="196" y="104" width="8" height="8" transform="rotate(45 200 108)" />
+        <rect x="128" y="148" width="8" height="8" transform="rotate(45 132 152)" />
+      </g>
+      {/* crest shield above the diamond */}
+      <g transform="translate(178 28) scale(0.37)">
+        <path
+          d="M60 4 L110 22 L110 62 Q110 96 60 116 Q10 96 10 62 L10 22 Z"
+          fill="#0a1428"
+          stroke="url(#dd-gold)"
+          strokeWidth="5"
+        />
+        <path d="M60 48 L63.2 56.2 L72 56.6 L65.2 62.2 L67.4 70.6 L60 65.8 L52.6 70.6 L54.8 62.2 L48 56.6 L56.8 56.2 Z" fill="url(#dd-gold)" />
+      </g>
+      <text x="200" y="216" textAnchor="middle" fontFamily="JetBrains Mono Variable, monospace" fontSize="10" letterSpacing="4" fill="rgba(232,194,90,0.75)">
+        BUILD THE FRANCHISE
+      </text>
+    </svg>
+  );
+}
+
 function SkyrouteArt() {
   return (
     <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -429,6 +491,7 @@ const ART: Record<string, () => React.ReactNode> = {
   lisetris: LisetrisArt,
   'lisas-tapistry': LisasTapistryArt,
   'lisas-hexscape': LisasHexscapeArt,
+  'diamond-dynasty': DiamondDynastyArt,
   skyroute: SkyrouteArt,
   spindrift: SpindriftArt,
 };
