@@ -20,7 +20,7 @@ export default function ProjectsIndex(): React.ReactNode {
               as="h1"
               overline="Projects"
               title="Everything, in one place"
-              lede="Seven projects, each with a live site and its own documentation. Launch anything; read how it works."
+              lede="Eight projects, each with a live site and its own documentation. Launch anything; read how it works."
             />
           </div>
         </header>
