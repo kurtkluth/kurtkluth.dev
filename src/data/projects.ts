@@ -407,7 +407,7 @@ export const PROJECTS: Project[] = [
     updates: [
       {
         date: '2026-07-20',
-        text: 'joined the Kluth Studios collection on kurtkluth.dev.',
+        text: 'went live at diamonddynasty.kluthstudios.com and joined the Kluth Studios collection.',
       },
     ],
   },
