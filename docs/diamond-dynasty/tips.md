@@ -3,15 +3,22 @@ title: Tips
 description: Practical advice for winning at-bats, managing the bullpen, and spending coins like a general manager.
 ---
 
-Seven habits that turn close losses into wins. None of them require luck,
+Eight habits that turn close losses into wins. None of them require luck,
 just doing them on purpose.
 
-## Mix your approaches like a real hitter
+## Wait for the ball, do not lunge at it
 
-If you pick Power every at-bat, you are the easiest out in the league.
-The sim rewards unpredictability; rotate Contact, Power, and Patient so
-the matchup math does not settle against you. Save Power for tired
-pitchers and hitter's counts.
+The single biggest jump in hitting is patience with your swing. Let the
+ball travel and swing as the gold ring lands on it, not when you first
+see it leave the hand. Early swings foul off or roll over; a swing timed
+to the arrival is what drives the ball.
+
+## Lay off the chase
+
+A pitch outside the white zone is a trap: your contact is cut down hard if
+you swing, and doing nothing turns it into a ball. Take the free ones,
+work the count, and make the pitcher come to you. Four balls is a base
+without a single swing.
 
 ## Pitch backward when the batter is dangerous
 
@@ -29,9 +36,11 @@ inning and your starter is gassed, weigh the innings left.
 
 ## Bait the AI's tired starter
 
-Fatigue cuts both ways. When the opposing starter is deep in the TIRED
-zone and the AI has not pulled them yet, that is the moment to swing
-Power. The window closes the instant their bullpen door opens.
+Fatigue cuts both ways. A tired pitcher literally throws slower, and slow
+pitches are far easier to time. When the opposing starter is deep in the
+TIRED zone and the AI has not pulled them yet, that is the moment to
+attack every hittable pitch. The window closes the instant their bullpen
+door opens.
 
 ## Train potential, not nostalgia
 

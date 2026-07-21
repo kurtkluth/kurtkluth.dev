@@ -41,12 +41,13 @@ No. Every player name, club, card design, and crest is fictional,
 procedurally generated, and original to the game. The art is all
 procedural SVG and CSS, and the audio is synthesized from scratch.
 
-## Do I control every pitch?
+## Do I play every pitch?
 
-You make one decision per at-bat. Batting, you choose an approach
-(Contact, Power, or Patient). Pitching, you choose a pitch type and a
-location. The sim resolves the at-bat from those choices and the players'
-ratings. [How to Play](./how-to-play.md) covers what each option does.
+Yes. Batting, you time each swing as the pitch reaches the plate (tap or
+press Space when the gold ring lands on the ball). Pitching, you call a
+pitch type and a location and watch it fly in. Your timing and calls
+combine with the players' ratings to decide each outcome.
+[How to Play](./how-to-play.md) covers both sides.
 
 ## How do I learn the game?
 
@@ -60,8 +61,10 @@ pregame screen, or read [How to Play](./how-to-play.md) here.
 Tap the speaker button; it is on every screen (the menu, your team,
 packs, settings, and right in the middle of a live match). One tap
 silences everything, another brings it back, and the choice sticks
-between sessions. Finer controls (separate music and effects toggles,
-master volume) live in Settings.
+between sessions. Finer controls live in Settings: separate music and
+effects toggles, master volume, and a choice of three music beds
+(Ballpark Organ, Night Game, or Walk-Up Jam) that preview as you pick
+them.
 
 ## Why did my pitcher fall apart?
 

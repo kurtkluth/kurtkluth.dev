@@ -5,9 +5,10 @@ description: What Diamond Dynasty is (an original browser baseball franchise sim
 
 Diamond Dynasty is an original baseball franchise simulator that runs
 entirely in your browser. You manage a club of procedurally generated
-players, play quick stat-driven matches where every at-bat comes down to
-one decision, and pour your winnings back into the roster. Play, earn,
-recruit, train, and watch the team rating climb.
+players, play quick action matches where you time your swings at the
+plate and call your pitches on the mound, and pour your winnings back
+into the roster. Play, earn, recruit, train, and watch the team rating
+climb.
 
 The tagline is the roadmap: "Build the franchise. Create the dynasty.
 Become a legend."
@@ -19,11 +20,11 @@ in your browser, no install, no account.
 ## The loop
 
 Everything in Diamond Dynasty feeds one loop. A Quick Match is three
-innings of baseball, and every at-bat asks for exactly one choice. On
-offense you pick an approach: Contact, Power, or Patient. On defense you
-pick a pitch (six types) and a location (Attack, Corner, or Waste). Those
-choices interact rock-paper-scissors style on top of each player's
-ratings, so reading your opponent matters as much as raw talent.
+innings of baseball played pitch by pitch. On offense you swing by timing
+a gold ring as the ball reaches the plate; on defense you call a pitch
+(six types) and a location (Attack, Corner, or Waste) and watch it fly.
+Your timing and your calls sit on top of each player's ratings, so a
+sharp eye and a strong roster both matter.
 
 Matches pay out coins. Coins buy Scout Packs (three new players, published
 pull odds) or training sessions (growth scaled by each player's

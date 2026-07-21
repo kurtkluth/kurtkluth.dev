@@ -18,32 +18,37 @@ always in view.
 
 ## Batting
 
-When your club is at the plate, each at-bat starts with one choice of
-approach:
+Batting is a timing game. The pitch flies in from the mound and a gold
+ring closes on the ball as it reaches the plate. Swing (tap the field or
+press **Space**) the instant the ring lands on the ball:
 
-- **Contact.** Put the ball in play. The safe swing; fewer strikeouts,
-  fewer home runs.
-- **Power.** Swing for the fences. Big flies and big whiffs both get more
-  likely.
-- **Patient.** Work the count. Better walks and better pitches to hit
-  later in the at-bat, at the cost of taking strikes.
+- **Nail the timing** and good contact turns into extra bases; a perfect
+  swing on a hittable pitch is how home runs happen.
+- **Mistime it** and you foul it off, miss for a strike, or roll out
+  weakly.
+- **Watch the strike zone.** Chasing a pitch outside the white box weakens
+  contact badly. Lay off and it is a ball; four balls is a walk.
 
-The sim resolves the at-bat from your approach, the batter's ratings, the
-pitcher's ratings and fatigue, and the pitch the AI chose. Approaches beat
-and lose to pitch plans rock-paper-scissors style, so mix it up; a
-predictable hitter is an out.
+Your batter's BAT rating raises the ceiling on every swing, and the
+pitcher's rating (minus any fatigue) drags it down, so a stronger hitter
+against a tired arm is your best chance to do damage. Read the pitch name
+during the windup: fastballs arrive hot, curves hang, knuckleballs
+flutter.
 
 ## Pitching
 
-When you are in the field, you pick two things per at-bat:
+When you are in the field, you pick two things per at-bat, then watch the
+pitch fly to the plate and the batter react:
 
-- **A pitch.** Six types, each with its own movement and risk profile.
-- **A location.** **Attack** goes after the zone, **Corner** paints the
-  edge, and **Waste** throws it away hoping for a chase.
+- **A pitch.** Six types, each with its own movement (and the knuckleball
+  dances).
+- **A location.** **Attack** goes right after the zone, **Corner** paints
+  the edge, and **Waste** throws it off the plate hoping for a chase.
 
 Attack gets punished by locked-in hitters, Corner risks walks, Waste only
 works when the batter bites. Read the situation (count, runners, batter
-quality) and choose accordingly.
+quality) and choose accordingly. Your pitcher's rating and fatigue, the
+batter's rating, and your location all decide the outcome.
 
 ## The bullpen
 
@@ -66,10 +71,11 @@ coins are the fuel for everything else:
 
 ## Controls
 
-Everything is tap or click; there is nothing to memorize. The game is
-mobile-first (big buttons, portrait layout) and plays equally well with a
-mouse on desktop. Sound toggles and master volume live in
-**Settings**, and your save is automatic via localStorage.
+Tap or click for everything, including the swing; the one keyboard shortcut
+is **Space** to swing while batting. The game is mobile-first (big buttons,
+portrait layout) and plays equally well with a mouse on desktop. Sound
+toggles, master volume, and your choice of music bed live in **Settings**,
+and your save is automatic via localStorage.
 
 Deeper systems (rarities, lineups, fatigue math, pack odds) are covered in
 [Gameplay](./gameplay.md).

@@ -86,14 +86,13 @@ details: [Lisa's Hexscape How to Play](../lisas-hexscape/how-to-play.md).
 
 ### Diamond Dynasty
 
-A baseball franchise sim, one decision per at-bat. Batting, choose Contact,
-Power, or Patient; pitching, choose one of six pitches and a location
-(Attack, Corner, or Waste). Choices interact rock-paper-scissors style on
-top of player ratings, pitchers tire as they work, and each side gets one
-bullpen call per game. Between matches, open Scout Packs, train players,
-and raise the team rating. Everything is a tap or a click, and an
-interactive tutorial with hands-on demos teaches it all before your
-first match. Full details:
+A baseball franchise sim you play pitch by pitch. Batting, time your swing
+as the gold ring lands on the ball (tap or press Space); pitching, call
+one of six pitches and a location (Attack, Corner, or Waste) and watch it
+fly. Player ratings and pitcher fatigue shade every result, and each side
+gets one bullpen call per game. Between matches, open Scout Packs, train
+players, and raise the team rating. An interactive tutorial with a live
+practice cage teaches it all before your first match. Full details:
 [Diamond Dynasty How to Play](../diamond-dynasty/how-to-play.md).
 
 ### Skyroute
