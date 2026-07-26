@@ -5,10 +5,10 @@ description: What Diamond Dynasty is (an original browser baseball franchise sim
 
 Diamond Dynasty is an original baseball franchise simulator that runs
 entirely in your browser. You manage a club of procedurally generated
-players, play quick action matches where you time your swings at the
-plate and call your pitches on the mound, and pour your winnings back
-into the roster. Play, earn, recruit, train, and watch the team rating
-climb.
+players, play a season of action matches where you swing at the plate and
+call your pitches on the mound, and pour your winnings back into the
+roster. Win the title, get promoted, and climb from the Amateur League to
+the Legend League.
 
 The tagline is the roadmap: "Build the franchise. Create the dynasty.
 Become a legend."
@@ -19,17 +19,40 @@ in your browser, no install, no account.
 
 ## The loop
 
-Everything in Diamond Dynasty feeds one loop. A Quick Match is three
-innings of baseball played pitch by pitch. On offense you swing by timing
-a gold ring as the ball reaches the plate; on defense you call a pitch
-(six types) and a location (Attack, Corner, or Waste) and watch it fly.
-Your timing and your calls sit on top of each player's ratings, so a
-sharp eye and a strong roster both matter.
+Everything in Diamond Dynasty feeds one loop. A league match is baseball
+played pitch by pitch. On offense you swing at a live pitch, and contact
+depends on where your barrel actually is when the ball arrives. On defense
+every call is a single pitch, a type and a location, against a live count
+that the hitter is reading as carefully as you are.
 
 Matches pay out coins. Coins buy Scout Packs (three new players, published
-pull odds) or training sessions (growth scaled by each player's
-potential). Better players raise the team rating, and then it is back to
-the diamond.
+pull odds), training sessions (growth scaled by each player's potential),
+and facilities (permanent upgrades that keep paying). Better players win
+more games, more wins win the league, and winning the league gets you
+promoted into a harder one.
+
+## Opponents come from the league, not from you
+
+This is the design decision the whole game hangs on. Rival clubs are built
+around the strength of the **league you are in**, never scaled to match your
+own team rating. A better roster genuinely makes your games easier, which is
+the entire reward for building one. Getting promoted is what makes them hard
+again.
+
+## Every number is written down
+
+Every plate appearance and every pitch is recorded. Matches produce a real
+box score, and those lines roll up into a season record and a career record
+for every player you own. Season stats reset each year; career totals never
+do.
+
+## Something to do when the season is idle
+
+The **Challenge Tower** is one hundred floors, and every floor drops you
+into a jam that is already in progress: down two in the last inning with
+runners on, or protecting a one run lead with the bases loaded. **Daily
+Challenges** are three objectives that redraw at midnight and are ticked off
+by ordinary match results.
 
 ## A real manager's problems
 
@@ -53,6 +76,9 @@ screen and it launches full-screen with its own crest icon, and after the
 first visit it plays entirely offline. Your save lives in the browser via
 localStorage; there is no server, no account, and nothing to sign up for.
 
+A league match is three innings by default, so a matchday fits in a coffee
+break. Six and nine inning matches are in Settings if you have longer.
+
 ## Where to go next
 
 The game itself opens with an interactive How to Play primer (including
@@ -60,8 +86,8 @@ try-it batting and pitching demos) before your first match, and these
 docs go deeper:
 
 - [How to Play](./how-to-play.md) walks the controls and your first match.
-- [Gameplay](./gameplay.md) covers rarities, training, packs, and fatigue
-  in depth.
+- [Gameplay](./gameplay.md) covers leagues, statistics, facilities,
+  rarities, training, packs, and fatigue in depth.
 - [Tips](./tips.md) is the shortcut to winning more at-bats.
 - [FAQ](./faq.md) answers the quick questions.
 - The portfolio page is at

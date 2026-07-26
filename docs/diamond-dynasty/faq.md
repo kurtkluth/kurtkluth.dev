@@ -30,10 +30,11 @@ with a mouse works just as well.
 ## Where is my save?
 
 In your browser's localStorage, on the device you play on. Roster, coins,
-lineup, and settings all persist automatically between sessions. There
-are no accounts and no cloud sync, so a different browser or a private
-window starts a fresh franchise, and clearing site data erases the
-dynasty. Guard the browser that holds your roster.
+lineup, season, statistics, facilities, and settings all persist
+automatically between sessions. There are no accounts and no cloud sync,
+so a different browser or a private window starts a fresh franchise, and
+clearing site data erases the dynasty. Guard the browser that holds your
+roster.
 
 ## Are these real players or teams?
 
@@ -43,10 +44,12 @@ procedural SVG and CSS, and the audio is synthesized from scratch.
 
 ## Do I play every pitch?
 
-Yes. Batting, you time each swing as the pitch reaches the plate (tap or
-press Space when the gold ring lands on the ball). Pitching, you call a
-pitch type and a location and watch it fly in. Your timing and calls
-combine with the players' ratings to decide each outcome.
+Yes, literally. Batting, you swing as the pitch reaches the plate (tap or
+press Space when the gold ring lands on the ball), and contact depends on
+where your barrel actually is when the ball gets there. Pitching, every
+call is a single pitch, a type and a location, against a live ball and
+strike count that the hitter is reading too. Your timing and calls combine
+with the players' ratings to decide each outcome.
 [How to Play](./how-to-play.md) covers both sides.
 
 ## How do I learn the game?
@@ -74,5 +77,26 @@ batters. You get one bullpen call per game to fix exactly this.
 
 ## How long is a match?
 
-Three innings, usually well under ten minutes. It is a coffee-break
-baseball game on purpose.
+Three innings by default, usually well under ten minutes. It is a
+coffee-break baseball game on purpose. If you want a longer sitting,
+Settings has six and nine inning league matches.
+
+## Do the opponents get harder as my team improves?
+
+No, and that is deliberate. Rival clubs are built around the strength of
+the league you are in, not scaled to your team rating, so improving your
+roster genuinely makes your games easier. Winning the title promotes you to
+a tougher league, and that is what makes them hard again.
+
+## What happens at the end of a season?
+
+The top four clubs play a semifinal and a final. Win it and you are
+promoted; finish in the bottom two and you are relegated. Either way a new
+season starts with a fresh schedule. Season statistics reset, career
+statistics never do, and the record book keeps every year you have played.
+
+## Are my players' stats tracked?
+
+Yes. Every plate appearance and every pitch is recorded. Each match ends
+with a full box score, and every player carries a season line and a career
+line you can read on their card in My Team.

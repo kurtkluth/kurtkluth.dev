@@ -352,9 +352,9 @@ export const PROJECTS: Project[] = [
     inGameTitle: 'Diamond Dynasty: Legends Rising',
     slug: 'diamond-dynasty',
     summary:
-      'A baseball franchise sim in the browser. Build the roster, call the pitches, become a legend.',
+      'A baseball franchise sim in the browser. Play a season, win the title, climb the leagues.',
     lede:
-      'An original baseball franchise simulator. Play action three-inning matches where you time your swings at the plate and call your pitches on the mound, earn coins, open scout packs, train your players, and raise your team rating. Build the franchise. Create the dynasty. Become a legend.',
+      'An original baseball franchise simulator. Play a season of action matches where you swing at live pitches and work a real count on the mound, track every stat, upgrade your facilities, and climb from the Amateur League to the Legend League. Build the franchise. Create the dynasty. Become a legend.',
     category: 'Game',
     status: 'Active',
     liveUrl: 'https://diamonddynasty.kluthstudios.com',
@@ -366,20 +366,36 @@ export const PROJECTS: Project[] = [
     studio: 'Kluth Studios',
     highlights: [
       {
-        title: 'Time your swings, call your pitches',
-        body: 'Batting is a timing game: the pitch flies in and you swing (tap or press Space) as a gold ring lands on the ball, so perfect timing turns singles into home runs while chasing pitches outside the zone gets you out. On the mound you pick one of six pitch types and a location (Attack, Corner, or Waste) and watch it fly to the plate. Player ratings and pitcher fatigue shade every result.',
+        title: 'Seasons, standings, and promotion',
+        body: 'Fourteen matchdays against seven rival clubs, home and away, then a four-team playoff. Win the championship and you are promoted; finish in the bottom two and you go down. Five leagues to climb, from Amateur to Legend, with a record book that keeps every season you have played.',
+      },
+      {
+        title: 'Opponents come from the league, not from you',
+        body: 'Rival clubs are built around the strength of the league you are in, never scaled to your own team rating. That means a better roster genuinely makes your games easier, which is the whole reward for building one, and getting promoted is what makes them hard again.',
+      },
+      {
+        title: 'Swing where the ball is',
+        body: 'The pitch flies in and you swing (tap or press Space) as a gold ring lands on the ball. Contact is decided by where your barrel actually is when the ball gets there, so a perfectly timed swing at a pitch off the plate misses, exactly as it looks like it should.',
+      },
+      {
+        title: 'A real count on the mound',
+        body: 'Every call is one pitch: a type from six, a location from three, against a live ball-strike count. The hitter takes first pitches, expands the zone with two strikes, and will not swing on 3-0. Command is a pitching skill, and repeating yourself lets a hitter sit on it.',
+      },
+      {
+        title: 'Every number written down',
+        body: 'Every plate appearance and every pitch is recorded. Matches end with a real box score (AVG, ERA, WHIP, and the winning, losing, and saving pitchers), and those lines roll up into season and career records for every player on the roster.',
       },
       {
         title: 'A bullpen with consequences',
         body: 'Pitchers tire as they face batters; watch the PIT number drop and the TIRED tag appear. Each side gets exactly one call to the bullpen per game, and the AI manager knows when to pull a fading starter too.',
       },
       {
-        title: 'Cards, packs, and training',
-        body: 'A roster of procedurally generated player cards across six rarities. Scout Packs cost 200 coins for three players with published pull odds, and coin-based training grows players toward their potential.',
+        title: 'Cards, packs, training, and facilities',
+        body: 'A roster of procedurally generated player cards across six rarities. Scout Packs cost 200 coins for three players with published pull odds, coin-based training grows players toward their potential, and five facility tracks buy permanent upgrades: cheaper training, advance scouting, fresher arms, bigger payouts, better pack odds.',
       },
       {
-        title: 'The franchise loop',
-        body: 'Play a Quick Match, earn coins, open packs or train players, and watch the team rating climb. Then do it again, because the dynasty does not build itself.',
+        title: 'One hundred floors of trouble',
+        body: 'The Challenge Tower drops you into a jam already in progress: down two in the last inning with runners on, or protecting a one-run lead with the bases loaded. Every floor is generated from its own number, so floor 47 is the same puzzle on every device, forever.',
       },
       {
         title: 'Original by design',
@@ -397,14 +413,18 @@ export const PROJECTS: Project[] = [
       },
       {
         title: 'Play the tutorial',
-        body: 'An interactive How to Play primer opens before your first match, including a live batting practice cage. Then it is three innings of timing your swings and calling your pitches, and coins either way.',
+        body: 'An interactive How to Play primer opens before your first match, including a live batting practice cage and a pitching demo that shows how the count changes the right call. Then it is your first matchday, and coins either way.',
       },
       {
         title: 'Build the dynasty',
-        body: 'Spend coins on Scout Packs and training, set your lineup, and raise the team rating. The how-to-play doc covers every screen.',
+        body: 'Spend coins on Scout Packs, training, and facilities, set your lineup, and win the league to get promoted. The how-to-play doc covers every screen.',
       },
     ],
     updates: [
+      {
+        date: '2026-07-26',
+        text: 'became a franchise: seasons with standings and playoffs, five leagues to climb, full player statistics, facilities, a real ball-strike count, stolen bases, and a 100-floor Challenge Tower.',
+      },
       {
         date: '2026-07-20',
         text: 'became an action game: time your swings at the plate, watch your called pitches fly, with three selectable music beds.',
