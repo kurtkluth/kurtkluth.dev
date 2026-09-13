@@ -7,8 +7,8 @@
 
 // Ejected from @docusaurus/theme-classic to invert which icon the toggle
 // shows: the icon now represents the mode you'd switch TO (moon on a light
-// background, sun on a dark background). The component logic is unchanged from
-// upstream; only the co-located styles.module.css swaps the light/dark mapping.
+// background, sun on a dark background). The tooltip and accessible label also
+// describe the next mode, using the same transition as the click handler.
 
 import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
@@ -73,9 +73,9 @@ function getColorModeLabel(colorMode: ColorMode | null): string {
 function getColorModeAriaLabel(colorMode: ColorMode | null) {
   return translate(
     {
-      message: 'Switch between dark and light mode (currently {mode})',
-      id: 'theme.colorToggle.ariaLabel',
-      description: 'The ARIA label for the color mode toggle',
+      message: 'Switch to {mode}',
+      id: 'theme.colorToggle.ariaLabel.nextMode',
+      description: 'The ARIA label describing the destination color mode',
     },
     {
       mode: getColorModeLabel(colorMode),
@@ -115,6 +115,7 @@ function ColorModeToggle({
   onChange,
 }: Props): ReactNode {
   const isBrowser = useIsBrowser();
+  const nextColorMode = getNextColorMode(value, respectPrefersColorScheme);
   return (
     <div className={clsx(styles.toggle, className)}>
       <button
@@ -125,12 +126,10 @@ function ColorModeToggle({
           buttonClassName,
         )}
         type="button"
-        onClick={() =>
-          onChange(getNextColorMode(value, respectPrefersColorScheme))
-        }
+        onClick={() => onChange(nextColorMode)}
         disabled={!isBrowser}
-        title={getColorModeLabel(value)}
-        aria-label={getColorModeAriaLabel(value)}
+        title={getColorModeLabel(nextColorMode)}
+        aria-label={getColorModeAriaLabel(nextColorMode)}
 
         // For accessibility decisions
         // See https://github.com/facebook/docusaurus/issues/7667#issuecomment-2724401796
