@@ -13,6 +13,19 @@ const sidebars: SidebarsConfig = {
     'getting-started',
     {
       type: 'category',
+      label: 'IconTiller',
+      link: {type: 'doc', id: 'icontiller/overview'},
+      items: [
+        'icontiller/overview',
+        'icontiller/quick-start',
+        'icontiller/editing-and-apply',
+        'icontiller/tips',
+        'icontiller/faq',
+        'icontiller/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'SQLCLR',
       link: {type: 'doc', id: 'sqlclr/overview'},
       items: [

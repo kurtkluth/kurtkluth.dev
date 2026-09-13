@@ -3,7 +3,10 @@ title: Troubleshooting
 description: The cross-project checklist to run when a game or page won't load, stutters, goes silent, or loses your scores.
 ---
 
-When something won't load or behaves badly, run this checklist top to bottom.
+For IconTiller connection, artwork, or Apply problems, use
+[IconTiller Tips and Troubleshooting](../icontiller/tips.md).
+
+When a browser game or webpage won't load or behaves badly, run this checklist top to bottom.
 It resolves the large majority of problems in a couple of minutes.
 
 ## The two fixes that solve most things

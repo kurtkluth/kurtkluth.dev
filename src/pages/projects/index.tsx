@@ -6,8 +6,8 @@ import SectionHeading from '@site/src/components/SectionHeading';
 import styles from './styles.module.css';
 
 export default function ProjectsIndex(): React.ReactNode {
-  const tools = PROJECTS.filter((p) => p.category === 'Developer Tool');
-  const studio = PROJECTS.filter((p) => p.category !== 'Developer Tool');
+  const tools = PROJECTS.filter((p) => p.studio === 'Kurt Kluth');
+  const studio = PROJECTS.filter((p) => p.studio === 'Kluth Studios');
 
   return (
     <Layout
@@ -20,7 +20,7 @@ export default function ProjectsIndex(): React.ReactNode {
               as="h1"
               overline="Projects"
               title="Everything, in one place"
-              lede="Eight projects, each with a live site and its own documentation. Launch anything; read how it works."
+              lede="Nine projects with their own documentation. Explore desktop software, developer tools, and browser games."
             />
           </div>
         </header>
@@ -28,9 +28,9 @@ export default function ProjectsIndex(): React.ReactNode {
         <section className={styles.section} id="developer-tools">
           <div className={styles.inner}>
             <SectionHeading
-              overline="Developer tools"
+              overline="Software and tools"
               title="The serious work"
-              lede="Tooling and deep documentation for working engineers."
+              lede="Desktop software and developer tooling, with practical documentation."
             />
             <div className={styles.gridWide}>
               {tools.map((p) => (

@@ -18,9 +18,11 @@ function HeroTerminal() {
     kind:
       p.category === 'Developer Tool'
         ? 'developer-tool'
-        : p.category === 'Game'
-          ? 'game'
-          : 'experience',
+        : p.category === 'Desktop App'
+          ? 'desktop-app'
+          : p.category === 'Game'
+            ? 'game'
+            : 'experience',
     status: p.status.toLowerCase(),
   }));
   return (
@@ -48,7 +50,7 @@ function HeroTerminal() {
           </div>
         ))}
         <div className={styles.terminalComment}>
-          # eight projects · one home · docs included
+          # {PROJECTS.length} projects · one home · docs included
         </div>
       </div>
     </div>
@@ -67,7 +69,7 @@ function Hero() {
             Kluth.
           </h1>
           <p className={styles.heroLede}>
-            Developer tools, browser games, and web experiments, with the
+            Desktop apps, developer tools, browser games, and web experiments, with the
             documentation to launch, understand, and use every one of them.
           </p>
           <div className={styles.heroActions}>
@@ -102,7 +104,7 @@ function Featured() {
         <SectionHeading
           overline="Projects"
           title="Featured work"
-          lede="Every project ships with a live site and its own documentation."
+          lede="Every project has a home and its own documentation."
         />
         <div className={styles.featuredGrid}>
           <ProjectCard project={first} featured />

@@ -10,6 +10,7 @@ export type ProjectStatus = 'Active' | 'Experimental' | 'Archived';
 
 export type ProjectCategory =
   | 'Developer Tool'
+  | 'Desktop App'
   | 'Game'
   | 'Interactive Experience';
 
@@ -55,6 +56,33 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: 'IconTiller',
+    slug: 'icontiller',
+    summary: 'Arrange iPhone Home Screen apps from Windows with drag-and-drop drafts and checked USB writes.',
+    lede: 'A Windows desktop app for arranging iPhone Home Screens over local USB. Read real app icons, insert and shift entries, swap apps, and review changes before Apply. This development preview has limited device testing; some edits remain local drafts.',
+    category: 'Desktop App',
+    status: 'Experimental',
+    liveUrl: 'https://github.com/kurtkluth/IconTiller',
+    launchLabel: 'View on GitHub',
+    docsPath: '/docs/icontiller/overview',
+    technologies: ['Python 3.12', 'Tkinter', 'Pillow', 'Windows'],
+    featured: true,
+    accentColor: '#70dfbf',
+    studio: 'Kurt Kluth',
+    highlights: [
+      {title: 'Arrange with real icons', body: 'Insert and shift apps across pages, or swap two apps, including a page/folder exchange. Hover over page numbers during a drag to jump.'},
+      {title: 'Review before writing', body: 'Apply checks the device and current layout, saves a fresh backup, and independently reads the full layout back to verify the result.'},
+      {title: 'Revisit your drafts', body: 'Search apps and folders, undo and redo edits, and save drafts locally. Folder creation, renaming, and added pages remain draft-only.'},
+      {title: 'Local by design', body: 'Artwork comes from the connected phone. No account, telemetry, cloud uploads, or external image service is built into the app.'},
+    ],
+    gettingStarted: [
+      {title: 'Set up on Windows', body: 'Follow Quick Start to run the public source with Python 3.12, or build a portable Windows x64 package. Apple mobile device drivers are required for USB access.'},
+      {title: 'Try Demo, then read your iPhone', body: 'Explore sample data without a phone. When ready, connect one iPhone by USB, unlock it, accept Trust, and choose Read iPhone.'},
+      {title: 'Arrange, review, and apply', body: 'Make supported swaps or page reorders. Review all affected positions before confirming Apply to iPhone, and wait for the independent verification result.'},
+    ],
+    updates: [{date: '2026-09-12', text: 'added development-preview documentation for Windows setup, editing, checked Apply, and local data.'}],
+  },
   {
     name: 'SQLCLR',
     slug: 'sqlclr',

@@ -12,7 +12,7 @@ answers.
 
 ## Pick your path
 
-Most people show up here for one of three reasons. Find yours below.
+Most people show up here for one of four reasons. Find yours below.
 
 ### You're here for SQLCLR
 
@@ -23,6 +23,13 @@ for the lay of the land, then follow the
 [Quick Start](./sqlclr/quick-start.md) to load and run your first assembly.
 From there, the SQLCLR section covers installation, configuration, security,
 deployment, and troubleshooting in depth.
+
+### You're here to arrange your iPhone apps
+
+[IconTiller](./icontiller/overview.md) is a Windows desktop development preview.
+Start with [Quick Start](./icontiller/quick-start.md), try Demo without a phone,
+then read the [editing and Apply guide](./icontiller/editing-and-apply.md)
+before making changes over USB.
 
 ### You're here to play
 
@@ -63,11 +70,11 @@ Honestly, not much.
 
 | If you want to... | You need |
 |---|---|
+| Arrange iPhone Home Screens | Windows, Python 3.12 for source use, and Apple mobile device drivers plus a USB cable for phone access |
 | Play the games | A current version of Chrome, Edge, Firefox, or Safari (desktop or mobile) |
 | Fly Skyroute comfortably | A keyboard (Skyroute strongly prefers one; the other three games also support touch) |
 | Work with SQLCLR | Access to a SQL Server instance you can administer, plus .NET build tooling |
 
-There are no downloads, no sign-ups, and nothing to pay for any of it. The
-one real prerequisite in the whole collection is that SQL Server instance for
-SQLCLR work, and the [installation guide](./sqlclr/installation.md) walks
-through exactly what that takes.
+The games need no download or account. Desktop and database projects have
+their own setup steps: [IconTiller Quick Start](./icontiller/quick-start.md)
+and [SQLCLR Installation](./sqlclr/installation.md).
