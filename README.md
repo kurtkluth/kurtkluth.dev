@@ -25,7 +25,7 @@ npm run typecheck # TypeScript check
 |---|---|
 | `src/data/projects.ts` | Single source of truth for every project (cards, detail pages, updates) |
 | `src/components/` | Design-system components: ProjectCard, ProjectArt (SVG artwork), ProjectPage, StatusBadge, SectionHeading |
-| `src/pages/` | Homepage, `/projects` index, five `/projects/<slug>` pages, `/about` |
+| `src/pages/` | Homepage, `/projects` index, per-project `/projects/<slug>` pages, `/about` |
 | `src/css/custom.css` | Design tokens (`--kk-*`) mapped onto Infima; dark is the signature theme |
 | `docs/` | Documentation: per-project sections + cross-project guides |
 | `sidebars.ts` | One explicit sidebar; one category block per project |
@@ -44,6 +44,13 @@ Adding a project is a content task, not a redesign:
 
 The homepage grid, projects index, related-projects rows, and changelog feed
 all pick the new project up from the metadata automatically.
+
+## IconTiller documentation
+
+IconTiller is listed as an experimental Windows desktop app, with a public
+source link and six pages under `docs/icontiller/`. Keep supported Apply
+operations, draft-only edits, and compatibility limits aligned with the
+application README and packaged user guide.
 
 ## Deployment
 

@@ -82,6 +82,20 @@ export default function About(): React.ReactNode {
         <section className={styles.section}>
           <div className={styles.inner}>
             <SectionHeading
+              overline="Desktop software"
+              title="IconTiller"
+              lede="Arrange iPhone Home Screen apps from Windows over local USB. A development preview with drag-and-drop drafts and checked Apply."
+            />
+            <div className={styles.ctaRow}>
+              <Link className="kk-btn kk-btn--primary" to="/projects/icontiller">The IconTiller project</Link>
+              <Link className="kk-btn kk-btn--ghost" to="/docs/icontiller/overview">IconTiller documentation</Link>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.inner}>
+            <SectionHeading
               overline="Contact"
               title="Say hello"
               lede="The code is public and the inbox is open."

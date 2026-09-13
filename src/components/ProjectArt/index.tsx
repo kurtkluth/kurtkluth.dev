@@ -485,7 +485,30 @@ function SpindriftArt() {
   );
 }
 
+function IconTillerArt() {
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="400" height="225" fill="#0b192b" />
+      <rect x="35" y="35" width="226" height="148" rx="12" fill="#11283c" stroke="#47766f" />
+      <path d="M35 58h226M125 198h46m-23-15v15" stroke="#47766f" strokeWidth="3" />
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+        <rect key={i} x={54 + (i % 4) * 48} y={76 + Math.floor(i / 4) * 47}
+          width="32" height="32" rx="8" fill={i === 2 ? '#efc56a' : '#70dfbf'} opacity={i === 2 ? 1 : 0.65} />
+      ))}
+      <rect x="289" y="28" width="78" height="167" rx="17" fill="#102638" stroke="#70dfbf" strokeWidth="2" />
+      <path d="M314 38h28M315 184h26" stroke="#47766f" strokeWidth="4" strokeLinecap="round" />
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <rect key={i} x={300 + (i % 3) * 20} y={60 + Math.floor(i / 3) * 29}
+          width="15" height="19" rx="4" fill={i === 2 ? '#efc56a' : '#70dfbf'} />
+      ))}
+      <path d="M208 130c38 35 57 27 87-9m-12 2 12-2-1 12" fill="none" stroke="#efc56a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="200" y="216" textAnchor="middle" fontFamily="monospace" fontSize="9" letterSpacing="3" fill="#70dfbf">ARRANGE. REVIEW. APPLY.</text>
+    </svg>
+  );
+}
+
 const ART: Record<string, () => React.ReactNode> = {
+  icontiller: IconTillerArt,
   sqlclr: SqlclrArt,
   'lisa-climber': LisaClimberArt,
   lisetris: LisetrisArt,

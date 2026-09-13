@@ -54,7 +54,7 @@ export default function ProjectPage({slug}: {slug: string}): React.ReactNode {
                 </Link>
               </div>
               <p className={styles.liveAt}>
-                live at{' '}
+                {project.category === 'Desktop App' ? 'available on' : 'live at'}{' '}
                 <Link to={project.liveUrl} rel="noopener">
                   {project.liveUrl.replace('https://', '')}
                 </Link>

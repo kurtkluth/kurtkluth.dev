@@ -123,6 +123,7 @@ const config: Config = {
         {
           title: 'Projects',
           items: [
+            {label: 'IconTiller', to: '/projects/icontiller'},
             {label: 'SQLCLR', to: '/projects/sqlclr'},
             {label: 'Lisa Climber', to: '/projects/lisa-climber'},
             {label: 'Lisetris', to: '/projects/lisetris'},

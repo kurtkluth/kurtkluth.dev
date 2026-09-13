@@ -1,10 +1,10 @@
 ---
 title: Installation & Setup
-description: What you need for each project. Nothing for the games; a SQL Server instance plus .NET tooling for SQLCLR.
+description: Setup requirements for browser games, the IconTiller Windows app, and SQLCLR development.
 ---
 
-The short version is that the games need nothing, and SQLCLR needs a SQL Server.
-Here's the slightly longer version.
+The games run in a browser. IconTiller runs on Windows, and SQLCLR needs
+SQL Server. Follow the setup instructions for your project.
 
 ## The games: nothing to install
 
@@ -39,10 +39,16 @@ allow.
 
 :::
 
-## SQLCLR: the one real prerequisite list
+## IconTiller: Windows and local USB
 
-SQLCLR runs inside SQL Server, so it's the one project with actual
-requirements:
+Follow [IconTiller Quick Start](../icontiller/quick-start.md) for Python 3.12
+source setup or building a portable Windows x64 package. Phone access needs
+Apple mobile device drivers and a USB data cable. Demo needs no phone.
+Once dependencies are installed, the app uses local files and USB.
+
+## SQLCLR: database and build tooling
+
+SQLCLR runs inside SQL Server and requires:
 
 - **A SQL Server 2017 or later instance you can administer.** The docs
   assume you can create databases and load assemblies on it.
@@ -54,7 +60,7 @@ requirements:
 That's the summary. The full treatment (exact steps, commands, and version
 notes) lives in the [SQLCLR installation guide](../sqlclr/installation.md).
 
-## Works offline?
+## Do the browser games work offline?
 
 Not really. The games are online web apps, not installed software. In
 practice, a dropped connection mid-session generally keeps your current
