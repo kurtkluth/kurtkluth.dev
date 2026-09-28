@@ -64,6 +64,24 @@ export default function About(): React.ReactNode {
         <section className={`${styles.section} ${styles.sectionRaised}`}>
           <div className={styles.inner}>
             <SectionHeading
+              overline="Developer tools"
+              title="SQLCLR MCP .NET"
+              lede="A read-only SQL Server MCP server with catalog exploration, evidence-backed database review, and optional Jev analysis on selected entities."
+            />
+            <div className={styles.ctaRow}>
+              <Link className="kk-btn kk-btn--primary" to="/projects/sqlclr-mcp-dotnet">
+                The SQLCLR MCP .NET project
+              </Link>
+              <Link className="kk-btn kk-btn--ghost" to="/docs/sqlclr-mcp-dotnet/overview">
+                MCP documentation
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.inner}>
+            <SectionHeading
               overline="The serious work"
               title="SQLCLR"
               lede="A developer resource for SQL Server CLR integration, running governed, verifiable .NET code inside the database engine. It sets the design language for this whole site, and it gets the deepest documentation here."

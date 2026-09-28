@@ -12,11 +12,12 @@ promise lives.
 
 ## The projects
 
-Nine projects, one hub. Each name links to its overview doc; the project
+Ten projects, one hub. Each name links to its overview doc; the project
 link opens its website or source repository.
 
 | Project | One-liner | Website or source |
 |---|---|---|
+| [SQLCLR MCP .NET](./sqlclr-mcp-dotnet/overview.md) | Read-only SQL Server MCP tools with evidence-backed database architect analysis and optional Jev context. | [GitHub source](https://github.com/kurtkluth/sqlclr-mcp-dotnet) |
 | [IconTiller](./icontiller/overview.md) | Arrange iPhone Home Screen apps from Windows over USB. Development preview. | [GitHub source](https://github.com/kurtkluth/IconTiller) |
 | [SQLCLR](./sqlclr/overview.md) | Running .NET inside SQL Server. Governed, hardened extensibility at the engine boundary. | [sqlclr.com](https://sqlclr.com) |
 | [Lisa Climber](./lisa-climber/overview.md) | Summit Smash, a pixel-art arcade climbing platformer. Six stages, three hearts, one long way up. | [lisaclimber.kluthstudios.com](https://lisaclimber.kluthstudios.com) |
@@ -27,7 +28,8 @@ link opens its website or source repository.
 | [Skyroute](./skyroute/overview.md) | SkyRoute Infinite, an open-world flight simulator that runs straight from your browser. | [skyroute.kluthstudios.com](https://skyroute.kluthstudios.com) |
 | [Spindrift](./spindrift/overview.md) | A vector-style arcade space shooter with a persistent high score to chase. | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) |
 
-SQLCLR covers developer tooling. IconTiller is a Windows desktop application.
+SQLCLR and SQLCLR MCP .NET cover different parts of SQL Server developer
+tooling. IconTiller is a Windows desktop application.
 The seven Kluth Studios games and interactive experiences run in the browser,
 free, with no required install or account.
 

@@ -12,12 +12,20 @@ answers.
 
 ## Pick your path
 
-Most people show up here for one of four reasons. Find yours below.
+Most people show up here for one of five reasons. Find yours below.
+
+### You're here to inspect a SQL Server database
+
+[SQLCLR MCP .NET](./sqlclr-mcp-dotnet/overview.md) connects an MCP client to
+SQL Server for catalog exploration and read-only database review. Start with
+its [Quick Start](./sqlclr-mcp-dotnet/quick-start.md), then read about the
+[architect tools](./sqlclr-mcp-dotnet/architect-analysis.md). Jev semantic
+analysis is optional and still under evaluation.
 
 ### You're here for SQLCLR
 
-SQLCLR is the developer tool of the family. It runs .NET code inside SQL
-Server, with governed and auditable boundaries. If that's your world, skip
+SQLCLR documents how .NET code runs inside SQL Server, with governed and
+auditable boundaries. If that's your world, skip
 the games entirely. Start with the [SQLCLR Overview](./sqlclr/overview.md)
 for the lay of the land, then follow the
 [Quick Start](./sqlclr/quick-start.md) to load and run your first assembly.
@@ -70,6 +78,7 @@ Honestly, not much.
 
 | If you want to... | You need |
 |---|---|
+| Inspect SQL Server with MCP | The .NET 10 SDK, a reachable SQL Server database, and an MCP client |
 | Arrange iPhone Home Screens | Windows, Python 3.12 for source use, and Apple mobile device drivers plus a USB cable for phone access |
 | Play the games | A current version of Chrome, Edge, Firefox, or Safari (desktop or mobile) |
 | Fly Skyroute comfortably | A keyboard (Skyroute strongly prefers one; the other three games also support touch) |
@@ -77,4 +86,5 @@ Honestly, not much.
 
 The games need no download or account. Desktop and database projects have
 their own setup steps: [IconTiller Quick Start](./icontiller/quick-start.md)
-and [SQLCLR Installation](./sqlclr/installation.md).
+and [SQLCLR Installation](./sqlclr/installation.md). The MCP server has its
+own [Quick Start](./sqlclr-mcp-dotnet/quick-start.md).
