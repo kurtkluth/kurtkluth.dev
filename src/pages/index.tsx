@@ -127,9 +127,9 @@ function Featured() {
 const FOCUS = [
   {
     title: 'Developer Tools',
-    body: 'Practical tooling and deep documentation for working engineers, starting with SQL Server CLR integration.',
-    to: '/projects/sqlclr',
-    cta: 'See SQLCLR',
+    body: 'Explore SQL Server with read-only MCP tools, catalog evidence, and optional semantic analysis.',
+    to: '/projects/sqlclr-mcp-dotnet',
+    cta: 'See SQLCLR MCP .NET + Jev',
   },
   {
     title: 'Games',

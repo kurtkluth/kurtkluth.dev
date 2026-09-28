@@ -42,6 +42,39 @@ function SqlclrArt() {
   );
 }
 
+function SqlclrMcpDotnetArt() {
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="mcp-bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#091726" />
+          <stop offset="1" stopColor="#10273a" />
+        </linearGradient>
+      </defs>
+      <rect width="400" height="225" fill="url(#mcp-bg)" />
+      <g stroke="#72c7ff" fill="none" strokeWidth="2">
+        <path d="M155 71v83c0 8 20 15 45 15s45-7 45-15V71" />
+        <ellipse cx="200" cy="71" rx="45" ry="14" fill="#122c40" />
+        <path d="M155 99c0 8 20 15 45 15s45-7 45-15M155 127c0 8 20 15 45 15s45-7 45-15" opacity="0.65" />
+        <path d="M155 99H105V71M245 99h50V71M155 142H105v25M245 142h50v25" opacity="0.75" />
+      </g>
+      <g fill="#72c7ff">
+        <circle cx="105" cy="71" r="6" />
+        <circle cx="295" cy="71" r="6" />
+        <circle cx="105" cy="167" r="6" />
+        <circle cx="295" cy="167" r="6" />
+      </g>
+      <g stroke="#efbc79" strokeWidth="2" fill="none" strokeLinecap="round">
+        <path d="M86 52l-12 19 12 19M314 52l12 19-12 19" />
+        <path d="M82 148l-12 19 12 19M318 148l12 19-12 19" />
+      </g>
+      <text x="200" y="206" textAnchor="middle" fontFamily="JetBrains Mono Variable, monospace" fontSize="10" letterSpacing="3" fill="#c6e9ff">
+        CATALOG / EVIDENCE / CONTEXT
+      </text>
+    </svg>
+  );
+}
+
 function LisaClimberArt() {
   return (
     <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -508,6 +541,7 @@ function IconTillerArt() {
 }
 
 const ART: Record<string, () => React.ReactNode> = {
+  'sqlclr-mcp-dotnet': SqlclrMcpDotnetArt,
   icontiller: IconTillerArt,
   sqlclr: SqlclrArt,
   'lisa-climber': LisaClimberArt,

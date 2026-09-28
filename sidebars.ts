@@ -13,6 +13,20 @@ const sidebars: SidebarsConfig = {
     'getting-started',
     {
       type: 'category',
+      label: 'SQLCLR MCP .NET + Jev',
+      link: {type: 'doc', id: 'sqlclr-mcp-dotnet/overview'},
+      items: [
+        'sqlclr-mcp-dotnet/overview',
+        'sqlclr-mcp-dotnet/quick-start',
+        'sqlclr-mcp-dotnet/tools',
+        'sqlclr-mcp-dotnet/architect-analysis',
+        'sqlclr-mcp-dotnet/security',
+        'sqlclr-mcp-dotnet/faq',
+        'sqlclr-mcp-dotnet/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'IconTiller',
       link: {type: 'doc', id: 'icontiller/overview'},
       items: [

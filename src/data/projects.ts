@@ -57,6 +57,33 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'SQLCLR MCP .NET + Jev',
+    slug: 'sqlclr-mcp-dotnet',
+    summary: 'Explore SQL Server through a read-only MCP server, with evidence-backed schema review and optional Jev analysis.',
+    lede: 'A .NET 10 Model Context Protocol server for SQL Server. Inspect catalogs, run bounded read-only queries, review keys and relationships, and compare selected entities from your MCP client. The database architect tools keep SQL Server evidence separate from optional Jev semantic judgments; the semantic layer is an active preview.',
+    category: 'Developer Tool',
+    status: 'Active',
+    liveUrl: 'https://github.com/kurtkluth/sqlclr-mcp-dotnet',
+    launchLabel: 'View on GitHub',
+    docsPath: '/docs/sqlclr-mcp-dotnet/overview',
+    technologies: ['SQL Server', '.NET 10', 'MCP', 'Jev'],
+    featured: true,
+    accentColor: '#72c7ff',
+    studio: 'Kurt Kluth',
+    highlights: [
+      {title: 'Explore the catalog', body: 'List and describe tables, keys, indexes, views, routines, constraints, statistics, permissions, and more through MCP tools.'},
+      {title: 'Review with evidence', body: 'Flag missing primary keys, untrusted or disabled foreign keys, and index or relationship risks with catalog evidence for each finding.'},
+      {title: 'Profile within bounds', body: 'Sample explicitly selected columns for null and distinct counts without returning source rows from the profiling tool.'},
+      {title: 'Add optional semantic context', body: 'Compare selected entity pairs with Jev while keeping model answers advisory and separate from deterministic SQL Server findings.'},
+    ],
+    gettingStarted: [
+      {title: 'Build and publish', body: 'Use the .NET 10 SDK to publish the MCP server outside the source checkout.'},
+      {title: 'Connect your MCP client', body: 'Register the published executable and provide a least-privilege SQL Server connection string.'},
+      {title: 'Start with local evidence', body: 'Inspect a schema and run a review. Enable Jev separately when you want semantic judgments on selected metadata.'},
+    ],
+    updates: [{date: '2026-09-28', text: 'added database architect review tools and a provisional Jev evaluation harness.'}],
+  },
+  {
     name: 'IconTiller',
     slug: 'icontiller',
     summary: 'Arrange iPhone Home Screen apps from Windows with drag-and-drop drafts and checked USB writes.',

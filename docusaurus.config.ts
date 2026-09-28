@@ -85,7 +85,7 @@ const config: Config = {
       {
         name: 'keywords',
         content:
-          'Kurt Kluth, Kluth Studios, SQLCLR, SQL Server CLR, browser games, Lisa Climber, Lisetris, Skyroute, Spindrift',
+          'Kurt Kluth, Kluth Studios, SQLCLR MCP .NET + Jev, SQL Server MCP, database architect, SQLCLR, SQL Server CLR, browser games, Lisa Climber, Lisetris, Skyroute, Spindrift',
       },
     ],
     colorMode: {
@@ -123,6 +123,7 @@ const config: Config = {
         {
           title: 'Projects',
           items: [
+            {label: 'SQLCLR MCP .NET + Jev', to: '/projects/sqlclr-mcp-dotnet'},
             {label: 'IconTiller', to: '/projects/icontiller'},
             {label: 'SQLCLR', to: '/projects/sqlclr'},
             {label: 'Lisa Climber', to: '/projects/lisa-climber'},
@@ -135,6 +136,7 @@ const config: Config = {
           title: 'Documentation',
           items: [
             {label: 'Getting Started', to: '/docs/getting-started'},
+            {label: 'SQLCLR MCP .NET + Jev Docs', to: '/docs/sqlclr-mcp-dotnet/overview'},
             {label: 'SQLCLR Docs', to: '/docs/sqlclr/overview'},
             {label: 'Guides', to: '/docs/guides/'},
             {label: 'About', to: '/about'},
