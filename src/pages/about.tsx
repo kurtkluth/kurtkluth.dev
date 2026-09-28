@@ -65,12 +65,12 @@ export default function About(): React.ReactNode {
           <div className={styles.inner}>
             <SectionHeading
               overline="Developer tools"
-              title="SQLCLR MCP .NET"
+              title="SQLCLR MCP .NET + Jev"
               lede="A read-only SQL Server MCP server with catalog exploration, evidence-backed database review, and optional Jev analysis on selected entities."
             />
             <div className={styles.ctaRow}>
               <Link className="kk-btn kk-btn--primary" to="/projects/sqlclr-mcp-dotnet">
-                The SQLCLR MCP .NET project
+                The SQLCLR MCP .NET + Jev project
               </Link>
               <Link className="kk-btn kk-btn--ghost" to="/docs/sqlclr-mcp-dotnet/overview">
                 MCP documentation

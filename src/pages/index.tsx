@@ -129,7 +129,7 @@ const FOCUS = [
     title: 'Developer Tools',
     body: 'Explore SQL Server with read-only MCP tools, catalog evidence, and optional semantic analysis.',
     to: '/projects/sqlclr-mcp-dotnet',
-    cta: 'See SQLCLR MCP .NET',
+    cta: 'See SQLCLR MCP .NET + Jev',
   },
   {
     title: 'Games',

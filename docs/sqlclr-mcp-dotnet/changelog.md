@@ -1,5 +1,5 @@
 ---
-title: SQLCLR MCP .NET Changelog
+title: SQLCLR MCP .NET + Jev Changelog
 description: Documentation milestones for the SQL Server MCP server and database architect preview.
 ---
 

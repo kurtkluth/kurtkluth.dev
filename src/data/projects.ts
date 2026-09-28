@@ -57,7 +57,7 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'SQLCLR MCP .NET',
+    name: 'SQLCLR MCP .NET + Jev',
     slug: 'sqlclr-mcp-dotnet',
     summary: 'Explore SQL Server through a read-only MCP server, with evidence-backed schema review and optional Jev analysis.',
     lede: 'A .NET 10 Model Context Protocol server for SQL Server. Inspect catalogs, run bounded read-only queries, review keys and relationships, and compare selected entities from your MCP client. The database architect tools keep SQL Server evidence separate from optional Jev semantic judgments; the semantic layer is an active preview.',

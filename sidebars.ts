@@ -13,7 +13,7 @@ const sidebars: SidebarsConfig = {
     'getting-started',
     {
       type: 'category',
-      label: 'SQLCLR MCP .NET',
+      label: 'SQLCLR MCP .NET + Jev',
       link: {type: 'doc', id: 'sqlclr-mcp-dotnet/overview'},
       items: [
         'sqlclr-mcp-dotnet/overview',

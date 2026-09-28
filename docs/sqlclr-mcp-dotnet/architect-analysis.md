@@ -1,6 +1,6 @@
 ---
 title: Database Architect Analysis
-description: How SQLCLR MCP .NET combines catalog evidence, bounded aggregate profiles, and optional Jev judgments without automatic schema changes.
+description: How SQLCLR MCP .NET + Jev combines catalog evidence, bounded aggregate profiles, and optional Jev judgments without automatic schema changes.
 ---
 
 The architect tools are designed for review, not automatic schema changes.

@@ -1,9 +1,9 @@
 ---
-title: SQLCLR MCP .NET Tools
+title: SQLCLR MCP .NET + Jev Tools
 description: Explore the SQL Server MCP tool groups and sample prompts for catalog review, bounded querying, and database architecture.
 ---
 
-SQLCLR MCP .NET exposes tools through an MCP client. The client chooses tools
+SQLCLR MCP .NET + Jev exposes tools through an MCP client. The client chooses tools
 from your request; you can also name a tool explicitly.
 
 | Task | Tools |

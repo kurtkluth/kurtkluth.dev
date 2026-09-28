@@ -1,9 +1,9 @@
 ---
 title: Installation & Setup
-description: Setup requirements for browser games, IconTiller, SQLCLR MCP .NET, and SQLCLR development.
+description: Setup requirements for browser games, IconTiller, SQLCLR MCP .NET + Jev, and SQLCLR development.
 ---
 
-The games run in a browser. IconTiller runs on Windows. SQLCLR MCP .NET is a
+The games run in a browser. IconTiller runs on Windows. SQLCLR MCP .NET + Jev is a
 local MCP server, and SQLCLR development works inside SQL Server. Follow the
 setup instructions for your project.
 
@@ -47,7 +47,7 @@ source setup or building a portable Windows x64 package. Phone access needs
 Apple mobile device drivers and a USB data cable. Demo needs no phone.
 Once dependencies are installed, the app uses local files and USB.
 
-## SQLCLR MCP .NET: database inspection from an MCP client
+## SQLCLR MCP .NET + Jev: database inspection from an MCP client
 
 The [MCP Quick Start](../sqlclr-mcp-dotnet/quick-start.md) covers the .NET 10
 SDK, a SQL Server connection, and client registration. Use a least-privilege

@@ -1,5 +1,5 @@
 ---
-title: SQLCLR MCP .NET Quick Start
+title: SQLCLR MCP .NET + Jev Quick Start
 description: Build the .NET 10 SQL Server MCP server, set a read-only connection, and register it with an MCP client.
 ---
 
@@ -13,7 +13,7 @@ description: Build the .NET 10 SQL Server MCP server, set a read-only connection
   Claude Code and Claude Desktop.
 
 Clone or download the
-[SQLCLR MCP .NET repository](https://github.com/kurtkluth/sqlclr-mcp-dotnet).
+[SQLCLR MCP .NET + Jev repository](https://github.com/kurtkluth/sqlclr-mcp-dotnet).
 From its root, build and publish the server to a location outside the source
 checkout:
 

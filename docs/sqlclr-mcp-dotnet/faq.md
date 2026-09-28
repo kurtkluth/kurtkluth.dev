@@ -1,5 +1,5 @@
 ---
-title: SQLCLR MCP .NET FAQ
+title: SQLCLR MCP .NET + Jev FAQ
 description: Common questions about the SQL Server MCP server, database architect preview, local setup, and optional Jev analysis.
 ---
 

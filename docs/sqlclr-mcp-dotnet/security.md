@@ -1,9 +1,9 @@
 ---
 title: Security and Data Boundaries
-description: SQL Server permissions, query limits, Jev opt-in, and the information SQLCLR MCP .NET can share with a client or TypeSafe.
+description: SQL Server permissions, query limits, Jev opt-in, and the information SQLCLR MCP .NET + Jev can share with a client or TypeSafe.
 ---
 
-SQLCLR MCP .NET runs locally as a stdio MCP server. It connects to SQL Server
+SQLCLR MCP .NET + Jev runs locally as a stdio MCP server. It connects to SQL Server
 using the connection string you configure. Give that connection a login with
 only the permissions needed to inspect your database. The code rejects many
 write statements, but its keyword filter is not a SQL security boundary;

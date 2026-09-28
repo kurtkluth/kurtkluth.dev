@@ -1,9 +1,9 @@
 ---
-title: SQLCLR MCP .NET Overview
+title: SQLCLR MCP .NET + Jev Overview
 description: A read-only MCP server for SQL Server catalog exploration, deterministic schema review, bounded profiling, and optional Jev entity analysis.
 ---
 
-SQLCLR MCP .NET lets an MCP client inspect a SQL Server database through a
+SQLCLR MCP .NET + Jev lets an MCP client inspect a SQL Server database through a
 locally launched .NET server. It exposes catalog tools, bounded SELECT queries,
 estimated plans, and a first set of database architect tools. It is a developer
 tool that you run beside your MCP client, not a browser app or a SQL CLR assembly.

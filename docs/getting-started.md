@@ -16,7 +16,7 @@ Most people show up here for one of five reasons. Find yours below.
 
 ### You're here to inspect a SQL Server database
 
-[SQLCLR MCP .NET](./sqlclr-mcp-dotnet/overview.md) connects an MCP client to
+[SQLCLR MCP .NET + Jev](./sqlclr-mcp-dotnet/overview.md) connects an MCP client to
 SQL Server for catalog exploration and read-only database review. Start with
 its [Quick Start](./sqlclr-mcp-dotnet/quick-start.md), then read about the
 [architect tools](./sqlclr-mcp-dotnet/architect-analysis.md). Jev semantic
