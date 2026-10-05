@@ -12,11 +12,12 @@ promise lives.
 
 ## The projects
 
-Ten projects, one hub. Each name links to its overview doc; the project
+Eleven projects, one hub. Each name links to its overview doc; the project
 link opens its website or source repository.
 
 | Project | One-liner | Website or source |
 |---|---|---|
+| [Reelabel](./reelabel/overview.md) | Identify, rename, tag, and convert movie and TV videos on Windows. Private development preview. | [Project page](/projects/reelabel) |
 | [SQLCLR MCP .NET + Jev](./sqlclr-mcp-dotnet/overview.md) | Read-only SQL Server MCP tools with evidence-backed database architect analysis and optional Jev context. | [GitHub source](https://github.com/kurtkluth/sqlclr-mcp-dotnet) |
 | [IconTiller](./icontiller/overview.md) | Arrange iPhone Home Screen apps from Windows over USB. Development preview. | [GitHub source](https://github.com/kurtkluth/IconTiller) |
 | [SQLCLR](./sqlclr/overview.md) | Running .NET inside SQL Server. Governed, hardened extensibility at the engine boundary. | [sqlclr.com](https://sqlclr.com) |
@@ -29,7 +30,7 @@ link opens its website or source repository.
 | [Spindrift](./spindrift/overview.md) | A vector-style arcade space shooter with a persistent high score to chase. | [spindrift.kluthstudios.com](https://spindrift.kluthstudios.com) |
 
 SQLCLR and SQLCLR MCP .NET + Jev cover different parts of SQL Server developer
-tooling. IconTiller is a Windows desktop application.
+tooling. IconTiller and Reelabel are Windows desktop applications.
 The seven Kluth Studios games and interactive experiences run in the browser,
 free, with no required install or account.
 

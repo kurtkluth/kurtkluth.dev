@@ -13,6 +13,23 @@ const sidebars: SidebarsConfig = {
     'getting-started',
     {
       type: 'category',
+      label: 'Reelabel',
+      link: {type: 'doc', id: 'reelabel/overview'},
+      items: [
+        'reelabel/overview',
+        'reelabel/quick-start',
+        'reelabel/metadata',
+        'reelabel/naming-profiles',
+        'reelabel/encoding',
+        'reelabel/file-operations',
+        'reelabel/screen-tour',
+        'reelabel/tips',
+        'reelabel/faq',
+        'reelabel/changelog',
+      ],
+    },
+    {
+      type: 'category',
       label: 'SQLCLR MCP .NET + Jev',
       link: {type: 'doc', id: 'sqlclr-mcp-dotnet/overview'},
       items: [

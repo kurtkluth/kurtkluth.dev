@@ -3,7 +3,7 @@ title: Installation & Setup
 description: Setup requirements for browser games, IconTiller, SQLCLR MCP .NET + Jev, and SQLCLR development.
 ---
 
-The games run in a browser. IconTiller runs on Windows. SQLCLR MCP .NET + Jev is a
+The games run in a browser. IconTiller and Reelabel run on Windows. SQLCLR MCP .NET + Jev is a
 local MCP server, and SQLCLR development works inside SQL Server. Follow the
 setup instructions for your project.
 
@@ -46,6 +46,15 @@ Follow [IconTiller Quick Start](../icontiller/quick-start.md) for Python 3.12
 source setup or building a portable Windows x64 package. Phone access needs
 Apple mobile device drivers and a USB data cable. Demo needs no phone.
 Once dependencies are installed, the app uses local files and USB.
+
+## Reelabel: Windows and media tools
+
+The private self-contained Windows x64 package includes its .NET runtime.
+Keep the complete folder together. FFmpeg/FFprobe, AtomicParsley, and
+mkvpropedit run as separate tools; an unbundled build needs them installed
+locally. Follow [Reelabel Quick Start](../reelabel/quick-start.md) for tool
+resolution and optional metadata-service setup. Public downloads are not
+available.
 
 ## SQLCLR MCP .NET + Jev: database inspection from an MCP client
 

@@ -54,6 +54,7 @@ export default function ProjectPage({slug}: {slug: string}): React.ReactNode {
                 </Link>
               </div>
               <p className={styles.liveAt}>
+                {project.availabilityNote ? project.availabilityNote : <>
                 {project.category === 'Desktop App' ? 'available on' : 'live at'}{' '}
                 <Link to={project.liveUrl} rel="noopener">
                   {project.liveUrl.replace('https://', '')}
@@ -66,6 +67,7 @@ export default function ProjectPage({slug}: {slug: string}): React.ReactNode {
                     </Link>
                   </>
                 ) : null}
+                </>}
               </p>
             </div>
             <div className={styles.heroArt}>

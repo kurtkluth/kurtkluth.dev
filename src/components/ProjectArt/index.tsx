@@ -541,6 +541,7 @@ function IconTillerArt() {
 }
 
 const ART: Record<string, () => React.ReactNode> = {
+  reelabel: ReelabelArt,
   'sqlclr-mcp-dotnet': SqlclrMcpDotnetArt,
   icontiller: IconTillerArt,
   sqlclr: SqlclrArt,
@@ -552,6 +553,22 @@ const ART: Record<string, () => React.ReactNode> = {
   skyroute: SkyrouteArt,
   spindrift: SpindriftArt,
 };
+
+function ReelabelArt() {
+  return (
+    <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="400" height="225" fill="#0b192b" />
+      <rect x="58" y="37" width="225" height="147" rx="14" fill="#173953" stroke="#72c7ff" strokeWidth="3" />
+      <rect x="86" y="52" width="168" height="117" rx="6" fill="#10273d" />
+      {[0, 1, 2, 3].map(i => <g key={i} fill="#72c7ff"><rect x="66" y={53 + i * 32} width="11" height="17" rx="2" /><rect x="263" y={53 + i * 32} width="11" height="17" rx="2" /></g>)}
+      <path d="M146 82l45 28-45 28z" fill="#cde8f6" />
+      <path d="M265 104h55l42 42-66 66-60-60v-30z" fill="#56cbd3" stroke="#0b192b" strokeWidth="5" strokeLinejoin="round" />
+      <circle cx="269" cy="130" r="7" fill="#0b192b" />
+      <path d="M280 164l12 12 27-27" fill="none" stroke="#0b192b" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+      <text x="171" y="210" textAnchor="middle" fontFamily="monospace" fontSize="9" letterSpacing="2" fill="#72c7ff">IDENTIFY. REVIEW. ORGANIZE.</text>
+    </svg>
+  );
+}
 
 export default function ProjectArt({slug}: {slug: string}): React.ReactNode {
   const Art = ART[slug];

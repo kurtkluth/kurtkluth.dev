@@ -52,6 +52,14 @@ source link and six pages under `docs/icontiller/`. Keep supported Apply
 operations, draft-only edits, and compatibility limits aligned with the
 application README and packaged user guide.
 
+## Reelabel documentation
+
+Reelabel is listed as an experimental Windows desktop app, with a project page
+at `/projects/reelabel` and ten guides under `docs/reelabel/`. Its source and
+development packages are private, so portfolio actions link to documentation
+instead of a public download. Keep metadata matching, naming/encoding presets,
+tagged copies, recovery, and known limitations aligned with the application.
+
 ## Deployment
 
 `npm run build` emits a fully static site into `build/`, deployable on any
