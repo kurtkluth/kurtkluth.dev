@@ -12,7 +12,15 @@ answers.
 
 ## Pick your path
 
-Most people show up here for one of five reasons. Find yours below.
+Most people show up here for one of six reasons. Find yours below.
+
+### You're here to organize movies and TV shows
+
+[Reelabel](./reelabel/overview.md) is a private Windows development preview for
+metadata lookup, naming, tagging, and video conversion. Start with
+[Quick Start](./reelabel/quick-start.md), choose reusable
+[naming profiles](./reelabel/naming-profiles.md), and try an
+[encoding preview](./reelabel/encoding.md) on a disposable sample.
 
 ### You're here to inspect a SQL Server database
 
@@ -78,6 +86,7 @@ Honestly, not much.
 
 | If you want to... | You need |
 |---|---|
+| Organize videos with Reelabel | Windows x64 and access to the private package; optional provider credentials or local IMDb datasets |
 | Inspect SQL Server with MCP | The .NET 10 SDK, a reachable SQL Server database, and an MCP client |
 | Arrange iPhone Home Screens | Windows, Python 3.12 for source use, and Apple mobile device drivers plus a USB cable for phone access |
 | Play the games | A current version of Chrome, Edge, Firefox, or Safari (desktop or mobile) |
@@ -87,4 +96,5 @@ Honestly, not much.
 The games need no download or account. Desktop and database projects have
 their own setup steps: [IconTiller Quick Start](./icontiller/quick-start.md)
 and [SQLCLR Installation](./sqlclr/installation.md). The MCP server has its
-own [Quick Start](./sqlclr-mcp-dotnet/quick-start.md).
+own [Quick Start](./sqlclr-mcp-dotnet/quick-start.md). Reelabel has a separate
+[Windows Quick Start](./reelabel/quick-start.md).

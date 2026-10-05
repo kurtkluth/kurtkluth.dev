@@ -45,6 +45,7 @@ export interface Project {
   launchLabel: string;
   docsPath: string;
   repositoryUrl?: string;
+  availabilityNote?: string;
   technologies: string[];
   featured: boolean;
   /** Per-project accent, used as a subtle tint on cards and heroes. */
@@ -56,6 +57,34 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: 'Reelabel',
+    slug: 'reelabel',
+    summary: 'Identify, rename, tag, and convert movie and TV videos on Windows, with reviewable paths and reusable presets.',
+    lede: 'Give your collection a proper name. Reelabel brings metadata lookup, movie and TV naming profiles, embedded tags, and FFmpeg encoding into one Windows workspace. Review a batch, preview an encode, or create tagged copies while keeping your original videos.',
+    category: 'Desktop App',
+    status: 'Experimental',
+    liveUrl: '/docs/reelabel/quick-start',
+    launchLabel: 'Read Quick Start',
+    docsPath: '/docs/reelabel/overview',
+    availabilityNote: 'Private development preview. Public downloads are not available.',
+    technologies: ['C#', 'WPF', '.NET 10', 'FFmpeg', 'Windows'],
+    featured: true,
+    accentColor: '#56cbd3',
+    studio: 'Kurt Kluth',
+    highlights: [
+      {title: 'Identify and review', body: 'Search configured TMDB and TheTVDB services or local IMDb datasets. Optional automatic lookup loads exact matches into the preview; ambiguous matches need your selection.'},
+      {title: 'Save naming profiles', body: 'Keep separate movie and TV roots, folder patterns, and filenames. Preview the complete batch, including matching subtitle sidecars, before changing files.'},
+      {title: 'Try an encode first', body: 'Save movie and TV encoding defaults, choose dimensions and tracks, and test a short clip before converting a batch.'},
+      {title: 'Keep the originals', body: 'Tag, rename and copy creates verified tagged copies at planned destinations. Separate tagging uses backups, and rename keeps recovery records.'},
+    ],
+    gettingStarted: [
+      {title: 'Open the Windows build', body: 'Use the complete private Windows x64 package. Keep its accompanying files and media tools together; see Quick Start for source-build requirements.'},
+      {title: 'Import and configure', body: 'Add a disposable sample, set up optional metadata access, and choose a naming profile and an encoding preset.'},
+      {title: 'Review before processing', body: 'Check metadata, full destination paths, and selected tracks. Create tagged copies or test an encoding preview before processing your collection.'},
+    ],
+    updates: [{date: '2026-10-04', text: 'added documentation for metadata lookup, saved naming and encoding settings, previews, and the tagged-copy workflow.'}],
+  },
   {
     name: 'SQLCLR MCP .NET + Jev',
     slug: 'sqlclr-mcp-dotnet',
