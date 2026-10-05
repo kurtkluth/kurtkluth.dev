@@ -14,7 +14,7 @@ update service. The source repository is private.
 
 ![Reelabel main workspace with metadata and batch actions](/img/reelabel/main-metadata.png)
 
-Current-build UI-check render with synthetic data. Explore the
+Desktop capture with disposable synthetic media and manually supplied demo metadata/artwork. Explore the
 [screen tour](./screen-tour.md) for workspace tabs and editors.
 
 ## What you can do
