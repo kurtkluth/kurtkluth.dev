@@ -5,10 +5,11 @@ description: A guide to Reelabel's menus, workspace tabs, details editor, naming
 
 ## Main workspace
 
-The images below are current-build WPF UI-check renders from 2026-10-04.
-They use synthetic test data, omit desktop window chrome and open menu popups,
-and include deliberately invalid review rows to show disabled confirmations.
-They contain no provider credentials or personal media.
+Desktop captures were taken on 2026-10-04 with isolated application state and
+disposable synthetic media. Titles, metadata and illustrative posters were
+supplied manually; they are not live provider results. Credential fields are
+empty. Two invalid batch examples are WPF UI-check renders, labeled below.
+There are no personal media or account credentials in these images.
 
 ![Metadata workspace](/img/reelabel/main-metadata.png)
 
@@ -37,6 +38,14 @@ Expand **Activity log** for session progress and errors.
 | Tools | Inspect selected, Preview paths, Undo rename, Restore tag backup, Discard rename recovery, View queue/history, Retry unfinished queue |
 | Help | About / credits |
 
+![File menu](/img/reelabel/menu-file.png)
+
+![Tools menu](/img/reelabel/menu-tools.png)
+
+![Help menu](/img/reelabel/menu-help.png)
+
+![About and provider credits](/img/reelabel/about-credits.png)
+
 Remove selected removes a library entry, not its underlying video. Inspect
 reads streams. Recovery and retry commands require review; see
 [file operations](./file-operations.md). About / credits includes provider
@@ -52,6 +61,21 @@ sources** refreshes configured sources and loads a chosen candidate into the
 draft. **Apply to preview** saves staged details to the library; **Cancel**
 discards them. Embedded tags require a separate file action.
 
+![Inspected audio and video streams](/img/reelabel/details-streams.png)
+
+![Online sources with no services configured](/img/reelabel/details-online-sources.png)
+
+## Provider controls
+
+![TMDB token controls](/img/reelabel/provider-tmdb.png)
+
+![TheTVDB key and optional PIN](/img/reelabel/provider-tvdb.png)
+
+![IMDb local dataset controls](/img/reelabel/provider-imdb.png)
+
+TheTVDB needs a project API key; a subscriber PIN supplements it. IMDb uses
+local non-commercial datasets. See [Metadata](./metadata.md) for setup.
+
 ## Naming profile editor
 
 ![Movie naming profile](/img/reelabel/naming-movies.png)
@@ -62,6 +86,8 @@ discards them. Embedded tags require a separate file action.
 **TV shows** roots and patterns, replacements, and live examples. The token
 helper explains available fields. **Preview selected files** opens the complete
 path review. See [Naming profiles](./naming-profiles.md).
+
+![Naming token helper](/img/reelabel/naming-token-helper.png)
 
 ## Encoding preset editor and preview
 
@@ -81,11 +107,27 @@ processed stills and short test encodes.
 fit or actual-size viewing, playback, seeking, and volume. The external-player
 option handles clips Windows cannot decode. See [Encoding](./encoding.md).
 
+![Real source frame](/img/reelabel/preview-source.png)
+
+![Encoded synthetic test clip](/img/reelabel/preview-encoded.png)
+
+![Larger encoded playback preview](/img/reelabel/preview-large.png)
+
+![Actual-size preview with scrollbars](/img/reelabel/preview-actual-size.png)
+
 ## Batch reviews and history
 
 ![Duplicate naming destination blocks rename](/img/reelabel/naming-validation.png)
 
 ![Missing source blocks queue confirmation](/img/reelabel/encoding-validation.png)
+
+The two invalid reviews above are deliberate WPF UI-check fixtures.
+
+![Naming path review](/img/reelabel/review-paths.png)
+
+![Encoding batch review](/img/reelabel/review-encoding.png)
+
+![Tag, rename and copy review](/img/reelabel/review-tagged-copy.png)
 
 **Preview paths** reviews names without mutations. Rename and tagged-copy
 reviews include full source/destination paths and sidecars. **Review encoding
@@ -95,3 +137,14 @@ errors. Confirmation remains disabled when planning fails.
 **Tools > View queue/history** shows conversion work. **Settings > Copy history**
 shows combined tagged-copy work. Retry and backup recovery remain explicit
 actions after restart.
+
+![Completed conversion history](/img/reelabel/queue-history.png)
+
+![Completed tagged-copy history](/img/reelabel/copy-history.png)
+
+![Expanded session activity log](/img/reelabel/activity-log.png)
+
+Completed records come from real operations on the disposable samples. Original
+video/subtitle hashes remained unchanged after conversion and tagged copying.
+Recovery/retry commands are shown in Tools; these captures do not simulate
+interrupted work or changed-source recovery.
