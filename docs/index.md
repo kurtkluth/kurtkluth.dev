@@ -12,11 +12,12 @@ promise lives.
 
 ## The projects
 
-Eleven projects, one hub. Each name links to its overview doc; the project
+Twelve projects, one hub. Each name links to its overview doc; the project
 link opens its website or source repository.
 
 | Project | One-liner | Website or source |
 |---|---|---|
+| [lnk.run](./lnk-run/overview.md) | Personal link shortening, redirect controls, and analytics. | [lnk.run](https://lnk.run) |
 | [Reelabel](./reelabel/overview.md) | Identify, rename, tag, and convert movie and TV videos on Windows. Private development preview. | [Project page](/projects/reelabel) |
 | [SQLCLR MCP .NET + Jev](./sqlclr-mcp-dotnet/overview.md) | Read-only SQL Server MCP tools with evidence-backed database architect analysis and optional Jev context. | [GitHub source](https://github.com/kurtkluth/sqlclr-mcp-dotnet) |
 | [IconTiller](./icontiller/overview.md) | Arrange iPhone Home Screen apps from Windows over USB. Development preview. | [GitHub source](https://github.com/kurtkluth/IconTiller) |
