@@ -540,7 +540,14 @@ function IconTillerArt() {
   );
 }
 
+function LnkRunArt() {
+  return (
+    <img src="/img/lnk-run/social-card.png" alt="" />
+  );
+}
+
 const ART: Record<string, () => React.ReactNode> = {
+  'lnk-run': LnkRunArt,
   reelabel: ReelabelArt,
   'sqlclr-mcp-dotnet': SqlclrMcpDotnetArt,
   icontiller: IconTillerArt,

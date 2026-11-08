@@ -11,6 +11,7 @@ export type ProjectStatus = 'Active' | 'Experimental' | 'Archived';
 export type ProjectCategory =
   | 'Developer Tool'
   | 'Desktop App'
+  | 'Web App'
   | 'Game'
   | 'Interactive Experience';
 
@@ -57,6 +58,35 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: 'lnk.run',
+    slug: 'lnk-run',
+    summary: 'A personal link shortener with analytics, QR codes, and flexible redirect controls.',
+    lede: 'lnk.run is my personal link shortener, built on Sink and hosted on Cloudflare Workers. Create memorable links, manage their destinations, and explore traffic from one dashboard.',
+    category: 'Web App',
+    status: 'Active',
+    liveUrl: 'https://lnk.run',
+    launchLabel: 'Open lnk.run',
+    docsPath: '/docs/lnk-run/overview',
+    repositoryUrl: 'https://github.com/KluthStudios/lnk.run',
+    availabilityNote: 'The management dashboard requires an authorized site token.',
+    technologies: ['Nuxt', 'Cloudflare Workers', 'D1', 'Workers KV'],
+    featured: true,
+    accentColor: '#70dfbf',
+    studio: 'Kurt Kluth',
+    highlights: [
+      {title: 'Short links with control', body: 'Choose custom slugs, expiration, password protection, and routing by device or country.'},
+      {title: 'Understand traffic', body: 'Explore aggregate and per-link analytics, with a near-real-time event display and CSV export.'},
+      {title: 'Share and organize', body: 'Use tags, QR codes, and social preview settings to manage and share links.'},
+      {title: 'Protect link records', body: 'Export link data or create logical snapshots in private Cloudflare R2 storage.'},
+    ],
+    gettingStarted: [
+      {title: 'Sign in', body: 'Open the dashboard and enter the authorized site token.'},
+      {title: 'Create a link', body: 'Add a destination and slug, then choose any optional redirect settings.'},
+      {title: 'Test and share', body: 'Check the short URL in a private browser window, then share it or download a QR code.'},
+    ],
+    updates: [],
+  },
   {
     name: 'Reelabel',
     slug: 'reelabel',

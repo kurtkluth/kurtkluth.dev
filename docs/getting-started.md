@@ -12,7 +12,12 @@ answers.
 
 ## Pick your path
 
-Most people show up here for one of six reasons. Find yours below.
+Find your path below.
+
+### You're here to manage short links
+
+[lnk.run](./lnk-run/overview.md) shortens links and tracks their traffic.
+Authorized users can start with the [Quick Start](./lnk-run/quick-start.md).
 
 ### You're here to organize movies and TV shows
 
